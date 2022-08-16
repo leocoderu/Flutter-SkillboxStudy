@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 //import 'package:cupertino_material/center_example.dart';
 //import 'package:cupertino_material/align_example.dart';
 //import 'package:cupertino_material/column_row_example.dart';
-//import 'package:cupertino_material/scaffold_example.dart';
-import 'package:cupertino_material/bottom_navigation_bar_example.dart';
+import 'package:cupertino_material/scaffold_example.dart';
+//import 'package:cupertino_material/bottom_navigation_bar_example.dart';
 
 
 void main() => runApp(const MyApp());
@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
       //home: const CenterExample(),
       //home: const AlignExample(),
       //home: const ColumnRowExample(),
-      //home: const ScaffoldExample(),
-      home: const BottomNavigationBarExample(),
+      home: const ScaffoldExample(),
+      //home: const BottomNavigationBarExample(),
     );
   }
 }

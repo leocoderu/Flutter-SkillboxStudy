@@ -6,7 +6,6 @@ class ScaffoldExample extends StatefulWidget {
   State<ScaffoldExample> createState() => _ScaffoldExampleState();
 }
 
-// Добавляет отступы сверху и снизу по интерфейсу телефона
 class _ScaffoldExampleState extends State<ScaffoldExample>{
   int tabIndex = 0;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -16,7 +15,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample>{
     if(_controller == null){
       _controller = scaffoldKey.currentState?.showBottomSheet(
               (context) => Container(
-                color: Colors.deepOrange,
+                color: Colors.green,
                 height: 200,
                 child: const Center(
                   child: Text('BOTTOM SHEET'),
@@ -112,25 +111,25 @@ class _ScaffoldExampleState extends State<ScaffoldExample>{
         ),
       ),
 
-      // bottomNavigationBar: BottomAppBar(
-      //   shape: const CircularNotchedRectangle(),
-      //   elevation: 10,
-      //   notchMargin: 8,
-      //   clipBehavior: Clip.antiAlias,
-      //   child: BottomNavigationBar(
-      //     elevation: 10,     // Тень под BottomNavigationBar
-      //     items: const [
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.home),
-      //         label: "Home",
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.favorite),
-      //         label: "Favorite",
-      //       ),
-      //     ]
-      //   ),
-      // ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        elevation: 10,
+        notchMargin: 8,
+        clipBehavior: Clip.antiAlias,
+        child: BottomNavigationBar(
+          elevation: 10,     // Тень под BottomNavigationBar
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: "Favorite",
+            ),
+          ]
+        ),
+      ),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
@@ -140,7 +139,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample>{
         onPressed: toggleBottomSheet,
       ),
 
-      // Панель для доббавления дополнительных действий
+      //Панель для доббавления дополнительных действий
       // bottomSheet: BottomSheet(
       //   //animationController: bottomController,
       //   builder: (context) => Container(
