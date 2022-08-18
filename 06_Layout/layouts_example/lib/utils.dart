@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final fakeData = (int count, [bool showPrint = false]) => List<Widget>.generate(
+fakeData(int count, [bool showPrint = false]) => List<Widget>.generate(
     count,
       (i) {
         if(showPrint) {
@@ -17,4 +17,4 @@ final fakeData = (int count, [bool showPrint = false]) => List<Widget>.generate(
           ),
         );
       }
-  );
+);
