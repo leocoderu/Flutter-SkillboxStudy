@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:layouts_example/example_list_grid.dart';
-import 'package:layouts_example/keep_alive_example.dart';
+//import 'package:layouts_example/keep_alive_example.dart';
+import 'package:layouts_example/custom_scroll_view_example.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       ),
       //home: const SingleChildScrollViewExample(),
       //home: const ListGridExample(),
-      home: const KeepAliveExample(),
+      //home: const KeepAliveExample(),
+      home: const CustomScrollViewExample(),
     );
   }
 }
