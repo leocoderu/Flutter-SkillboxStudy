@@ -29,7 +29,7 @@ class _SimpleCardState extends State<SimpleCard>
   @override
   Widget build(BuildContext context) {
     super.build(context);    /// Calling build method of mixin
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Card(
         child: ListTile(
