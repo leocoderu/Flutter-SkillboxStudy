@@ -8,27 +8,26 @@ class KeepAliveExample extends StatefulWidget{
   State<KeepAliveExample> createState() => _KeepAliveExampleState();
 }
 
-class _KeepAliveExampleState extends State<KeepAliveExample> with AutomaticKeepAliveClientMixin {
+class _KeepAliveExampleState extends State<KeepAliveExample> {
   List<Widget> data = List.generate(100, (index) => SimpleCard(index: index.toString()));
 
- //ScrollController controller = ScrollController(initialScrollOffset: 0);
   @override
   void initState() {
     super.initState();
     // ignore: avoid_print
-    print('INIT STATE');
+    //print('INIT STATE');
   }
 
   @override
   void dispose() {
     super.dispose();
     // ignore: avoid_print
-    print('DISPOSE');
+    //print('DISPOSE');
   }
 
   @override
-  Widget build(BuildContext context){
-    super.build(context);
+  Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('ListView KeepAlive'),
@@ -42,6 +41,4 @@ class _KeepAliveExampleState extends State<KeepAliveExample> with AutomaticKeepA
     );
   }
 
-  @override
-  bool get wantKeepAlive => true;
 }

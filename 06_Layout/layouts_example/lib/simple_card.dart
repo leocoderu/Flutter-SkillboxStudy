@@ -8,19 +8,13 @@ class SimpleCard extends StatefulWidget{
   State<SimpleCard> createState() => _SimpleCardState();
 }
 
-class _SimpleCardState extends State<SimpleCard> {
-  ScrollController controller = ScrollController();
-
+class _SimpleCardState extends State<SimpleCard>
+    with AutomaticKeepAliveClientMixin {    /// Using the mixin
   bool isFavorite = false;
 
   @override
   void initState() {
     super.initState();
-
-    controller.addListener(() {
-
-    });
-
     // ignore: avoid_print
     print('init ${widget.index}');
   }
@@ -28,13 +22,13 @@ class _SimpleCardState extends State<SimpleCard> {
   @override
   void dispose() {
     super.dispose();
-    controller.dispose();
     // ignore: avoid_print
     print('dispose ${widget.index}');
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);    /// Calling build method of mixin
     return Container(
       width: double.infinity,
       child: Card(
@@ -53,4 +47,7 @@ class _SimpleCardState extends State<SimpleCard> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;    /// Overriding the value to preserve the state
 }
