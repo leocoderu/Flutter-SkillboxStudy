@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-
 class SimpleCard extends StatefulWidget{
   const SimpleCard({Key? key, required this.index}) : super(key: key);
   final String index;
