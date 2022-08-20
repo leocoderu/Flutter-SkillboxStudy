@@ -21,7 +21,7 @@ class _PageViewExampleState extends State<PageViewExample> {
       ),
       body: PageView(
         controller: _controller,
-        scrollDirection: Axis.vertical,
+        scrollDirection: Axis.horizontal,
         onPageChanged: (index) {
           debugPrint(index.toString());
         },
