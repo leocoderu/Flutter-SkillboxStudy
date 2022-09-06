@@ -1,8 +1,8 @@
 Почистить папку build и удалить зависимости:    flutter clean
 Собрать проект и построить зависимости:         flutter pub get
-Отобразить список запушшенных устройств:        flutter devices
+Отобразить список запущенных устройств:         flutter devices
 Запуск на выбранном устройстве по его id:       flutter run -d emulator-5554
 Получение списка и активного канала разработки: flutter channel
 Переключение на другой канал, например master:  flutter channel master
 Обновление Flutter SDK:                         flutter upgrade
-Слортировка пакетов в файле main:               flutter pub run import_sorter:main
+Сортировка пакетов в файле main:                flutter pub run import_sorter:main
