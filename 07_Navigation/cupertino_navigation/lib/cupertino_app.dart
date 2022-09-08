@@ -51,7 +51,7 @@ class _CupertinoRouteState extends State<CupertinoRoute>{
         ),
         tabBuilder: (BuildContext context, int index) {
             return CupertinoTabView(
-                navigatorKey: navigationKeys[index],  // Передаем навигационный ключ таба по индексу
+                //navigatorKey: navigationKeys[index],  // Передаем навигационный ключ таба по индексу
                 builder: (BuildContext context) {
                   switch (index){
                     case 0:
