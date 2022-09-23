@@ -14,7 +14,7 @@ class FileReader extends StatefulWidget {
 class _FileReaderState extends State<FileReader> {
   String fileName = '';
 
-  callback(path) {
+  callback(String path) {
     setState(() {
       fileName = path;
     });
