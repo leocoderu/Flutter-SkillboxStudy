@@ -2,13 +2,13 @@ void main() async {
   // ignore: avoid_print
   print('start');
 
-  // Подписка на событие
+  // Подписка на поток
   // intStream(5).listen((value) {
   //   // ignore: avoid_print
   //   print(value);
   // });
 
-  // Ожидает выполние всего потока
+  // Ожидает выполнение всего потока
   var stream = intStream(5).where((value) => value > 2);
   await for (var item in stream){
     // ignore: avoid_print

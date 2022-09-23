@@ -6,6 +6,7 @@ void main() {
 
 void asyncApi() async {
   debugPrint('Message #1');
+  
   try {
     var data = await getData(3);
     // ignore:avoid_print

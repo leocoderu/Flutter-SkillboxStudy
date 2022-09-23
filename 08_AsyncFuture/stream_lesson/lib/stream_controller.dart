@@ -17,9 +17,12 @@ void main() async {
   });
   controller.add('event #1');
   controller.add('event #2');
+
+  // Отмена подписки на потоки
+  //streamSubscription1.cancel();
+
   controller.add('event #3');
   controller.add('event #4');
 
-  // Отмена подписки на потоки
-  //streamSubscription.cancel();
+
 }
