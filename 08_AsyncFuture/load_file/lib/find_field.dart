@@ -4,10 +4,13 @@ class FindField extends StatefulWidget {
   const FindField({Key? key, this.padding = const EdgeInsets.all(0.0), required this.callback}) : super(key: key);
 
   final EdgeInsetsGeometry padding;
-  final Function callback;
+  final Function(String prop) callback;
 
   @override
   State<FindField> createState() => _FindFieldState();
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
 class _FindFieldState extends State<FindField> {
