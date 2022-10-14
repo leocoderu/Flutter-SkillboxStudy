@@ -1,6 +1,4 @@
-# hotels
-
-Hotel Flutter project.
+# Hotel Flutter project.
 
 ## Getting Started
 
