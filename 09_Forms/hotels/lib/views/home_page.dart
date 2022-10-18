@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
 import 'package:hotels/models/hotel.dart';
+import 'package:hotels/views/hotel_card.dart';
 
 class HomePage extends StatefulWidget {
+  static const routeName = '/';
   const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin{
   bool listView = true;                 // Состояние отображения элементов вьюхи
   bool isLoading = false;               // Состояние загрузки данных из сети
   String errMsg = '';                   // Сообщение ошибки, если она есть
@@ -20,67 +24,80 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    getData();
+    getData();                          // При инициализации загружаем данные из сети
   }
 
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-    //ignore: avoid_print
-    print(listView);
-  }
-
-  _listview(bool state){
-    setState(() {
-      listView = state;
-    });
-  }
+  // Устанавливаем Вид отображения в зависимости от нажатой кнопки в AppBar
+  _listview(bool state) => setState(() => listView = state);
 
   getData() async {
     setState(() => isLoading = true);
-
     try {
       final response = await dio.get('https://run.mocky.io/v3/ac888dc5-d193-4700-b12c-abb43e289301');
       hotels = response.data.map<Hotel>((hotel) => Hotel.fromJson(hotel)).toList();
     } on DioError catch(err){
-      setState(() =>errMsg = err.response!.data['message']); // Записывает тект ошибки
+      setState(() => errMsg = err.response!.data.toString()); // Записывает тект ошибки
     }
-
     setState(() => isLoading = false);
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);    /// Calling build method of mixin
     return Scaffold(
       appBar: AppBar(
         title: const Text('Hotels'),
         centerTitle: true,
         actions: [
-          IconButton(
-              onPressed: () {_listview(true);},
-              icon: const Icon(Icons.list),
-          ),
-          IconButton(
-              onPressed: () {_listview(false);},
-              icon: const Icon(Icons.apps),
-          ),
+          IconButton(onPressed: () {_listview(true);}, icon: const Icon(Icons.list)),
+          IconButton(onPressed: () {_listview(false);}, icon: const Icon(Icons.apps)),
         ],
       ),
+
+      drawer: Drawer(
+          child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: ListView(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.wrong_location),
+                      title: const Text('Page not Found'),
+                      onTap: () {Navigator.of(context).pushNamed('routeName');},
+                    ),
+                  ],
+                ),
+              )
+          )
+      ),
+
       body: isLoading
         ? const Center(
             child: CircularProgressIndicator(),
           )
         : (errMsg != '') ? Center(child: Text(errMsg))
-          : ListView(
+          : listView
+            ? ListView(
+                children: [
+                  ...hotels.map((e) {
+                    return HotelCard(path: e.poster, name: e.name, listView: true);
+                  })
+                ],
+              )
+            :GridView(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1,
+              ),
               children: [
                 ...hotels.map((e) {
-                  return ListTile(
-                    title: Text(e.name),
-                    subtitle: Text(e.poster),
-                  );
-                }).toList(),
+                  return HotelCard(path: e.poster, name: e.name, listView: false);
+                })
               ],
             )
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;    /// Overriding the value to preserve the state
 }

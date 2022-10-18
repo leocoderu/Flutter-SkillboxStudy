@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
 
-import 'package:hotels/views/home_page.dart';
+import 'package:hotels/fluro_router.dart';
 
 void main() async {
+  MyFluroRouter.setupRouter();
   WidgetsFlutterBinding.ensureInitialized();
   ByteData data = await PlatformAssetBundle().load('assets/ca/lets-encrypt-r3.pem');
   SecurityContext.defaultContext.setTrustedCertificatesBytes(data.buffer.asUint8List());
@@ -22,9 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
-      routes: {
-        '/' : (BuildContext context) => const HomePage(),
-      },
+      onGenerateRoute: MyFluroRouter.router.generator,
     );
   }
 }
