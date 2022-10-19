@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
-import 'package:hotels/models/hotel.dart';
+import 'package:hotels/models/hotel_preview.dart';
 import 'package:hotels/views/hotel_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage>
   bool listView = true;                 // Состояние отображения элементов вьюхи
   bool isLoading = false;               // Состояние загрузки данных из сети
   String errMsg = '';                   // Сообщение ошибки, если она есть
-  late List<Hotel> hotels;              // Репозиторий загруженных отелей
+  late List<HotelPreview> hotels;              // Репозиторий загруженных отелей
 
   Dio dio = Dio();                      // Объект подключения Dio
 
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage>
     setState(() => isLoading = true);
     try {
       final response = await dio.get('https://run.mocky.io/v3/ac888dc5-d193-4700-b12c-abb43e289301');
-      hotels = response.data.map<Hotel>((hotel) => Hotel.fromJson(hotel)).toList();
+      hotels = response.data.map<HotelPreview>((hotel) => HotelPreview.fromJson(hotel)).toList();
     } on DioError catch(err){
       setState(() => errMsg = err.response!.data.toString()); // Записывает тект ошибки
     }
