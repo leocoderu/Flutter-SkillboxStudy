@@ -11,10 +11,10 @@ HotelDetailed _$HotelDetailedFromJson(Map<String, dynamic> json) =>
       uuid: json['uuid'] as String,
       name: json['name'] as String,
       poster: json['poster'] as String,
-      address: HotelAddress.fromJson(json['address'] as Map<String, dynamic>),
+      address: json['address'] as Map<String, dynamic>,
       price: (json['price'] as num).toDouble(),
       rating: (json['rating'] as num).toDouble(),
-      services: Services.fromJson(json['services'] as Map<String, dynamic>),
+      services: json['services'] as Map<String, dynamic>,
       photos:
           (json['photos'] as List<dynamic>).map((e) => e as String).toList(),
     );
@@ -24,10 +24,10 @@ Map<String, dynamic> _$HotelDetailedToJson(HotelDetailed instance) =>
       'uuid': instance.uuid,
       'name': instance.name,
       'poster': instance.poster,
-      'address': instance.address.toJson(),
+      'address': instance.address,
       'price': instance.price,
       'rating': instance.rating,
-      'services': instance.services.toJson(),
+      'services': instance.services,
       'photos': instance.photos,
     };
 
@@ -36,7 +36,7 @@ HotelAddress _$HotelAddressFromJson(Map<String, dynamic> json) => HotelAddress(
       street: json['street'] as String,
       city: json['city'] as String,
       zip_code: json['zip_code'] as String,
-      coords: Coords.fromJson(json['coords'] as Map<String, dynamic>),
+      coords: json['coords'] as Map<String, dynamic>,
     );
 
 Map<String, dynamic> _$HotelAddressToJson(HotelAddress instance) =>
@@ -45,7 +45,7 @@ Map<String, dynamic> _$HotelAddressToJson(HotelAddress instance) =>
       'street': instance.street,
       'city': instance.city,
       'zip_code': instance.zip_code,
-      'coords': instance.coords.toJson(),
+      'coords': instance.coords,
     };
 
 Coords _$CoordsFromJson(Map<String, dynamic> json) => Coords(

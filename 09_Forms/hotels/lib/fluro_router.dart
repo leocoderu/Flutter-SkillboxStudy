@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:hotels/views/home_page.dart';
+import 'package:hotels/views/hotel_page.dart';
 import 'package:hotels/views/not_found_page.dart';
 
 class MyFluroRouter {
@@ -9,23 +10,19 @@ class MyFluroRouter {
     return const HomePage();
   });
 
-  // static Handler aboutHandler = Handler(handlerFunc: (context, Map<String, dynamic>? params) {
-  //   //print(params);
-  //   if (params != null && params.containsKey('uuid')) {
-  //     return AboutPage(id: params['uuid'][0]);
-  //   }
-  //   return const AboutPage();
-  // });
-  //
-  // static Handler blogHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-  //   return const BlogPage();
-  // });
+  static Handler hotelHandler = Handler(handlerFunc: (context, Map<String, dynamic>? params) {
+    //print(params);
+    if (params != null && params.containsKey('uuid')) {
+      //print(params['uuid'][0]);
+      return HotelPage(uuid: params['uuid'][0]);
+    }
+    return const HotelPage(uuid: 'none');
+  });
 
   static void setupRouter(){
     router.define(HomePage.routeName, handler: homeHandler, transitionType: TransitionType.fadeIn);
-    //router.define(AboutPage.routeName, handler: aboutHandler, transitionType: TransitionType.inFromLeft);
-    //router.define('${AboutPage.routeName}/:uuid', handler: aboutHandler);
-    //router.define(BlogPage.routeName, handler: blogHandler, transitionType: TransitionType.cupertino);
+    //router.define(HotelPage.routeName, handler: hotelHandler, transitionType: TransitionType.inFromLeft);
+    router.define('${HotelPage.routeName}/:uuid', handler: hotelHandler, transitionType: TransitionType.inFromLeft);
     router.notFoundHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) => const NotFoundPage());
   }
 

@@ -2,13 +2,13 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'hotel_detailed.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true)  // "explicitToJson: true" - развернуть данные вложенных классов
 class HotelDetailed {
-  final String uuid, name, poster;
-  final HotelAddress address;
-  final double price, rating;
-  final Services services;
-  final List<String> photos;
+  String uuid, name, poster;
+  Map<String, dynamic> address;
+  double price, rating;
+  Map<String, dynamic> services;
+  List<String> photos;
 
   HotelDetailed({
     required this.uuid,
@@ -30,8 +30,10 @@ class HotelAddress{
   final String country;
   final String street;
   final String city;
+
+  //@JsonKey(name: 'zip_code')
   final String zip_code;
-  final Coords coords;
+  final Map<String, dynamic> coords;
 
   HotelAddress({
     required this.country,

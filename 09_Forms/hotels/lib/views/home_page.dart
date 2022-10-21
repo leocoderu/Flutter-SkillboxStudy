@@ -17,20 +17,20 @@ class _HomePageState extends State<HomePage>
   bool listView = true;                 // Состояние отображения элементов вьюхи
   bool isLoading = false;               // Состояние загрузки данных из сети
   String errMsg = '';                   // Сообщение ошибки, если она есть
-  late List<HotelPreview> hotels;              // Репозиторий загруженных отелей
+  late List<HotelPreview> hotels;       // Репозиторий загруженных отелей
 
   Dio dio = Dio();                      // Объект подключения Dio
 
   @override
   void initState() {
     super.initState();
-    getData();                          // При инициализации загружаем данные из сети
+    _getData();                          // При инициализации загружаем данные из сети
   }
 
   // Устанавливаем Вид отображения в зависимости от нажатой кнопки в AppBar
   _listview(bool state) => setState(() => listView = state);
 
-  getData() async {
+  _getData() async {
     setState(() => isLoading = true);
     try {
       final response = await dio.get('https://run.mocky.io/v3/ac888dc5-d193-4700-b12c-abb43e289301');
@@ -54,22 +54,22 @@ class _HomePageState extends State<HomePage>
         ],
       ),
 
-      drawer: Drawer(
-          child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: ListView(
-                  children: [
-                    ListTile(
-                      leading: const Icon(Icons.wrong_location),
-                      title: const Text('Page not Found'),
-                      onTap: () {Navigator.of(context).pushNamed('routeName');},
-                    ),
-                  ],
-                ),
-              )
-          )
-      ),
+      // drawer: Drawer(     // Для проверки перехвата переадресации в никуда
+      //     child: SafeArea(
+      //         child: Padding(
+      //           padding: const EdgeInsets.only(top: 20.0),
+      //           child: ListView(
+      //             children: [
+      //               ListTile(
+      //                 leading: const Icon(Icons.wrong_location),
+      //                 title: const Text('Page not Found'),
+      //                 onTap: () {Navigator.of(context).pushNamed('routeName');},
+      //               ),
+      //             ],
+      //           ),
+      //         )
+      //     )
+      // ),
 
       body: isLoading
         ? const Center(
@@ -80,21 +80,26 @@ class _HomePageState extends State<HomePage>
             ? ListView(
                 children: [
                   ...hotels.map((e) {
-                    return HotelCard(path: e.poster, name: e.name, listView: true);
+                    return HotelCard(uuid: e.uuid, path: e.poster, name: e.name, listView: true);
                   })
                 ],
               )
-            :GridView(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1,
-              ),
-              children: [
-                ...hotels.map((e) {
-                  return HotelCard(path: e.poster, name: e.name, listView: false);
-                })
-              ],
-            )
+            : LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  double width = constraints.constrainWidth();
+                  return GridView(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: width > 600 ? 1.219 : 1,
+                    ),
+                    children: [
+                      ...hotels.map((e) {
+                        return HotelCard(uuid: e.uuid, path: e.poster, name: e.name, listView: false);
+                      })
+                    ],
+                  );
+                },
+              )
     );
   }
 

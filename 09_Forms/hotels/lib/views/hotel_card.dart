@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
+
+import 'package:hotels/fluro_router.dart';
 
 class HotelCard extends StatelessWidget {
-  const HotelCard({Key? key, required this.path, required this.name, required this.listView}) : super(key: key);
+  const HotelCard({Key? key, required this.uuid, required this.path, required this.name, required this.listView}) : super(key: key);
 
   final bool listView;          // Вид отображения информации Список или Таблица
+  final String uuid;            // Идентификатор отеля
   final String path;            // Путь к файлу изображения
   final String name;            // Название отеля
 
@@ -16,6 +20,7 @@ class HotelCard extends StatelessWidget {
       margin: const EdgeInsets.all(5.0),  // Отступ от края
       child: Column(
         children: [
+          //Image.asset('assets/images/$path', height: 50.0, width: double.maxFinite),
           AspectRatio(
               aspectRatio: 1.7,           // Подрезаем картинку снизу
                   child: Container(
@@ -56,7 +61,9 @@ class HotelCard extends StatelessWidget {
                     ),
                     elevation: MaterialStateProperty.all(0),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    MyFluroRouter.router.navigateTo(context, '/hotel/$uuid', transition: TransitionType.fadeIn);
+                  },
                   child: const Text('Подробнее', style: TextStyle(fontSize: 12)),
                 )
               )
@@ -81,7 +88,9 @@ class HotelCard extends StatelessWidget {
                         ),
                         minimumSize: MaterialStateProperty.all(const Size(90, 30))
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      MyFluroRouter.router.navigateTo(context, '/hotel/$uuid', transition: TransitionType.fadeIn);
+                    },
                     child: const Text('Подробнее', style: TextStyle(fontSize: 12)),
                   )
                 ],
