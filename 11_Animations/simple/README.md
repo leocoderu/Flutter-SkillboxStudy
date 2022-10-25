@@ -1,6 +1,6 @@
 # simple
 
-A new Flutter project.
+Simple Animation Flutter project.
 
 ## Getting Started
 
