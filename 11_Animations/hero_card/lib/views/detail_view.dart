@@ -3,7 +3,6 @@ import 'package:hero_card/models/spaces.dart';
 
 class DetailView extends StatelessWidget {
   final Space data;
-
   const DetailView({Key? key, required this.data}) : super(key: key);
 
   @override
@@ -27,21 +26,16 @@ class DetailView extends StatelessWidget {
                       right: 20,
                       child: Hero(
                         tag: '${data.id}-button',
-                        child: Material(
-                          child: Material(
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                color: Colors.green,
-                                child: const Icon(Icons.play_arrow),
-                              )
-                          ),
-                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          color: Colors.green,
+                          child: const Icon(Icons.exit_to_app),
+                        )
                       ),
                     )
                   ],
                 ),
             ),
-
             Hero(
               tag: '${data.id}-title',
               child: Material(child: Text(data.description)),
