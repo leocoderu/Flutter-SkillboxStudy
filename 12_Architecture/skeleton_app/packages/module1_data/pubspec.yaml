@@ -23,7 +23,9 @@ dev_dependencies:
     sdk: flutter
   injectable_generator: ^1.5.4
   build_runner: ^2.3.2
-  flutter_lints: ^2.0.0
+  module1_analyzer:
+    path: ../module1_analyzer
+  #flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true

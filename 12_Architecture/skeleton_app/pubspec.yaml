@@ -12,19 +12,19 @@ dependencies:
   flutter:
     sdk: flutter
   get_it: ^7.2.0
-  injectable: ^1.5.3
   module1_business:
-    path: packages/module1_business
-  freezed: ^2.0.4
+    path: ./packages/module1_business
+  module1_model:
+    path: ./packages/module1_model
   cupertino_icons: ^1.0.2
   provider: ^6.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  injectable_generator: ^1.5.4
-  build_runner: ^2.3.2
-  flutter_lints: ^2.0.0
+  module1_analyzer:
+    path: ./packages/module1_analyzer
+  #flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true

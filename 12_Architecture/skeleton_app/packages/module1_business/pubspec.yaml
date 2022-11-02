@@ -13,9 +13,11 @@ dependencies:
     sdk: flutter
   get_it: ^7.2.0
   injectable: ^1.5.3
+  freezed: ^2.0.4
   module1_data:
     path: ../module1_data
-  freezed: ^2.0.4
+  module1_model:
+    path: ../module1_model
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
@@ -23,7 +25,9 @@ dev_dependencies:
     sdk: flutter
   injectable_generator: ^1.5.4
   build_runner: ^2.3.2
-  flutter_lints: ^2.0.0
+  module1_analyzer:
+    path: ../module1_analyzer
+  #flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true

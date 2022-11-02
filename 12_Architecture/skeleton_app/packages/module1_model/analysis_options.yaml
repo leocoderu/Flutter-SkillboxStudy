@@ -1,30 +1,41 @@
+include: package:module1_analyzer/analysis_options.yaml
+
 #include: package:flutter_lints/flutter.yaml
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
 
-include: package:flutter_lints/recommended.yaml
+#include: package:flutter_lints/recommended.yaml
+#
+#analyzer:
+#  # исключение файлов из проверки
+#  exclude: [build/**]
+#
+#  language:
+#    strict-raw-types: true
+#
+#  # строгие проверки на типы
+#  strong-mode:
+#    implicit-casts: false
+#    implicit-dynamic: false
+#
+#  # игнорирование правил
+#  #ignore:
+#
+#  # изменение уровня строгости правил
+#  #info: error: warning:
+#
+#  # Эксперементальные правила
+#  #enable-experiment:
+#linter:
+#  rules:
+#    - cancel_subscriptions
 
-analyzer:
-  # исключение файлов из проверки
-  exclude: [build/**]
+  # потенциальные ошибки в коде
+  #errors:
+  # вопросы к стилю
+  #style:
+  # правила связнанные с публикацией пакетов
+  #pub:
 
-  language:
-    strict-raw-types: true
-
-  # строгие проверки на типы
-  strong-mode:
-    implicit-casts: false
-    implicit-dynamic: false
-
-  # игнорирование правил
-  #ignore:
-
-  # изменение уровня строгости правил
-  #info: error: warning:
-
-  # Эксперементальные правила
-  #enable-experiment:
-linter:
-  rules:
-    - cancel_subscriptions
+  # список линтов: https://dart-lang.github.io/linter/lints/

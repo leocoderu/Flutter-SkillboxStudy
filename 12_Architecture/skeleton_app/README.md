@@ -15,3 +15,8 @@ if you want the generator to run one time and exits use:
 flutter packages pub run build_runner build
 
 flutter analyze
+
+Recommended:
+
+- pedantic           - для стилизации кода
+- Dart Code Metrics  - для сбора метрик о созданном проекте 
