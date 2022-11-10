@@ -16,7 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   module1_model:
     path: ../module1_model
-  freezed: ^2.0.4
+  #freezed: ^2.0.4
 
 dev_dependencies:
   flutter_test:
@@ -30,7 +30,3 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg

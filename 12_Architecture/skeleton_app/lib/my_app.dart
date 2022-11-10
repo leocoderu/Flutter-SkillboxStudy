@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
     //_mainBloc = BlocFactory.instance.get<MainBloc>();
     _mainBloc = GetIt.I.get<MainBloc>();
     _mainBloc.add(const MainBlocEvent.init());
+
   }
 
   @override
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
         ),
         home: const MyHomePage(),
-      )
+      ),
     );
   }
 
@@ -52,6 +53,7 @@ class MyHomePage extends StatelessWidget {
         builder: (context, snapshot) {
           if(snapshot.hasData) {
             final state = snapshot.data;
+
             return state!.map<Widget>(
               loading: (_) => Scaffold(
                 appBar: AppBar(),
@@ -64,7 +66,7 @@ class MyHomePage extends StatelessWidget {
                 body: Center(
                   child: Text(
                       state.userData.name,
-                      style: Theme.of(context).textTheme.headline4
+                      style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
                 floatingActionButton: FloatingActionButton(
@@ -79,7 +81,7 @@ class MyHomePage extends StatelessWidget {
           } else {
             return const CircularProgressIndicator();
           }
-        }
+        },
     );
   }
 }

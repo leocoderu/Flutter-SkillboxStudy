@@ -22,6 +22,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  module1_codegen:
+    path: ./packages/module1_codegen
   module1_analyzer:
     path: ./packages/module1_analyzer
   #flutter_lints: ^2.0.0

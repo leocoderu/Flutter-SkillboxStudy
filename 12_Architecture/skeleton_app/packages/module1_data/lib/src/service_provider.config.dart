@@ -24,6 +24,7 @@ _i1.GetIt $initGetIt(
     environment,
     environmentFilter,
   );
+  gh.lazySingleton<_i3.HealthService>(() => _i4.DummyHealthService());
   gh.lazySingleton<_i3.UserService>(() => _i4.DummyUserService());
   return get;
 }

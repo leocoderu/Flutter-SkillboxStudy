@@ -1,0 +1,34 @@
+name: module1_business
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get_it: ^7.2.0
+  injectable: ^1.5.3
+  freezed: ^2.0.4
+  module1_data:
+    path: ../module1_data
+  module1_model:
+    path: ../module1_model
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  injectable_generator: ^1.5.4
+  build_runner: ^2.3.2
+  module1_analyzer:
+    path: ../module1_analyzer
+
+flutter:
+  uses-material-design: true
+
+
