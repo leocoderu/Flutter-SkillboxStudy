@@ -7,37 +7,48 @@ void main() => runApp(const MyApp());
 
 enum CounterEvent { increase, decrease }
 
-class CounterBloc extends Bloc<CounterEvent, int> {
-//class CounterBloc extends Cubit<int> {
-  int value = 0;
-
+//class CounterBloc extends Bloc<CounterEvent, int> {
+class CounterBloc extends Cubit<int> {
   CounterBloc() : super(0) {
-    on<CounterEvent>((event, emit) {
-      switch (event) {
-          case CounterEvent.increase:
-            emit(value++);
-            break;
-          case CounterEvent.decrease:
-            emit(value--);
-            break;
-          default:
-            break;
-      }
-    });
+    emit(0);
   }
 
+  int value = 0;
+
+  // CounterBloc() : super(0) {
+  //   on<CounterEvent>((event, emit) {
+  //     switch (event) {
+  //         case CounterEvent.increase:
+  //           emit(value++);
+  //           break;
+  //         case CounterEvent.decrease:
+  //           emit(value--);
+  //           break;
+  //         default:
+  //           break;
+  //     }
+  //   });
+  // }
+
+  // This methods doesn't work, result on the screen doesn't show
   // Stream<int> increment() async* {
-  //   print('inc');
   //   value++;
   //   yield value;
   // }
-  //
   // Stream<int> decrement() async* {
-  //   print('dec');
   //   value--;
   //   yield value;
   // }
 
+  Future<void> increment() async {
+    value++;
+    emit(value);
+  }
+
+  Future<void> decrement() async {
+    value--;
+    emit(value);
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -90,8 +101,8 @@ class MyHomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(5.0),
             child: FloatingActionButton(
-              onPressed: () => context.read<CounterBloc>().add(CounterEvent.increase),
-              //onPressed: context.read<CounterBloc>().increment,
+              //onPressed: () => context.read<CounterBloc>().add(CounterEvent.increase),
+              onPressed: context.read<CounterBloc>().increment,
               tooltip: 'Increment',
               child: const Icon(Icons.add),
             ),
@@ -99,8 +110,8 @@ class MyHomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(5.0),
             child: FloatingActionButton(
-              onPressed: () => context.read<CounterBloc>().add(CounterEvent.decrease),
-              //onPressed: context.read<CounterBloc>().decrement,
+              //onPressed: () => context.read<CounterBloc>().add(CounterEvent.decrease),
+              onPressed: context.read<CounterBloc>().decrement,
               tooltip: 'Decrement',
               child: const Icon(Icons.remove),
             ),
