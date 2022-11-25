@@ -1,6 +1,6 @@
 # state_management
 
-A new Flutter project.
+A Flutter project with State Management and Clear Architecture
 
 ## Getting Started
 
