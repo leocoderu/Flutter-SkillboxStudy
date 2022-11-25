@@ -42,7 +42,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //print('buid');
+    //print('build');
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
