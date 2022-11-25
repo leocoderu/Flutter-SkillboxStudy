@@ -17,5 +17,4 @@ Usability commands:
 
 
 TODO:
-- pedantic           - для стилизации кода
-- Dart Code Metrics  - для сбора метрик о созданном проекте 
+
