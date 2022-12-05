@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
+import 'package:state_management/fluro_router.dart';
+
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/';
@@ -25,6 +29,30 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              MyFluroRouter.router.navigateTo(context, '/cart');
+            },
+          ),
+          IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                MyFluroRouter.router.navigateTo(context, '/settings');
+              },
+          ),
+        ],
+      ),
+      drawer: Container(
+        child: ListView(
+          children: [
+            ElevatedButton(
+                onPressed: () {},
+                child: Text('Login in'),
+            ),
+          ],
+        ),
       ),
       body: Center(
         child: Column(

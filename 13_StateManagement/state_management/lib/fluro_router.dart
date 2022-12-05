@@ -1,14 +1,23 @@
 import 'package:fluro/fluro.dart';
-//import 'package:fluro_navigation/pages/about_page.dart';
-//import 'package:fluro_navigation/pages/blog_page.dart';
+import 'package:state_management/pages/cart_page.dart';
+
 import 'package:state_management/pages/home_page.dart';
 import 'package:state_management/pages/not_found_page.dart';
+import 'package:state_management/pages/settings_page.dart';
 
 class MyFluroRouter {
   static FluroRouter router = FluroRouter();
 
   static Handler homeHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-    return const HomePage(title: 'State Management Store');
+    return const HomePage(title: 'Product Store');
+  });
+
+  static Handler settingsHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
+    return const SettingsPage();
+  });
+
+  static Handler cartHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
+    return const CartPage();
   });
 
   // static Handler aboutHandler = Handler(handlerFunc: (context, Map<String, dynamic>? params) {
@@ -25,6 +34,9 @@ class MyFluroRouter {
 
   static void setupRouter(){
     router.define(HomePage.routeName, handler: homeHandler, transitionType: TransitionType.fadeIn);
+    router.define(SettingsPage.routeName, handler: settingsHandler, transitionType: TransitionType.inFromRight);
+    router.define(CartPage.routeName, handler: cartHandler, transitionType: TransitionType.fadeIn);
+
     //router.define(AboutPage.routeName, handler: aboutHandler, transitionType: TransitionType.inFromLeft);
     //router.define('${AboutPage.routeName}/:uuid', handler: aboutHandler);
     //router.define(BlogPage.routeName, handler: blogHandler, transitionType: TransitionType.cupertino);

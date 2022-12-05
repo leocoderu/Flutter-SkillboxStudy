@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Product {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -30,7 +31,8 @@ abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
-  $Res call({String name, double price, String? description, String? photo});
+  $Res call(
+      {int id, String name, double price, String? description, String? photo});
 }
 
 /// @nodoc
@@ -46,12 +48,17 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? price = null,
     Object? description = freezed,
     Object? photo = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -79,7 +86,8 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       __$$_ProductCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, double price, String? description, String? photo});
+  $Res call(
+      {int id, String name, double price, String? description, String? photo});
 }
 
 /// @nodoc
@@ -92,12 +100,17 @@ class __$$_ProductCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? price = null,
     Object? description = freezed,
     Object? photo = freezed,
   }) {
     return _then(_$_Product(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -122,8 +135,14 @@ class __$$_ProductCopyWithImpl<$Res>
 
 class _$_Product implements _Product {
   const _$_Product(
-      {required this.name, required this.price, this.description, this.photo});
+      {required this.id,
+      required this.name,
+      required this.price,
+      this.description,
+      this.photo});
 
+  @override
+  final int id;
   @override
   final String name;
   @override
@@ -135,7 +154,7 @@ class _$_Product implements _Product {
 
   @override
   String toString() {
-    return 'Product(name: $name, price: $price, description: $description, photo: $photo)';
+    return 'Product(id: $id, name: $name, price: $price, description: $description, photo: $photo)';
   }
 
   @override
@@ -143,6 +162,7 @@ class _$_Product implements _Product {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Product &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.description, description) ||
@@ -151,7 +171,8 @@ class _$_Product implements _Product {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, price, description, photo);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, price, description, photo);
 
   @JsonKey(ignore: true)
   @override
@@ -162,11 +183,14 @@ class _$_Product implements _Product {
 
 abstract class _Product implements Product {
   const factory _Product(
-      {required final String name,
+      {required final int id,
+      required final String name,
       required final double price,
       final String? description,
       final String? photo}) = _$_Product;
 
+  @override
+  int get id;
   @override
   String get name;
   @override

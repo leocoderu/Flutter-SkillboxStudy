@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<Counter>(
-      create: (_) => Counter(v: 2),
+    return ChangeNotifierProvider<Counter>(                     // Add ChangeNotifierProvider like Parent above MaterialApp
+      create: (_) => Counter(v: 2),                             // Ref to Func Counter with param
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -52,7 +52,7 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
-            Consumer<Counter>(
+            Consumer<Counter>(                                // Add Consumer above the widget to be rebuilt
                 builder: (context, state, child) => Text(
                     state.value.toString(),
                     style: Theme.of(context).textTheme.headline4,
