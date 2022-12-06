@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//import 'package:fluro/fluro.dart';
-import 'package:state_management/fluro_router.dart';
-import 'package:state_management/main.dart';
 
-//import 'package:provider/provider.dart';
+import 'package:state_management/app_state.dart';
+import 'package:state_management/fluro_router.dart';
+
 
 class HomePage extends StatelessWidget {
   static const routeName = '/';

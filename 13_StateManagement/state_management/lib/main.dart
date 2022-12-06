@@ -1,27 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:state_management/fluro_router.dart';
 import 'package:provider/provider.dart';
+
+import 'package:state_management/app_state.dart';
+import 'package:state_management/fluro_router.dart';
+
 
 void main() {
   MyFluroRouter.setupRouter();
   runApp(const MyApp());
-}
-
-class AppState with ChangeNotifier {
-  ThemeData currentTheme = (SchedulerBinding.instance.window.platformBrightness == Brightness.dark) ? ThemeData.dark() : ThemeData.light();
-
-  int counter = 0;
-
-  void setTheme(ThemeData theme) {
-    currentTheme = theme;
-    notifyListeners();
-  }
-
-  void increment(){
-    counter++;
-    notifyListeners();
-  }
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +21,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state, child) =>
             MaterialApp(
               title: 'Flutter Demo',
-              theme: state.currentTheme,
+              theme: state.currentTheme, //context.watch<AppState>().currentTheme,
               initialRoute: '/',
               onGenerateRoute: MyFluroRouter.router.generator,
             ),
