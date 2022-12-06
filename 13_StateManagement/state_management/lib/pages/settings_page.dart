@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
+import 'package:state_management/main.dart';
 
 class SettingsPage extends StatelessWidget {
   static const routeName = '/settings';
@@ -13,16 +16,34 @@ class SettingsPage extends StatelessWidget {
         centerTitle: true,
       ),
 
-      body: ListView(
+      body: Row(
         children: [
-          const ListTile(
-            title: Text('System theme'),
+          IconButton(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            onPressed: () {
+              if(SchedulerBinding.instance.window.platformBrightness == Brightness.dark) {
+                context.read<AppState>().setTheme(ThemeData.dark());
+              } else {
+                context.read<AppState>().setTheme(ThemeData.light());
+              }
+            },
+            tooltip: 'System theme',
+            icon: const Icon(Icons.sunny_snowing),
+            iconSize: 100,
           ),
-          const ListTile(
-            title: Text('Light theme'),
+          IconButton(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            onPressed: () {context.read<AppState>().setTheme(ThemeData.light());},
+            tooltip: 'Light theme',
+            icon: const Icon(Icons.sunny),
+            iconSize: 100,
           ),
-          const ListTile(
-            title: Text('Dark theme'),
+          IconButton(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            onPressed: () {context.read<AppState>().setTheme(ThemeData.dark());},
+            tooltip: 'Dark theme',
+            icon: const Icon(Icons.nights_stay),
+            iconSize: 100,
           ),
         ],
       ),
