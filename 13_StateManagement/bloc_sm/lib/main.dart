@@ -1,49 +1,12 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
+import 'package:bloc_sm/bloc_state.dart';
+
 void main() => runApp(const MyApp());
-
-enum CounterEvent { increase, decrease }
-
-class CounterBloc {
-  int value = 0;
-
-  final _stateController = StreamController<int>();
-  final _eventsController = StreamController<CounterEvent>();
-
-  Stream<int> get state => _stateController.stream;
-
-  Sink<CounterEvent> get action => _eventsController.sink;
-
-  CounterBloc(){
-    _eventsController.stream.listen(_handleEvent);
-  }
-
-  void _handleEvent(CounterEvent action) async {
-    switch (action) {
-      case CounterEvent.increase:
-        value++;
-        break;
-      case CounterEvent.decrease:
-        value--;
-        break;
-      default:
-        break;
-    }
-    _stateController.add(value);
-  }
-
-  void dispose() {
-    _stateController.close();
-    _eventsController.close();
-  }
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,9 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            const Text('You have pushed the button this many times:',),
             StreamBuilder<int>(
                 stream: bloc.state,
                 builder: (_, snapshot) {
