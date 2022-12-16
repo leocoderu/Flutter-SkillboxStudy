@@ -1,55 +1,40 @@
 import 'package:flutter/material.dart';
 
 import 'package:block_sm/fluro_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:business_sm/business_sm.dart';
 
 void main() {
   MyFluroRouter.setupRouter();
+  // runApp(
+  //     BlocProvider<ThemeBloc>(
+  //         create: () => ThemeBloc(),
+  //         child: const MyApp()
+  //     ),
+  // );
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp>{
-  late final ThemeBloc bloc;
 
   @override
-  void initState() {
-    super.initState();
-    bloc = ThemeBloc();
-  }
-
-  @override
-  void dispose() {
-    bloc.dispose();
-    super.dispose();
-  }
-
-  @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //       title: 'Flutter Demo',
-  //       theme: bloc.theme,
-  //       initialRoute: '/',
-  //       onGenerateRoute: MyFluroRouter.router.generator,
-  //   );
-  // }
-
   Widget build(BuildContext context) {
-    return StreamBuilder<ThemeData>(
-        stream: bloc.state,
-        builder: (_, snapshot) {
-          print(snapshot.data.toString());
-          return MaterialApp(
-            title: 'Flutter Demo',
-            theme: snapshot.data,
-            initialRoute: '/',
-            onGenerateRoute: MyFluroRouter.router.generator,
-          );
-        },
+    return BlocProvider<ThemeBloc>(
+        create: (context) => ThemeBloc(),
+        child: BlocBuilder<ThemeBloc, ThemeData>(
+                  builder: _buildWithTheme,
+                ),
+    );
+  }
+
+  Widget _buildWithTheme(BuildContext context, ThemeData state) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: state,
+      initialRoute: '/',
+      onGenerateRoute: MyFluroRouter.router.generator,
     );
   }
 }

@@ -1,15 +1,20 @@
 import 'package:fluro/fluro.dart';
-import 'package:block_sm/pages/cart_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:block_sm/pages/cart_page.dart';
 import 'package:block_sm/pages/home_page.dart';
 import 'package:block_sm/pages/not_found_page.dart';
 import 'package:block_sm/pages/settings_page.dart';
+import 'package:business_sm/business_sm.dart';
 
 class MyFluroRouter {
   static FluroRouter router = FluroRouter();
 
   static Handler homeHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-    return const HomePage(title: 'Product Store');
+    return BlocProvider(
+        create: (_) => CounterBloc(),
+        child: const HomePage(title: 'Product Store'),
+    );
   });
 
   static Handler settingsHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {

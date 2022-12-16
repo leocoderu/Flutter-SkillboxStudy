@@ -1,37 +1,21 @@
-import 'dart:async';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum CounterEvent { increase, decrease }
 
-class CounterBloc {
+class CounterBloc extends Bloc<CounterEvent, int>{
   int value = 0;
 
-  final _stateController = StreamController<int>();
-  final _eventsController = StreamController<CounterEvent>();
-
-  Stream<int> get state => _stateController.stream;
-
-  Sink<CounterEvent> get action => _eventsController.sink;
-
-  CounterBloc(){
-    _eventsController.stream.listen(_handleEvent);
-  }
-
-  void _handleEvent(CounterEvent action) async {
-    switch (action) {
-      case CounterEvent.increase:
-        value++;
-        break;
-      case CounterEvent.decrease:
-        value--;
-        break;
-      default:
-        break;
-    }
-    _stateController.add(value);
-  }
-
-  void dispose() {
-    _stateController.close();
-    _eventsController.close();
+  CounterBloc() : super(0) {
+    on<CounterEvent>((event, emit) {
+      switch (event) {
+        case CounterEvent.increase:
+          emit(++value);
+          break;
+        case CounterEvent.decrease:
+          emit(--value);
+          break;
+        default: emit(value);
+      }
+    });
   }
 }

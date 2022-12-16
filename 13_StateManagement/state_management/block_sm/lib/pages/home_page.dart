@@ -1,37 +1,21 @@
 import 'package:flutter/material.dart';
 
 import 'package:block_sm/fluro_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:business_sm/business_sm.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   static const routeName = '/';
   final String title;
 
   const HomePage({super.key, required this.title});
 
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  late final CounterBloc bloc;
-
-  @override
-  void initState() {
-    super.initState();
-    bloc = CounterBloc();
-  }
-
-  @override
-  void dispose() {
-    bloc.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
           appBar: AppBar(
-            title: Text(widget.title),
+            title: Text(title),
             centerTitle: true,
             actions: [
               // IconButton(
@@ -63,14 +47,11 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const Text('You have pushed the button this many times:'),
-                StreamBuilder(
-                  stream: bloc.state,
-                  builder: (_, snapshot) {
-                    return Text(
-                      snapshot.data?.toString() ?? '',
+                BlocBuilder<CounterBloc, int>(
+                  builder: (_, state) => Text(
+                      state.toString(),
                       style: Theme.of(context).textTheme.headline4,
-                    );
-                  },
+                    ),
                 ),
               ],
             ),
@@ -82,7 +63,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(10.0),
                 child: FloatingActionButton(
                   heroTag: "btn1",
-                  onPressed: () => bloc.action.add(CounterEvent.increase),
+                  onPressed: () => context.read<CounterBloc>().add(CounterEvent.increase),
+                  //onPressed: context.read<CounterBloc>().increment,
                   tooltip: 'Increment',
                   child: const Icon(Icons.add),
                 ),
@@ -91,13 +73,14 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(10.0),
                 child: FloatingActionButton(
                   heroTag: "btn2",
-                  onPressed: () => bloc.action.add(CounterEvent.decrease),
+                  onPressed: () => context.read<CounterBloc>().add(CounterEvent.decrease),
+                  //onPressed: context.read<CounterBloc>().decrement,
                   tooltip: 'Decrement',
                   child: const Icon(Icons.remove),
                 ),
               ),
             ],
           ),
-        );
+    );
   }
 }

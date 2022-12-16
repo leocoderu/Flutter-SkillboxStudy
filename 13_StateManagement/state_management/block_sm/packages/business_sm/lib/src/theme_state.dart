@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'dart:async';
 import 'package:flutter/scheduler.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum ThemeEvent { light, dark, system }
 
@@ -9,43 +9,19 @@ ThemeData getSystem() {
   return (SchedulerBinding.instance.window.platformBrightness == Brightness.dark) ? ThemeData.dark() : ThemeData.light();
 }
 
-class ThemeBloc {
-  ThemeData theme = getSystem();
-
-  final _stateController = StreamController<ThemeData>();
-  final _eventsController = StreamController<ThemeEvent>();
-
-  Stream<ThemeData> get state => _stateController.stream;
-  Sink<ThemeEvent> get action => _eventsController.sink;
-
-  ThemeBloc(){
-    _eventsController.stream.listen(_handleEvent);
-  }
-
-  void _handleEvent(ThemeEvent action) async {
-    switch (action) {
-      case ThemeEvent.light:
-        theme = ThemeData.light();
-        print('light');
+class ThemeBloc extends Bloc<ThemeEvent, ThemeData>{
+  ThemeBloc(): super(getSystem()) {
+    on<ThemeEvent>((event, emit) {
+      switch (event) {
+        case ThemeEvent.light:  emit(ThemeData.light());
         break;
-      case ThemeEvent.dark:
-        theme = ThemeData.dark();
-        print('dark');
+        case ThemeEvent.dark:   emit(ThemeData.dark());
         break;
-      case ThemeEvent.system:
-        theme = getSystem();
-        print('system');
+        case ThemeEvent.system: emit(getSystem());
         break;
-      default:
-        theme = getSystem();
-        print('default');
+        default: emit(getSystem());
         break;
-    }
-    _stateController.add(theme);
-  }
-
-  void dispose() {
-    _stateController.close();
-    _eventsController.close();
+      }
+    });
   }
 }

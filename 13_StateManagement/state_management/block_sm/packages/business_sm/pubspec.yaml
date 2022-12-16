@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.1
   model_sm:
     path: ../model_sm
   cupertino_icons: ^1.0.2

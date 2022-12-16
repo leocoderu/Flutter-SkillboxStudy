@@ -15,15 +15,9 @@ class CartPage extends StatelessWidget {
 
       body: ListView(
         children: [
-          const ListTile(
-            title: Text('Apple'),
-          ),
-          const ListTile(
-            title: Text('Orange'),
-          ),
-          const ListTile(
-            title: Text('Pear'),
-          ),
+          const ListTile(title: Text('Apple'),),
+          const ListTile(title: Text('Orange'),),
+          const ListTile(title: Text('Pear'),),
         ],
       ),
     );

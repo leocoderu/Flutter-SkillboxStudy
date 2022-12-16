@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   fluro: ^2.0.4
+  flutter_bloc: ^8.1.1
   model_sm:
     path: ./packages/model_sm
   business_sm:
