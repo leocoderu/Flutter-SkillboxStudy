@@ -34,6 +34,3 @@ dependencies:
 
 TODO:
 
-    1. Simple State Management
-
-    Z. Tests

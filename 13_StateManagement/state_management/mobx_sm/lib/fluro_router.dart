@@ -1,21 +1,21 @@
 import 'package:fluro/fluro.dart';
 
 import 'package:mobx_sm/pages/cart_page.dart';
-import 'package:mobx_sm/pages/home_page/home_page.dart';
-import 'package:mobx_sm/pages/home_page/home_page_connector.dart';
+import 'package:mobx_sm/pages/home_page.dart';
+
 import 'package:mobx_sm/pages/not_found_page.dart';
-import 'package:mobx_sm/pages/settings_page/settings_page.dart';
-import 'package:mobx_sm/pages/settings_page/settings_page_connector.dart';
+import 'package:mobx_sm/pages/settings_page.dart';
+
 
 class MyFluroRouter {
   static FluroRouter router = FluroRouter();
 
   static Handler homeHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-    return HomePageConnector(title: 'Product Store');
+    return HomePage(title: 'Product Store');
   });
 
   static Handler settingsHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-    return SettingsPageConnector();
+    return SettingsPage();
   });
 
   static Handler cartHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {

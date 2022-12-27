@@ -1,2 +1,1 @@
-export 'model/app_state.dart';
-export 'reducer/app_reducer.dart';
+export 'src/app_state.dart';

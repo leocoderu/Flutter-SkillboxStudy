@@ -11,8 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_redux: ^0.10.0
-  redux: ^5.0.0
+  #flutter_mobx: ^2.0.6+5
+  mobx: ^2.1.3
+  #provider: ^6.0.4
   model_sm:
     path: ../model_sm
   cupertino_icons: ^1.0.2
@@ -20,6 +21,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mobx_codegen: ^2.1.1
+  build_runner: ^2.3.2
   analyzer_sm:
     path: ../analyzer_sm
 

@@ -1,26 +1,24 @@
 import 'dart:io';
 
+import 'package:business_sm/business_sm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_sm/fluro_router.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   static const routeName = '/';
   final String title;
-  final int value;
-  final VoidCallback increase;
-  final VoidCallback decrease;
 
   const HomePage({
     super.key,
     required this.title,
-    required this.value,
-    required this.increase,
-    required this.decrease,
   });
 
   @override
   Widget build(BuildContext context) {
+    final state = Provider.of<AppState>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -61,10 +59,12 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
-            Center(
-              child: Text(
-                  value.toString(),
-                  style: Theme.of(context).textTheme.headline4,
+            Observer(
+                builder: (context) => Center(
+                  child: Text(
+                    state.value.toString(),
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
                 ),
             ),
           ],
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: FloatingActionButton(
               heroTag: "btn1",
-              onPressed: increase,
+              onPressed: state.increment,
               tooltip: 'Increment',
               child: const Icon(Icons.add),
             ),
@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: FloatingActionButton(
               heroTag: "btn2",
-              onPressed: decrease,
+              onPressed: state.decrement,
               tooltip: 'Decrement',
               child: const Icon(Icons.remove),
             ),
