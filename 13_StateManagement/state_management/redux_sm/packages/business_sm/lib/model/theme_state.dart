@@ -3,14 +3,14 @@ import 'package:flutter/scheduler.dart';
 
 ThemeData getSystem() =>
     (SchedulerBinding.instance.window.platformBrightness == Brightness.dark) ? ThemeData.dark() : ThemeData.light();
-    // MediaQuery.of(context).platformBrightness
+    // MediaQuery.of(context).platformBrightness  need context!!!
 @immutable
 class ThemeState {
-  final ThemeData value;
+  late final ThemeData value;
 
   ThemeState({required this.value});
 
-  factory ThemeState.initial() => ThemeState(value: ThemeData.fallback()); // TODO: <- getSystem());
+  factory ThemeState.initial() => ThemeState(value: ThemeData.light()); // TODO: <- getSystem());
   ThemeState copyWith({ThemeData? value}) => ThemeState(value: value ?? this.value);
 
   // Переопределяем для полноценной работы с объектом

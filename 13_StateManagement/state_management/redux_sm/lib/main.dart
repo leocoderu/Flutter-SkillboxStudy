@@ -19,11 +19,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider(
           store: store,
-          child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(primarySwatch: Colors.blue),
-            initialRoute: '/',
-            onGenerateRoute: MyFluroRouter.router.generator,
+          child: StoreConnector<AppState, ThemeData>(
+            converter: (store) => store.state.themeState.value,
+            builder: (context, state) => MaterialApp(
+              title: 'Flutter Demo',
+              theme: state,
+              initialRoute: '/',
+              onGenerateRoute: MyFluroRouter.router.generator,
+            ),
           ),
     );
   }

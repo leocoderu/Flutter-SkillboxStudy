@@ -17,4 +17,4 @@ final themeReducer = combineReducers<ThemeState>([
 
 ThemeState _lightTheme(ThemeState state, ChangeToLightAction action) => state.copyWith(value: ThemeData.light());
 ThemeState _darkTheme(ThemeState state, ChangeToDarkAction action) => state.copyWith(value: ThemeData.dark());
-ThemeState _systemTheme(ThemeState state, ChangeToSystemAction action) => state.copyWith(value: ThemeData.fallback());//getSystem());
+ThemeState _systemTheme(ThemeState state, ChangeToSystemAction action) => state.copyWith(value: getSystem());

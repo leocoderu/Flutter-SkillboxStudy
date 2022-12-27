@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:redux_sm/fluro_router.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,16 +40,22 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      // drawer: Container(
-      //   child: ListView(
-      //     children: [
-      //       ElevatedButton(
-      //         onPressed: () {},
-      //         child: Text('Login in'),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      drawer: Container(
+        child: ListView(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                if(Platform.isAndroid) {
+                  SystemNavigator.pop();
+                } else {
+                  exit(0);
+                }
+              },
+              child: Text('Exit'),
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
