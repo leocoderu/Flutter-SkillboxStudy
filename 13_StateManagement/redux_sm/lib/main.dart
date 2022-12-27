@@ -88,7 +88,7 @@ class _ViewModel {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  MyApp({super.key});
 
   final store = Store<AppState>(
     appReducer,
