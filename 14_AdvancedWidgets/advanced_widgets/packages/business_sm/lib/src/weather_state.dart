@@ -1,12 +1,7 @@
-import 'package:business_sm/business_sm.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:model_sm/model_sm.dart';
 
 abstract class WeatherEvent {}
-class ChangeWeather extends WeatherEvent {
-  final WeatherData value;
-  ChangeWeather(this.value);
-}
 
 class SetTemperature extends WeatherEvent {
   final double temp;
@@ -20,7 +15,6 @@ class SetCloudy extends WeatherEvent {
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherData>{
   WeatherBloc() : super(WeatherData(degrees: 0.0, cloudy: 0.0))  {
-    on<ChangeWeather>((event, emit) => emit(event.value));
     on<SetTemperature>((event, emit) => emit(state.copyWith(degrees: event.temp)));
     on<SetCloudy>((event, emit) => emit(state.copyWith(cloudy: event.cloudy)));
   }

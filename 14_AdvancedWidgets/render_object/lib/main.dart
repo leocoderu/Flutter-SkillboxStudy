@@ -69,6 +69,7 @@ class RenderTint extends RenderProxyBox {
     context.canvas.drawColor(_color, BlendMode.srcOver);
     if(child != null) {
       context.paintChild(child!, offset);
+      context.paintChild(child!, Offset(offset.dx + 4, offset.dy + 4));
     }
   }
 }
