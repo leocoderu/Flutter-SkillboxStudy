@@ -69,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
               child: FittedBox(
                 fit: BoxFit.fitWidth,
-                //child: Image.asset('assets/image.png', fit: BoxFit.scaleDown),
                 child: FutureBuilder<String>(
                   future: storage.ref('image.png').getDownloadURL(),
                   builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
