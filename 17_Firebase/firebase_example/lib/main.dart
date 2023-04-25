@@ -1,9 +1,12 @@
-import 'package:firebase_example/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_example/user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,10 +22,56 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(),
+      home: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.userChanges(),
+        builder: (_, snapshot) {
+          if(!snapshot.hasData) {
+            return ElevatedButton(
+                onPressed: signIn,
+                child: const Center(
+                  child: Text('Login'),
+                )
+            );
+          } else {
+            return const MyHomePage();
+          }
+        }
+      ),
     );
   }
+
+  void signIn(){
+    if(kIsWeb){
+      signInWithGoogleWeb();
+    } else {
+      signInWithGoogle();
+    }
+  }
+
+  Future<UserCredential?> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    print(googleUser?.email);
+    if(googleUser != null) {
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    }
+    return null;
+  }
+
+  Future<UserCredential?> signInWithGoogleWeb() async {
+    GoogleAuthProvider googleProvider = GoogleAuthProvider();
+    googleProvider.addScope('https://www.googleapis.com/auth/contacts.reaonly');
+    googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
+    return await FirebaseAuth.instance.signInWithPopup(googleProvider);
+  }
 }
+
+
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -33,7 +82,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final storage = FirebaseStorage.instance;
-  late CollectionReference<User> _users;
+  late CollectionReference<Person> _users;
 
   final _nameController = TextEditingController();
   final _amountController = TextEditingController();
@@ -42,15 +91,15 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState(){
     super.initState();
 
-    _users = FirebaseFirestore.instance.collection('users').withConverter<User>(
-        fromFirestore: (snapshot, _) => User.fromJson(snapshot.data()!),
+    _users = FirebaseFirestore.instance.collection('users').withConverter<Person>(
+        fromFirestore: (snapshot, _) => Person.fromJson(snapshot.data()!),
         toFirestore: (user, _) => user.toJson(),
     );
   }
 
   void _submit(){
     _users.add(
-      User(
+      Person(
         name: _nameController.text,
         amount: int.parse(_amountController.text),
       )
@@ -59,19 +108,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-    print(_users.count());
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            toolbarHeight: 100,
             title: SizedBox(
-              width: 100,
+              width: 120,
               height: 100,
               child: FittedBox(
                 fit: BoxFit.fitWidth,
                 child: FutureBuilder<String>(
                   future: storage.ref('image.png').getDownloadURL(),
-                  builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
+                  builder: (_, snapshot) => snapshot.connectionState == ConnectionState.done
                     ? Image.network(snapshot.data!, fit: BoxFit.scaleDown)
                     : const SizedBox(),
                 )

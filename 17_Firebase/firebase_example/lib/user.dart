@@ -1,16 +1,16 @@
 const kName = 'name';
 const kAmount = 'amount';
 
-class User {
+class Person {
   final String name;
   final int amount;
 
-  User({
+  Person({
     required this.name,
     required this.amount
   });
 
-  factory User.fromJson(Map<String, Object?> json) => User(
+  factory Person.fromJson(Map<String, Object?> json) => Person(
     name: json['kName']! as String,
     amount: json['kAmount']! as int,
   );
