@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.userChanges(),
         builder: (_, snapshot) {
           if(!snapshot.hasData) {
-            return const ElevatedButton(
+            return ElevatedButton(
                 onPressed: signIn,
-                child: Center(
+                child: const Center(
                   child: Text('Login'),
                 )
             );
@@ -39,39 +39,46 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
 
-void signIn(){
-  if(kIsWeb){
-    signInWithGoogleWeb();
-  } else {
-    print('SignIn: Look here!!!!!');
-    signInWithGoogle();
+  void signIn(){
+    if(kIsWeb){
+      signInWithGoogleWeb();
+    } else {
+      //print('signIn: Look here!!!!!');
+      signInWithGoogle();
+    }
+  }
+
+  Future<UserCredential?> signInWithGoogle() async {
+    // const List<String> scopes = <String>[
+    //   'email',
+    //   'https://www.googleapis.com/auth/contacts.readonly',
+    // ];
+
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    //print('signInWithGoogle: Look here!!!!!');
+    //print(googleUser?.email);
+
+    if(googleUser != null) {
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    }
+    return null;
+  }
+
+  Future<UserCredential?> signInWithGoogleWeb() async {
+    GoogleAuthProvider googleProvider = GoogleAuthProvider();
+    googleProvider.addScope('https://www.googleapis.com/auth/contacts');  // .readonly
+    googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
+    return await FirebaseAuth.instance.signInWithPopup(googleProvider);
   }
 }
 
-Future<UserCredential?> signInWithGoogle() async {
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-  print('Look here!!!!!');
-  print(googleUser?.email);
 
-  if(googleUser != null) {
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-  return null;
-}
-
-Future<UserCredential?> signInWithGoogleWeb() async {
-  GoogleAuthProvider googleProvider = GoogleAuthProvider();
-  googleProvider.addScope('https://www.googleapis.com/auth/contacts');
-  googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
-  return await FirebaseAuth.instance.signInWithPopup(googleProvider);
-}
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

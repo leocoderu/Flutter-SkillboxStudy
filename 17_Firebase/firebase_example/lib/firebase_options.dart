@@ -45,18 +45,18 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDVJGO_sy4sRraDUwcgOzoGeIBkpUWoIaY',
-    appId: '1:1070261261652:web:d4ecc9552a72203c21a4c1',
+    appId: '1:1070261261652:web:eacc104fb335e3b421a4c1',
     messagingSenderId: '1070261261652',
     projectId: 'study-firebase-216e3',
     authDomain: 'study-firebase-216e3.firebaseapp.com',
     databaseURL: 'https://study-firebase-216e3-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'study-firebase-216e3.appspot.com',
-    measurementId: 'G-JXD8SWBRKZ',
+    measurementId: 'G-81489LH9MJ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCnvmRcGvzGoKtb9bFIGtWyFQTFx1tcGGU',
-    appId: '1:1070261261652:android:fc7a6e455c348c9e21a4c1',
+    appId: '1:1070261261652:android:ebb596f162190cf421a4c1',
     messagingSenderId: '1070261261652',
     projectId: 'study-firebase-216e3',
     databaseURL: 'https://study-firebase-216e3-default-rtdb.europe-west1.firebasedatabase.app',
@@ -65,22 +65,24 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAVmCjHCFiRCBHC-ChBjfo9ONjtr7UPRLU',
-    appId: '1:1070261261652:ios:52de77185e2e6add21a4c1',
+    appId: '1:1070261261652:ios:887fd8bd97c872dd21a4c1',
     messagingSenderId: '1070261261652',
     projectId: 'study-firebase-216e3',
     databaseURL: 'https://study-firebase-216e3-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'study-firebase-216e3.appspot.com',
+    androidClientId: '1070261261652-fnoobfmvj9afle9btiln2v1q1teflqid.apps.googleusercontent.com',
     iosClientId: '1070261261652-8ejbchc0ptdltnav9dn7455g3ckv2s7k.apps.googleusercontent.com',
     iosBundleId: 'com.example.firebaseExample',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAVmCjHCFiRCBHC-ChBjfo9ONjtr7UPRLU',
-    appId: '1:1070261261652:ios:52de77185e2e6add21a4c1',
+    appId: '1:1070261261652:ios:887fd8bd97c872dd21a4c1',
     messagingSenderId: '1070261261652',
     projectId: 'study-firebase-216e3',
     databaseURL: 'https://study-firebase-216e3-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'study-firebase-216e3.appspot.com',
+    androidClientId: '1070261261652-fnoobfmvj9afle9btiln2v1q1teflqid.apps.googleusercontent.com',
     iosClientId: '1070261261652-8ejbchc0ptdltnav9dn7455g3ckv2s7k.apps.googleusercontent.com',
     iosBundleId: 'com.example.firebaseExample',
   );
