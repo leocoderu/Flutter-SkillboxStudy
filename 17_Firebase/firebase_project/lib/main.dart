@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:firebase_project/fluro_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_project/firebase_options.dart';
+
 import 'package:business_sm/business_sm.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   MyFluroRouter.setupRouter();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
