@@ -41,23 +41,12 @@ class MyApp extends StatelessWidget {
   }
 
   void signIn(){
-    if(kIsWeb){
-      signInWithGoogleWeb();
-    } else {
-      //print('signIn: Look here!!!!!');
-      signInWithGoogle();
-    }
+    if(kIsWeb){ signInWithGoogleWeb();}
+         else { signInWithGoogle();}
   }
 
   Future<UserCredential?> signInWithGoogle() async {
-    // const List<String> scopes = <String>[
-    //   'email',
-    //   'https://www.googleapis.com/auth/contacts.readonly',
-    // ];
-
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    //print('signInWithGoogle: Look here!!!!!');
-    //print(googleUser?.email);
 
     if(googleUser != null) {
       final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
@@ -72,13 +61,11 @@ class MyApp extends StatelessWidget {
 
   Future<UserCredential?> signInWithGoogleWeb() async {
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
-    googleProvider.addScope('https://www.googleapis.com/auth/contacts');  // .readonly
+    googleProvider.addScope('https://www.googleapis.com/auth/contacts');
     googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
     return await FirebaseAuth.instance.signInWithPopup(googleProvider);
   }
 }
-
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
