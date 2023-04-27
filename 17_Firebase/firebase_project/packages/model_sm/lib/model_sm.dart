@@ -1,0 +1,1 @@
+export 'src/product/product_model.dart';
