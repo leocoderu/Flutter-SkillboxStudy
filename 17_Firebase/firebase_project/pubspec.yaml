@@ -10,9 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: 
+    sdk: flutter
+  intl: any
   fluro: ^2.0.5
   flutter_bloc: ^8.1.2
   freezed: ^2.3.2
+  get_it: ^7.3.0
+  font_awesome_flutter: ^10.4.0
   cupertino_icons: ^1.0.2
   firebase_core: ^2.10.0
   firebase_storage: ^11.1.1
@@ -32,21 +37,16 @@ dev_dependencies:
     path: ./packages/analyzer_sm
 
 flutter:
+  generate: true
   uses-material-design: true
 
   assets:
     - assets/images/
     - assets/fonts/
     - assets/svg/
+    - assets/images/ui/auth/auth_def.jpg
 
-#  fonts:
-#    - family: Schyler
-#      fonts:
-#        - asset: fonts/Schyler-Regular.ttf
-#        - asset: fonts/Schyler-Italic.ttf
-#          style: italic
-#    - family: Trajan Pro
-#      fonts:
-#        - asset: fonts/TrajanPro.ttf
-#        - asset: fonts/TrajanPro_Bold.ttf
-#          weight: 700
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/UbuntuCondensed-Regular.ttf

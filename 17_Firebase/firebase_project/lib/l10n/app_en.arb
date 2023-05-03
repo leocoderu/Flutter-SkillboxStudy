@@ -1,0 +1,23 @@
+{
+    "language": "English",
+    "@language":{
+        "description": "The current Language"
+    },
+    "helloWorld": "Hello World",
+    "@helloWorld": {
+        "description": "A programmer greeting"
+    },
+    "hello": "Hello {username}",
+    "@hello": {
+        "description": "An example welcome message with params",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
+    "authMessage": "To use this App, you must log in in the following ways",
+    "@authMessage": {
+        "description": "Message in Authentication Page"
+    }
+}

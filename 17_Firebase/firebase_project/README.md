@@ -12,6 +12,7 @@ Usability commands:
     Обновление до последних версий пакетов: flutter pub upgrade --major-versions
 
     Запуск кодогенерации: flutter packages pub run build_runner build
+    Перегенерация файлов локализации: flutter gen-l10n
     Команда для запуска интеграционного теста: flutter drive --target=test_driver/app.dart
 
     Получение информации о версии Gradle (subDir: android): ./gradlew --version
@@ -21,15 +22,15 @@ Usability commands:
 
 Dependencies of packages in Project:
 
-          ------------------- Analyzer --------------------------------------------
-          |                   analyzer_sm                     |                   |
-          |                       |                           |                   |
-          V                       V                           V                   V
-    Layer UI          <---    Business layer      <---    Data Layer  <---    ?Repository?
-    state_management          business_sm                 data_sm             ?repo-sm?
-          ^                       ^                           ^                   ^
-          |                       |                           |                   |
-          -----------------   Model Data  -----------------------------------------
+          ------------------- Analyzer ------------------------------------------
+          |                   analyzer_sm                   |                   |
+          |                       |                         |                   |
+          V                       V                         V                   V
+    Layer UI          <---    Business layer    <---    Data Layer  <---    ?Repository?
+    state_management          business_sm               data_sm             ?repo-sm?
+          ^                       ^                         ^                   ^
+          |                       |                         |                   |
+          -----------------   Model Data  ---------------------------------------
                                model_sm
 
 Dependencies:
@@ -40,13 +41,25 @@ Dependencies:
     freezed: ^2.3.2         -   Code generation
     build_runner: ^2.3.3    -   Code generation
 
+    Localizations:
+    flutter_localizations
+    intl: any
+
+    Firebase modules:
+    firebase_core: ^2.10.0
+    firebase_storage: ^11.1.1 
+    cloud_firestore: ^4.5.2
+    firebase_auth: ^4.4.2
+    google_sign_in: ^6.1.0
+
 ADDED TO PROJECT:
 
     1. FLURO routing
-    2. BLOC state management
-    3. Clear Architecture
+    2. Clear Architecture
+    3. BLOC state management
     4. Code Analyze in single package
-    5. CONNECT with Firebase
+    5. Localizations
+    6. CONNECT with Firebase
 
 TODO:
  

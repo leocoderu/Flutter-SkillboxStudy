@@ -1,3 +1,4 @@
+import 'package:firebase_project/pages/auth_page/auth_page.dart';
 import 'package:fluro/fluro.dart';
 
 import 'package:firebase_project/pages/home_page.dart';
@@ -11,12 +12,17 @@ class MyFluroRouter {
     return const HomePage();
   });
 
+  static Handler authHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
+    return const AuthPage();
+  });
+
   // static Handler settingsHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
   //   return const SettingsPage();
   // });
 
   static void setupRouter(){
     router.define(HomePage.routeName, handler: homeHandler, transitionType: TransitionType.fadeIn);
+    router.define(AuthPage.routeName, handler: authHandler, transitionType: TransitionType.fadeIn);
     //router.define(SettingsPage.routeName, handler: settingsHandler, transitionType: TransitionType.inFromRight);
     router.notFoundHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) => const NotFoundPage());
   }
