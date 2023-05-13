@@ -22,15 +22,17 @@ Usability commands:
 
 Dependencies of packages in Project:
 
-          ------------------- Analyzer ------------------------------------------
-          |                   analyzer_sm                   |                   |
-          |                       |                         |                   |
-          V                       V                         V                   V
-    Layer UI          <---    Business layer    <---    Data Layer  <---    ?Repository?
-    state_management          business_sm               data_sm             ?repo-sm?
-          ^                       ^                         ^                   ^
-          |                       |                         |                   |
-          -----------------   Model Data  ---------------------------------------
+          ------------------- Analyzer ----------------------
+          |                   analyzer_sm                   |
+          |                       |                         |
+          V                       V                         V
+    UI Layer          <---    Business layer    <---    Data Layer
+    state_management          business_sm               data_sm
+          ^                   /controllers                  ^  
+          |                   /di/locator                   |
+          |                       ^                         |
+          |                       |                         |
+          -----------------   Model Data  -------------------
                                model_sm
 
 Dependencies:
