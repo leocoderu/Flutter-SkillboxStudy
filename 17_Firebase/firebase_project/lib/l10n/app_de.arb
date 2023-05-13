@@ -2,5 +2,8 @@
     "language": "Deutsch",
     "authMessage": "Um diese Anwendung zu verwenden, müssen Sie sich wie folgt anmelden",
     "helloWorld": "Hallo Welt!",
-    "hello": "Hallo {username}"
+    "hello": "Hallo {username}",
+    "butLogOut": "Ausloggen",
+    "butExit": "Ausfahrt",
+    "msgButToast": "Doppelklicken Sie, um die App zu beenden"
 }

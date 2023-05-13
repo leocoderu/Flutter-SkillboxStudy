@@ -1,2 +1,1 @@
-//export 'src/api/services.dart';
-//export 'src/service_provider.dart';
+export 'src/repository/auth_repo.dart';

@@ -31,8 +31,10 @@ class AuthButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 5.0),
       child: OutlinedButton(
         style: authButStyle,
-        onLongPress: this.longAction ?? () {},
-        onPressed: this.quickAction ?? () {},
+        //ignore: avoid_print
+        onLongPress: this.longAction ?? () {print('LongPress');},
+        //ignore: avoid_print
+        onPressed: this.quickAction ?? () {print('Press');},
         child: this.child,
       ),
     );

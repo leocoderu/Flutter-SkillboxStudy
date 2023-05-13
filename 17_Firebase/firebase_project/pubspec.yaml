@@ -16,8 +16,8 @@ dependencies:
   fluro: ^2.0.5
   flutter_bloc: ^8.1.2
   freezed: ^2.3.2
-  get_it: ^7.3.0
   font_awesome_flutter: ^10.4.0
+  fluttertoast: ^8.2.1
   cupertino_icons: ^1.0.2
   firebase_core: ^2.10.0
   firebase_storage: ^11.1.1

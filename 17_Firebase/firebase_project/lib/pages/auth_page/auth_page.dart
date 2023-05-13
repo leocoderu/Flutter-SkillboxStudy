@@ -1,17 +1,20 @@
 // Import Flutter
-import 'package:business_sm/business_sm.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_project/pages/auth_page/auth_button.dart';
-import 'package:firebase_project/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 // Import Localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+// Layers
+import 'package:business_sm/business_sm.dart';
+
 // Import Firebase
 import 'package:firebase_storage/firebase_storage.dart';
+
+// Import Packages
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
+
+// Import Components
+import 'package:firebase_project/pages/auth_page/auth_button.dart';
 
 class AuthPage extends StatefulWidget {
   static const routeName = '/auth';
@@ -81,8 +84,13 @@ class _AuthPageState extends State<AuthPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             AuthButton(
-                              quickAction: signIn,
                               child: const FaIcon(FontAwesomeIcons.google, size: 30,),
+                              quickAction: () async {
+                                var _user = await locator.get<AuthController>().authUser();
+                                if(_user != null) Navigator.of(context).pop;
+                                //TODO: setState(); Обновить представление
+                                //TODO: Согласовать данные пользователя Google и внутренней модели
+                              },
                             ),
                             //AuthButton(child: const FaIcon(FontAwesomeIcons.facebookF, size: 30,),),
                             //AuthButton(child: const FaIcon(FontAwesomeIcons.twitter, size: 30,),),

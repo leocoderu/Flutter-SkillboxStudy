@@ -2,5 +2,8 @@
     "language": "Español",
     "authMessage": "Para usar esta aplicación, debe iniciar sesión de las siguientes maneras",
     "helloWorld": "¡Hola Mundo!",
-    "hello": "¡Hola {username}"
+    "hello": "¡Hola {username}",
+    "butLogOut": "Cerrar sesión",
+    "butExit": "Salida",
+    "msgButToast": "Haga doble clic para salir de la aplicación"
 }

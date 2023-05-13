@@ -13,8 +13,8 @@ class SetEmail extends UserState {
   SetEmail(this.email);
 }
 
-class UserBloc extends Bloc<UserState, UserData>{
-  UserBloc() : super(UserData(auth: false, email: ''))  {
+class UserBloc extends Bloc<UserState, UserModel>{
+  UserBloc() : super(UserModel(uid: '', auth: false, email: '', userName: '', avatarUrl: ''))  {
     on<SetAuth>((event, emit) => emit(state.copyWith(auth: event.auth)));
     on<SetEmail>((event, emit) => emit(state.copyWith(email: event.email)));
   }

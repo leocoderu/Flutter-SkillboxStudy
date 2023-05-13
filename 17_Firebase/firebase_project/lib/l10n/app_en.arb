@@ -19,5 +19,17 @@
     "authMessage": "To use this App, you must log in in the following ways",
     "@authMessage": {
         "description": "Message in Authentication Page"
+    },
+    "butLogOut": "LogOut",
+    "@butLogOut": {
+        "description": "Message on Button LogOut in Drawer HomePage"
+    },
+    "butExit": "Exit",
+    "@butExit": {
+        "description": "Message on Button Exit in Drawer HomePage"
+    },
+    "msgButToast": "Double click to exit App",
+    "@msgButToast": {
+        "description": "Message on pressed button for Close App in HomePage"
     }
 }

@@ -2,5 +2,8 @@
     "language": "عرب",
     "authMessage": "لاستخدام هذا التطبيق ، يجب عليك تسجيل الدخول بالطرق التالية",
     "helloWorld": "مرحبا بالعالم!",
-    "hello": "مرحبًا {username}"
+    "hello": "مرحبًا {username}",
+    "butLogOut": "تسجيل خروج",
+    "butExit": "مخرج",
+    "msgButToast": "انقر نقرًا مزدوجًا للخروج من التطبيق"
 }

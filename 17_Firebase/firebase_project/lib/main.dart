@@ -13,11 +13,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // Import Firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_project/firebase_options.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 
 // Import Layers
 import 'package:business_sm/business_sm.dart';
-import 'package:firebase_project/locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,29 +31,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => ProductBloc()),
           BlocProvider(create: (_) => UserBloc()),
         ],
-        child: StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.userChanges(),
-          builder: (_, snapshot) {
-            return MaterialApp(
-                    title: 'Something Store',
-                    theme: ThemeData(primarySwatch: Colors.blue),
-                    supportedLocales: L10n.all,
-                    localizationsDelegates: [
-                      AppLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                    ],
-                    initialRoute: snapshot.hasData ? '/' : '/auth',
-                    onGenerateRoute: MyFluroRouter.router.generator,
-                  );
-          },
+        child:  MaterialApp(
+            title: 'Something Store',
+            theme: ThemeData(primarySwatch: Colors.blue),
+            supportedLocales: L10n.all,
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            initialRoute: '/',
+            onGenerateRoute: MyFluroRouter.router.generator,
         ),
     );
   }
