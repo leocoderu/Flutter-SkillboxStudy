@@ -20,7 +20,7 @@ Usability commands:
     Активизация Flutterfire CLI: dart pub global activate flutterfire_cli
     Конфигурирование проекта для firebase: flutterfire configure --project=<specific Proj Name>
 
-Dependencies of packages in Project:
+Dependencies of packages in the Project:
 
           ------------------- Analyzer ----------------------
           |                   analyzer_sm                   |
@@ -38,10 +38,12 @@ Dependencies of packages in Project:
 Dependencies:
 
     Анализатор кода сведен в отдельный пакет "packages/analyzer_sm" и подключен к остальным пакетам.
-    fluro: ^2.0.5           -   Organization of routing with Fluro
-    flutter_bloc: ^8.1.2    -   For BLOC state management
-    freezed: ^2.3.2         -   Code generation
-    build_runner: ^2.3.3    -   Code generation
+    fluro: ^2.0.5                   -   Organization of routing with Fluro
+    flutter_bloc: ^8.1.2            -   For BLOC state management
+    freezed: ^2.3.2                 -   Code generation
+    build_runner: ^2.3.3            -   Code generation
+    font_awesome_flutter: ^10.4.0
+    fluttertoast: ^8.2.1            -   For show some message when you shold Exit  
 
     Localizations:
     flutter_localizations
@@ -53,6 +55,7 @@ Dependencies:
     cloud_firestore: ^4.5.2
     firebase_auth: ^4.4.2
     google_sign_in: ^6.1.0
+    
 
 ADDED TO PROJECT:
 
@@ -62,6 +65,7 @@ ADDED TO PROJECT:
     4. Code Analyze in single package
     5. Localizations
     6. CONNECT with Firebase
+    7. Dependency Injection
 
 TODO:
  
