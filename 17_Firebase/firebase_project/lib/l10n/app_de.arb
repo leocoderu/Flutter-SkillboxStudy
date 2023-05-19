@@ -5,5 +5,13 @@
     "hello": "Hallo {username}",
     "butLogOut": "Ausloggen",
     "butExit": "Ausfahrt",
-    "msgButToast": "Doppelklicken Sie, um die App zu beenden"
+    "msgButToast": "Doppelklicken Sie, um die App zu beenden",
+    "tooltipFBut": "Zur Liste hinzufügen",
+    "titleApp": "Einkaufsliste",
+
+    "home_sPanel_totalPurchase": "Gesamteinkäufe:",
+    "home_sPanel_purchased": "Gekauft:",
+    "home_sPanel_left": "Links:",
+    "home_sPanel_totalCost": "Gesamtkosten:",
+    "home_sPanel_spent": "Ausgegebene Mittel:"
 }

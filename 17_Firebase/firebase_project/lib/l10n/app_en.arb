@@ -31,5 +31,35 @@
     "msgButToast": "Double click to exit App",
     "@msgButToast": {
         "description": "Message on pressed button for Close App in HomePage"
+    },
+    "tooltipFBut": "Add to the List",
+    "@tooltipFloatButHome": {
+        "description": "Message on Tooltip Float Button in HomePage"
+    },
+    "titleApp": "Shopping List",
+    "@titleApp": {
+        "description": "Title of Application"
+    },
+
+    "home_sPanel_totalPurchase": "Total purchases:",
+    "@home_sPanel_totalPurchase": {
+        "description": "Total Purchases in summary Panel in HomePage"
+    },
+    "home_sPanel_purchased": "Purchased:",
+    "@home_sPanel_purchased": {
+        "description": "Purchased in summary Panel in HomePage"
+    },
+    "home_sPanel_left": "Left:",
+    "@home_sPanel_left": {
+        "description": "Left purchase in summary Panel in HomePage"
+    },
+    "home_sPanel_totalCost": "Total cost:",
+    "@home_sPanel_totalCost": {
+        "description": "Total Cost in summary Panel in HomePage"
+    },
+    "home_sPanel_spent": "Funds spent:",
+    "@home_sPanel_spent": {
+        "description": "Spent money in summary Panel in HomePage"
     }
+
 }

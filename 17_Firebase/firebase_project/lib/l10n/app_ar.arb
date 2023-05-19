@@ -5,5 +5,13 @@
     "hello": "مرحبًا {username}",
     "butLogOut": "تسجيل خروج",
     "butExit": "مخرج",
-    "msgButToast": "انقر نقرًا مزدوجًا للخروج من التطبيق"
+    "msgButToast": "انقر نقرًا مزدوجًا للخروج من التطبيق",
+    "tooltipFBut": "أضف إلى القائمة",
+    "titleApp": "قائمة التسوق",
+
+    "home_sPanel_totalPurchase": "إجمالي المشتريات:",
+    "home_sPanel_purchased": "تم شراؤها:",
+    "home_sPanel_left": "غادر:",
+    "home_sPanel_totalCost": "التكلفة الإجمالية:",
+    "home_sPanel_spent": "الأموال المنفقة:"
 }

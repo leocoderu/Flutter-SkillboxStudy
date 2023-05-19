@@ -22,18 +22,18 @@ Usability commands:
 
 Dependencies of packages in the Project:
 
-          ------------------- Analyzer ----------------------
-          |                   analyzer_sm                   |
-          |                       |                         |
-          V                       V                         V
-    UI Layer          <---    Business layer    <---    Data Layer
-    state_management          business_sm               data_sm
-          ^                   /controllers                  ^  
-          |                   /di/locator                   |
-          |                       ^                         |
-          |                       |                         |
-          -----------------   Model Data  -------------------
-                               model_sm
+        ------------------- Analyzer ----------------------
+        |                   analyzer_sm                   |
+        |                       |                         |
+        V                       V                         V
+    UI Layer        <---    Business layer    <---    Data Layer
+    state_management        business_sm               data_sm
+        ^                   /controllers                  ^  
+        |                   /di/locator                   |
+        |                       ^                         |
+        |                       |                         |
+        -----------------   Model Data  -------------------
+                            model_sm
 
 Dependencies:
 
@@ -42,7 +42,7 @@ Dependencies:
     flutter_bloc: ^8.1.2            -   For BLOC state management
     freezed: ^2.3.2                 -   Code generation
     build_runner: ^2.3.3            -   Code generation
-    font_awesome_flutter: ^10.4.0
+    font_awesome_flutter: ^10.4.0   -   Icon Google on AuthPage, may be anywere else :)
     fluttertoast: ^8.2.1            -   For show some message when you shold Exit  
 
     Localizations:
@@ -59,7 +59,7 @@ Dependencies:
 
 ADDED TO PROJECT:
 
-    1. FLURO routing
+    1. Fluro Navigation routing
     2. Clear Architecture
     3. BLOC state management
     4. Code Analyze in single package
