@@ -1,5 +1,8 @@
+// Packages
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:model_sm/model_sm.dart';
+
+// Layers
+import 'package:model/model.dart';
 
 abstract class UserState {}
 

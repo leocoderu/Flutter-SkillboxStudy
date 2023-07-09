@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 enum ThemeEvent { light, dark, system, green, red }
 
 ThemeData getSystem() {
+  // ignore: deprecated_member_use
   return (SchedulerBinding.instance.window.platformBrightness == Brightness.dark) ? ThemeData.dark() : ThemeData.light();
 }
 

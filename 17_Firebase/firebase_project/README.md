@@ -12,6 +12,8 @@ Usability commands:
     Обновление до последних версий пакетов: flutter pub upgrade --major-versions
 
     Запуск кодогенерации: flutter packages pub run build_runner build
+                          flutter pub run build_runner build --delete-conflicting-outputs
+
     Перегенерация файлов локализации: flutter gen-l10n
     Команда для запуска интеграционного теста: flutter drive --target=test_driver/app.dart
 
@@ -44,6 +46,8 @@ Dependencies:
     build_runner: ^2.3.3            -   Code generation
     font_awesome_flutter: ^10.4.0   -   Icon Google on AuthPage, may be anywere else :)
     fluttertoast: ^8.2.1            -   For show some message when you shold Exit  
+    hive: ^2.2.3                    -   For save configuration information
+    hive_flutter: ^1.1.0            -   For save configuration information
 
     Localizations:
     flutter_localizations

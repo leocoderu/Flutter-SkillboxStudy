@@ -18,16 +18,22 @@ dependencies:
   freezed: ^2.3.2
   font_awesome_flutter: ^10.4.0
   fluttertoast: ^8.2.1
+  flutter_slidable: ^3.0.0
+  dropdown_textfield: ^1.0.8
+  #hive: ^2.2.3
+  #hive_flutter: ^1.1.0
   cupertino_icons: ^1.0.2
   firebase_core: ^2.10.0
   firebase_storage: ^11.1.1
   cloud_firestore: ^4.5.2
   firebase_auth: ^4.4.2
   google_sign_in: ^6.1.0
-  model_sm:
-    path: ./packages/model_sm
+  model:
+    path: ./packages/model
   business_sm:
     path: ./packages/business_sm
+
+
 
 dev_dependencies:
   flutter_test:

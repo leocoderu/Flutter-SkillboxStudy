@@ -1,21 +1,41 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:model_sm/model_sm.dart';
+//TODO: Пока не вижу смысла хранить информацию имеющуюся в БД дополнительно в Состоянии
 
-abstract class ProductState {}
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:model_sm/model.dart';
+//
+// abstract class ProductState {}
+//
+// class SetBought extends ProductState {
+//   final bool bought;
+//   SetBought(this.bought);
+// }
+//
+// class SetPrice extends ProductState {
+//   final double price;
+//   SetPrice(this.price);
+// }
+//
+// class SetCurrency extends ProductState {
+//   final int currency;
+//   SetCurrency(this.currency);
+// }
+//
+// class SetQuantity extends ProductState {
+//   final double quantity;
+//   SetQuantity(this.quantity);
+// }
+//
+// class SetUnit extends ProductState {
+//   final int unit;
+//   SetUnit(this.unit);
+// }
 
-class SetTemperature extends ProductState {
-  final double temp;
-  SetTemperature(this.temp);
-}
-
-class SetCloudy extends ProductState {
-  final double cloudy;
-  SetCloudy(this.cloudy);
-}
-
-class ProductBloc extends Bloc<ProductState, ProductData>{
-  ProductBloc() : super(ProductData(degrees: 0.0, cloudy: 0.0))  {
-    on<SetTemperature>((event, emit) => emit(state.copyWith(degrees: event.temp)));
-    on<SetCloudy>((event, emit) => emit(state.copyWith(cloudy: event.cloudy)));
-  }
-}
+// class ProductBloc extends Bloc<ProductState, Product>{
+//   ProductBloc() : super(Product(place: ""))  {
+//     on<SetBought>((event, emit) => emit(state.copyWith(bought: event.bought)));
+//     on<SetCurrency>((event, emit) => emit(state.copyWith(currency: event.currency)));
+//     on<SetPrice>((event, emit) => emit(state.copyWith(price: event.price)));
+//     on<SetQuantity>((event, emit) => emit(state.copyWith(quantity: event.quantity)));
+//     on<SetUnit>((event, emit) => emit(state.copyWith(unit: event.unit)));
+//   }
+// }

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "2470924582",
+    "project_id": "crud-e714c",
+    "storage_bucket": "crud-e714c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2470924582:android:171ca94bdb06dca5c0b1e7",
+        "android_client_info": {
+          "package_name": "com.example.crud_example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2470924582-7eldmdmvef28fokla0lh2iud9s4amqa2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNKKrzUXwivKLZBC_eixcKjbAvNlTvOAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2470924582-7eldmdmvef28fokla0lh2iud9s4amqa2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2470924582:android:380e651443144ef4c0b1e7",
+        "android_client_info": {
+          "package_name": "ru.leocode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2470924582-7eldmdmvef28fokla0lh2iud9s4amqa2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNKKrzUXwivKLZBC_eixcKjbAvNlTvOAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2470924582-7eldmdmvef28fokla0lh2iud9s4amqa2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
