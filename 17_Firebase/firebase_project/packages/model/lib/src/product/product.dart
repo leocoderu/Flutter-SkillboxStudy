@@ -18,13 +18,13 @@ const _kHide = 'hide';         // bool       Hide List: true / flase      // Hid
 @freezed
 class Product with _$Product{
   const factory Product(
-      @JsonKey(name: 'id') int id,
-      @JsonKey(name: _kPlace) int place,
+      @JsonKey(name: 'id') String id,
+      @JsonKey(name: _kPlace) String place,
       @JsonKey(name: _kName) String name,
       @JsonKey(name: _kPrice) double price,
-      @JsonKey(name: _kCurrency) int currency,
+      @JsonKey(name: _kCurrency) String currency,
       @JsonKey(name: _kQuantity) double quantity,
-      @JsonKey(name: _kUnit) int unit,
+      @JsonKey(name: _kUnit) String unit,
       @JsonKey(name: _kBought) bool bought,
       @JsonKey(name: _kHide) bool hide,
   ) = _Product;

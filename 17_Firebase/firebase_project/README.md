@@ -71,6 +71,10 @@ ADDED TO PROJECT:
     6. CONNECT with Firebase
     7. Dependency Injection
 
+ERRORS AFTER UPDATE:
+
+    1. "kotlin dist download failed"    -> Make any change in file name [\<project>\.idea\kotlinc.xml] or delete it. 
+
 TODO:
  
     Z. Tests

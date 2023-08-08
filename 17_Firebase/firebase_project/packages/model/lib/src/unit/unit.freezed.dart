@@ -21,7 +21,7 @@ Unit _$UnitFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Unit {
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: _pName)
   String get name => throw _privateConstructorUsedError;
 
@@ -35,7 +35,8 @@ abstract class $UnitCopyWith<$Res> {
   factory $UnitCopyWith(Unit value, $Res Function(Unit) then) =
       _$UnitCopyWithImpl<$Res, Unit>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: _pName) String name});
+  $Res call(
+      {@JsonKey(name: 'id') String id, @JsonKey(name: _pName) String name});
 }
 
 /// @nodoc
@@ -58,7 +59,7 @@ class _$UnitCopyWithImpl<$Res, $Val extends Unit>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -73,7 +74,8 @@ abstract class _$$_UnitCopyWith<$Res> implements $UnitCopyWith<$Res> {
       __$$_UnitCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: _pName) String name});
+  $Res call(
+      {@JsonKey(name: 'id') String id, @JsonKey(name: _pName) String name});
 }
 
 /// @nodoc
@@ -92,7 +94,7 @@ class __$$_UnitCopyWithImpl<$Res> extends _$UnitCopyWithImpl<$Res, _$_Unit>
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -110,7 +112,7 @@ class _$_Unit implements _Unit {
 
   @override
   @JsonKey(name: 'id')
-  final int id;
+  final String id;
   @override
   @JsonKey(name: _pName)
   final String name;
@@ -148,14 +150,14 @@ class _$_Unit implements _Unit {
 }
 
 abstract class _Unit implements Unit {
-  const factory _Unit(@JsonKey(name: 'id') final int id,
+  const factory _Unit(@JsonKey(name: 'id') final String id,
       @JsonKey(name: _pName) final String name) = _$_Unit;
 
   factory _Unit.fromJson(Map<String, dynamic> json) = _$_Unit.fromJson;
 
   @override
   @JsonKey(name: 'id')
-  int get id;
+  String get id;
   @override
   @JsonKey(name: _pName)
   String get name;

@@ -7,7 +7,7 @@ part of 'place.dart';
 // **************************************************************************
 
 _$_Place _$$_PlaceFromJson(Map<String, dynamic> json) => _$_Place(
-      json['id'] as int,
+      json['id'] as String,
       json['name'] as String,
     );
 

@@ -7,7 +7,7 @@ part of 'unit.dart';
 // **************************************************************************
 
 _$_Unit _$$_UnitFromJson(Map<String, dynamic> json) => _$_Unit(
-      json['id'] as int,
+      json['id'] as String,
       json['name'] as String,
     );
 

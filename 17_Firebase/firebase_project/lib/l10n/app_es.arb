@@ -8,10 +8,17 @@
     "msgButToast": "Haga doble clic para salir de la aplicación",
     "tooltipFBut": "Añadir a la lista",
     "titleApp": "Lista de la compra",
+    "titleList": "Lista llena",
 
     "home_sPanel_totalPurchase": "Compras totales:",
     "home_sPanel_purchased": "Comprado:",
     "home_sPanel_left": "Izquierda:",
     "home_sPanel_totalCost": "Coste total:",
-    "home_sPanel_spent": "Fondos gastados:"
+    "home_sPanel_spent": "Fondos gastados:",
+
+    "home_bottom_need_buy": "Necesito comprar",
+    "home_bottom_full_list": "Lista llena",
+
+    "settings_title": "Ajustes",
+    "settings_sPanel": "Habilitar panel de resultados de medición"
 }

@@ -8,10 +8,17 @@
     "msgButToast": "Doppelklicken Sie, um die App zu beenden",
     "tooltipFBut": "Zur Liste hinzufügen",
     "titleApp": "Einkaufsliste",
+    "titleList": "Volle Liste",
 
     "home_sPanel_totalPurchase": "Gesamteinkäufe:",
     "home_sPanel_purchased": "Gekauft:",
     "home_sPanel_left": "Links:",
     "home_sPanel_totalCost": "Gesamtkosten:",
-    "home_sPanel_spent": "Ausgegebene Mittel:"
+    "home_sPanel_spent": "Ausgegebene Mittel:",
+
+    "home_bottom_need_buy": "Muss kaufen",
+    "home_bottom_full_list": "Volle Liste",
+
+    "settings_title": "Einstellungen",
+    "settings_sPanel": "Aktivieren Sie den Messergebnisbereich"
 }

@@ -18,7 +18,6 @@ import 'package:model/model.dart';
 // Import Widgets
 import 'package:firebase_project/pages/home_page/widgets/drawer_widget.dart';
 import 'package:firebase_project/pages/home_page/widgets/summary_panel/summary_panel.dart';
-import 'package:firebase_project/pages/home_page/widgets/home_appbar.dart';
 import 'package:firebase_project/pages/home_page/widgets/item_list.dart';
 import 'package:firebase_project/pages/home_page/widgets/change_form.dart';
 import 'package:firebase_project/pages/home_page/widgets/progress_indicator.dart';
@@ -45,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   bool _currencyLoaded = false;
   bool _unitsLoaded = false;
 
-  //bool _productsLoaded = false;
+  bool _index_page = false;
   String photoURL = '';
   DateTime? oldTime;
 
@@ -102,7 +101,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.titleApp),
+        title: Text(!_index_page ? AppLocalizations.of(context)!.titleApp : AppLocalizations.of(context)!.titleList),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -119,14 +118,13 @@ class _HomePageState extends State<HomePage> {
             return (!_productsLoaded)
               ? myProgressIndicator()
               : StreamBuilder(
-                //initialData: locator.get<ProdController>().initProducts(),
                 stream: _products.snapshots(), //locator.get<ProdController>().streamProducts(),
                 builder: (context, snapshot) { // || (!_productsLoaded)
                   if (!_placesLoaded || !_currencyLoaded || !_unitsLoaded || !snapshot.hasData) {return myProgressIndicator();}
-                  //if (!snapshot.hasData) return myProgressIndicator();
-                  // Список Уникальных мест в которых нужно купить продукты
-                  Set<Place> _uPlace = Set<Place>();
-                  snapshot.data!.docs.map((e) => _uPlace.add(_places!.firstWhere((p) => p.id == e.get('place')))).toList();// _products!
+
+                  Set<Place> _uPlace = Set<Place>(); // Список Уникальных мест в которых нужно купить продукты
+                  snapshot.data!.docs.expand((e) => [if (e.get('hide') == _index_page) _uPlace.add(_places!.firstWhere((p) => p.id == e.get('place')))]).toList();
+
                   return Column(
                     children: <Widget>[
                       Expanded(
@@ -135,14 +133,24 @@ class _HomePageState extends State<HomePage> {
                             children: _uPlace.map((p) =>
                                 ExpansionTile(
                                   title: Text(p.name),  // _products!
-                                  children: snapshot.data!.docs.expand((e) => [if (p.id == e.get('place'))
+                                  children:
+                                    !_index_page ?
+                                  snapshot.data!.docs.expand((e) => [if (p.id == e.get('place') && !e.get('hide'))
                                     ItemList(
-                                      collection: _products,
+                                      //collection: _products,
                                       currency: _currency,
                                       units: _units,
                                       places: _places,
-                                      product: e,),
-                                  ]).toList(),
+                                      product: e.data(),),
+                                  ]).toList()
+                                        : snapshot.data!.docs.expand((e) => [if (p.id == e.get('place') && e.get('hide'))
+                                      ItemList(
+                                        //collection: _products,
+                                        currency: _currency,
+                                        units: _units,
+                                        places: _places,
+                                        product: e.data(),),
+                                    ]).toList(),
                                 ),
                             ).toList(),
                           ),
@@ -156,12 +164,52 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
-      bottomNavigationBar: HomeAppBar(),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
+        height: 100,
+        shape: CircularNotchedRectangle(),
+        notchMargin: 5,
+        clipBehavior: Clip.antiAlias,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
+          children:[
+            ItemNavigation(false, FontAwesomeIcons.listCheck, AppLocalizations.of(context)!.home_bottom_need_buy),
+            ItemNavigation(true, FontAwesomeIcons.list, AppLocalizations.of(context)!.home_bottom_full_list),
+          ],
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {changeForm(context, _products, _places, _currency, _units);},
+        onPressed: () {
+          changeForm(context, _places, _currency, _units);
+        },
         tooltip: AppLocalizations.of(context)!.tooltipFBut,
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  Widget ItemNavigation(bool index, IconData icon, String name) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all(0.0),
+        maximumSize: MaterialStateProperty.all(const Size(150, 100)),
+      ),
+      onPressed: () {
+        setState(() {
+          _index_page = index;
+        });
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children:[
+          FaIcon(icon, size: 30,),
+          Padding(
+            padding: EdgeInsets.only(top: 5),
+            child: Text(name, style: index == _index_page ? TextStyle(shadows: [Shadow(color: Colors.white, blurRadius: 10),]) : null),
+          ),
+        ],
       ),
     );
   }

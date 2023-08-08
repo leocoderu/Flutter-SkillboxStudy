@@ -11,21 +11,10 @@ import 'package:firebase_project/pages/unknown_page.dart';
 class MyFluroRouter {
   static FluroRouter router = FluroRouter();
 
-  static Handler mainHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-    return MainPage();
-  });
-
-  static Handler homeHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-    return const HomePage();
-  });
-
-  static Handler authHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-    return const AuthPage();
-  });
-
-  static Handler settingsHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) {
-    return const SettingsPage();
-  });
+  static Handler mainHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) => MainPage());
+  static Handler homeHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) => const HomePage());
+  static Handler authHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) => const AuthPage());
+  static Handler settingsHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) => const SettingsPage());
 
   static void setupRouter(){
     router.define(MainPage.routeName, handler: mainHandler, transitionType: TransitionType.fadeIn);

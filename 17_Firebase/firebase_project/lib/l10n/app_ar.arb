@@ -8,10 +8,17 @@
     "msgButToast": "انقر نقرًا مزدوجًا للخروج من التطبيق",
     "tooltipFBut": "أضف إلى القائمة",
     "titleApp": "قائمة التسوق",
+    "titleList": "القائمة الكاملة",
 
     "home_sPanel_totalPurchase": "إجمالي المشتريات:",
     "home_sPanel_purchased": "تم شراؤها:",
     "home_sPanel_left": "غادر:",
     "home_sPanel_totalCost": "التكلفة الإجمالية:",
-    "home_sPanel_spent": "الأموال المنفقة:"
+    "home_sPanel_spent": "الأموال المنفقة:",
+
+    "home_bottom_need_buy": "بحاجة للشراء",
+    "home_bottom_full_list": "القائمة الكاملة",
+
+    "settings_title": "إعدادات",
+    "settings_sPanel": "تفعيل لوحة نتائج القياس"
 }

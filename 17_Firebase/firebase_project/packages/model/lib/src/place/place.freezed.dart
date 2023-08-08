@@ -21,7 +21,7 @@ Place _$PlaceFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Place {
   @JsonKey(name: _pID)
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: _pName)
   String get name => throw _privateConstructorUsedError;
 
@@ -35,7 +35,8 @@ abstract class $PlaceCopyWith<$Res> {
   factory $PlaceCopyWith(Place value, $Res Function(Place) then) =
       _$PlaceCopyWithImpl<$Res, Place>;
   @useResult
-  $Res call({@JsonKey(name: _pID) int id, @JsonKey(name: _pName) String name});
+  $Res call(
+      {@JsonKey(name: _pID) String id, @JsonKey(name: _pName) String name});
 }
 
 /// @nodoc
@@ -58,7 +59,7 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -73,7 +74,8 @@ abstract class _$$_PlaceCopyWith<$Res> implements $PlaceCopyWith<$Res> {
       __$$_PlaceCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: _pID) int id, @JsonKey(name: _pName) String name});
+  $Res call(
+      {@JsonKey(name: _pID) String id, @JsonKey(name: _pName) String name});
 }
 
 /// @nodoc
@@ -92,7 +94,7 @@ class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -112,7 +114,7 @@ class _$_Place implements _Place {
 
   @override
   @JsonKey(name: _pID)
-  final int id;
+  final String id;
   @override
   @JsonKey(name: _pName)
   final String name;
@@ -150,14 +152,14 @@ class _$_Place implements _Place {
 }
 
 abstract class _Place implements Place {
-  const factory _Place(@JsonKey(name: _pID) final int id,
+  const factory _Place(@JsonKey(name: _pID) final String id,
       @JsonKey(name: _pName) final String name) = _$_Place;
 
   factory _Place.fromJson(Map<String, dynamic> json) = _$_Place.fromJson;
 
   @override
   @JsonKey(name: _pID)
-  int get id;
+  String get id;
   @override
   @JsonKey(name: _pName)
   String get name;

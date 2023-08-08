@@ -7,13 +7,13 @@ part of 'product.dart';
 // **************************************************************************
 
 _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
-      json['id'] as int,
-      json['place'] as int,
+      json['id'] as String,
+      json['place'] as String,
       json['name'] as String,
       (json['price'] as num).toDouble(),
-      json['currency'] as int,
+      json['currency'] as String,
       (json['quantity'] as num).toDouble(),
-      json['unit'] as int,
+      json['unit'] as String,
       json['bought'] as bool,
       json['hide'] as bool,
     );

@@ -7,7 +7,7 @@ part of 'currency.dart';
 // **************************************************************************
 
 _$_Currency _$$_CurrencyFromJson(Map<String, dynamic> json) => _$_Currency(
-      json['id'] as int,
+      json['id'] as String,
       json['name'] as String,
       json['symbol'] as String,
     );

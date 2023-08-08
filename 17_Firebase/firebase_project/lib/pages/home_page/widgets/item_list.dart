@@ -1,5 +1,4 @@
 // Import Flutter
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 // Import Packages
@@ -20,8 +19,7 @@ import 'package:firebase_project/pages/home_page/widgets/change_form.dart';
 // TODO: Долгий Tap,   Редактирование
 
 class ItemList extends StatelessWidget {
-  final CollectionReference<Product> collection;
-  final QueryDocumentSnapshot<Product> product;
+  final Product product;
   final List<Place>? places;
   final List<Currency>? currency;
   final List<Unit>? units;
@@ -29,7 +27,6 @@ class ItemList extends StatelessWidget {
   const ItemList({
     super.key,
     required this.product,
-    required this.collection,
     required this.places,
     required this.currency,
     required this.units,
@@ -39,15 +36,17 @@ class ItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setBought(collection, product, !product.get('bought'));
+        setBought(product, !product.bought);
       },
-      onLongPress: () {changeForm(context, collection, places, currency, units, product);},
+      onLongPress: () {
+        changeForm(context, places, currency, units, product);
+      },
       child: Slidable(
-          key: const ValueKey(0),
+          key: UniqueKey(),
           startActionPane: ActionPane(
             motion: const ScrollMotion(),
             extentRatio: 0.001,
-            dismissible: DismissiblePane(onDismissed: () {swipeListItem(context);}),
+            dismissible: DismissiblePane(onDismissed: () {swipeListItem(product, !product.hide);}),
             children: [],
           ),
           endActionPane: ActionPane(
@@ -55,7 +54,7 @@ class ItemList extends StatelessWidget {
             extentRatio: 0.25,
             children: [
               IconButton(
-                onPressed: () => changeForm(context, collection, places, currency, units, product),
+                onPressed: () => changeForm(context, places, currency, units, product),
                 icon: const Icon(Icons.edit),
               ),
               IconButton(
@@ -68,9 +67,9 @@ class ItemList extends StatelessWidget {
           child: Card(
             margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             child: ListTile(
-              title: Text(product.get('name')),
-              subtitle: Text("${product.get('price').toString()}"),
-              trailing: product.get('bought')
+              title: Text(product.name),
+              subtitle: Text("${product.price.toString()}"),
+              trailing: product.bought
                 ? const Icon(Icons.check_box)
                 : const Icon(Icons.check_box_outline_blank),
             ),
@@ -80,13 +79,9 @@ class ItemList extends StatelessWidget {
   }
 }
 
-void swipeListItem(BuildContext context){
-  // ignore: avoid_print
-  print("Swipe to another List");
-}
+Future<void> swipeListItem(Product product, bool value) async => locator.get<ProdController>().setHide(product, value);
 
-Future<void> setBought(CollectionReference<Product> collection, QueryDocumentSnapshot<Product> product, bool value) async =>
-    locator.get<ProdController>().setBought(collection, product, value);
+Future<void> setBought(Product product, bool value) async => locator.get<ProdController>().setBought(product, value);
 
 void searchInet(BuildContext context){
   // ignore: avoid_print

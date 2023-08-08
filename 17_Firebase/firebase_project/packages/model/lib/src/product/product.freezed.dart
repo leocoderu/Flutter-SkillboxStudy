@@ -21,19 +21,19 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Product {
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: _kPlace)
-  int get place => throw _privateConstructorUsedError;
+  String get place => throw _privateConstructorUsedError;
   @JsonKey(name: _kName)
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: _kPrice)
   double get price => throw _privateConstructorUsedError;
   @JsonKey(name: _kCurrency)
-  int get currency => throw _privateConstructorUsedError;
+  String get currency => throw _privateConstructorUsedError;
   @JsonKey(name: _kQuantity)
   double get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: _kUnit)
-  int get unit => throw _privateConstructorUsedError;
+  String get unit => throw _privateConstructorUsedError;
   @JsonKey(name: _kBought)
   bool get bought => throw _privateConstructorUsedError;
   @JsonKey(name: _kHide)
@@ -50,13 +50,13 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: _kPlace) int place,
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: _kPlace) String place,
       @JsonKey(name: _kName) String name,
       @JsonKey(name: _kPrice) double price,
-      @JsonKey(name: _kCurrency) int currency,
+      @JsonKey(name: _kCurrency) String currency,
       @JsonKey(name: _kQuantity) double quantity,
-      @JsonKey(name: _kUnit) int unit,
+      @JsonKey(name: _kUnit) String unit,
       @JsonKey(name: _kBought) bool bought,
       @JsonKey(name: _kHide) bool hide});
 }
@@ -88,11 +88,11 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       place: null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -112,7 +112,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       bought: null == bought
           ? _value.bought
           : bought // ignore: cast_nullable_to_non_nullable
@@ -133,13 +133,13 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: _kPlace) int place,
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: _kPlace) String place,
       @JsonKey(name: _kName) String name,
       @JsonKey(name: _kPrice) double price,
-      @JsonKey(name: _kCurrency) int currency,
+      @JsonKey(name: _kCurrency) String currency,
       @JsonKey(name: _kQuantity) double quantity,
-      @JsonKey(name: _kUnit) int unit,
+      @JsonKey(name: _kUnit) String unit,
       @JsonKey(name: _kBought) bool bought,
       @JsonKey(name: _kHide) bool hide});
 }
@@ -168,11 +168,11 @@ class __$$_ProductCopyWithImpl<$Res>
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -184,7 +184,7 @@ class __$$_ProductCopyWithImpl<$Res>
       null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -192,7 +192,7 @@ class __$$_ProductCopyWithImpl<$Res>
       null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == bought
           ? _value.bought
           : bought // ignore: cast_nullable_to_non_nullable
@@ -224,10 +224,10 @@ class _$_Product implements _Product {
 
   @override
   @JsonKey(name: 'id')
-  final int id;
+  final String id;
   @override
   @JsonKey(name: _kPlace)
-  final int place;
+  final String place;
   @override
   @JsonKey(name: _kName)
   final String name;
@@ -236,13 +236,13 @@ class _$_Product implements _Product {
   final double price;
   @override
   @JsonKey(name: _kCurrency)
-  final int currency;
+  final String currency;
   @override
   @JsonKey(name: _kQuantity)
   final double quantity;
   @override
   @JsonKey(name: _kUnit)
-  final int unit;
+  final String unit;
   @override
   @JsonKey(name: _kBought)
   final bool bought;
@@ -294,13 +294,13 @@ class _$_Product implements _Product {
 
 abstract class _Product implements Product {
   const factory _Product(
-      @JsonKey(name: 'id') final int id,
-      @JsonKey(name: _kPlace) final int place,
+      @JsonKey(name: 'id') final String id,
+      @JsonKey(name: _kPlace) final String place,
       @JsonKey(name: _kName) final String name,
       @JsonKey(name: _kPrice) final double price,
-      @JsonKey(name: _kCurrency) final int currency,
+      @JsonKey(name: _kCurrency) final String currency,
       @JsonKey(name: _kQuantity) final double quantity,
-      @JsonKey(name: _kUnit) final int unit,
+      @JsonKey(name: _kUnit) final String unit,
       @JsonKey(name: _kBought) final bool bought,
       @JsonKey(name: _kHide) final bool hide) = _$_Product;
 
@@ -308,10 +308,10 @@ abstract class _Product implements Product {
 
   @override
   @JsonKey(name: 'id')
-  int get id;
+  String get id;
   @override
   @JsonKey(name: _kPlace)
-  int get place;
+  String get place;
   @override
   @JsonKey(name: _kName)
   String get name;
@@ -320,13 +320,13 @@ abstract class _Product implements Product {
   double get price;
   @override
   @JsonKey(name: _kCurrency)
-  int get currency;
+  String get currency;
   @override
   @JsonKey(name: _kQuantity)
   double get quantity;
   @override
   @JsonKey(name: _kUnit)
-  int get unit;
+  String get unit;
   @override
   @JsonKey(name: _kBought)
   bool get bought;

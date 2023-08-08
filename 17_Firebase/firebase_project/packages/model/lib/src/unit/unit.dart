@@ -12,7 +12,7 @@ const _pName = 'name';         // String     Name of Units like: kg / pic
 class Unit with _$Unit{
 
   const factory Unit(
-    @JsonKey(name: 'id') int id,
+    @JsonKey(name: 'id') String id,
     @JsonKey(name: _pName) String name,
   ) = _Unit;
 

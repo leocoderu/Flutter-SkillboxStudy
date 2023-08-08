@@ -6,14 +6,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'place.freezed.dart';
 part 'place.g.dart';
 
-const _pID = 'id';             // Numeric    ID
-const _pName = 'name';         // String     Что:     Рынок/Магазин/Супермаркет
+const _pID = 'id';             // String    ID
+const _pName = 'name';         // String    Market/Shop/Supermarket etc.
 
 @freezed
 class Place with _$Place{
 
   const factory Place(
-    @JsonKey(name: _pID) int id,
+    @JsonKey(name: _pID) String id,
     @JsonKey(name: _pName) String name,
   ) = _Place;
 

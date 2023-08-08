@@ -8,11 +8,18 @@
     "msgButToast": "ऐप से बाहर निकलने के लिए डबल क्लिक करें",
     "tooltipFBut": "सूची में जोड़ें",
     "titleApp": "खरीदारी की सूची",
+    "titleList": "पूरी सूची",
 
     "home_sPanel_totalPurchase": "कुल खरीदारी:",
     "home_sPanel_purchased": "खरीदा:",
     "home_sPanel_left": "बाएं:",
     "home_sPanel_totalCost": "कुल लागत:",
-    "home_sPanel_spent": "खर्च की गई धनराशि:"
+    "home_sPanel_spent": "खर्च की गई धनराशि:",
+
+    "home_bottom_need_buy": "खरीदना होगा",
+    "home_bottom_full_list": "पूरी सूची",
+
+    "settings_title": "समायोजन",
+    "settings_sPanel": "मापन परिणाम पैनल सक्षम करें"
 }
 

@@ -18,7 +18,7 @@ class EnableSummaryPanel extends AppState {
 }
 
 class AppStateBloc extends Bloc<AppState, AppStateModel>{
-  AppStateBloc() : super(AppStateModel(summary_panel: true))  {
+  AppStateBloc() : super(AppStateModel(summary_panel: false))  {
     on<EnableSummaryPanel>((event, emit) => emit(state.copyWith(summary_panel: event.summary_panel)));
   }
 }

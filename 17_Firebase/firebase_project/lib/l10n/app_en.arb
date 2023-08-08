@@ -40,6 +40,10 @@
     "@titleApp": {
         "description": "Title of Application"
     },
+    "titleList": "Full List",
+    "@titleList": {
+        "description": "Title of Full List Products"
+    },
 
     "home_sPanel_totalPurchase": "Total purchases:",
     "@home_sPanel_totalPurchase": {
@@ -60,6 +64,24 @@
     "home_sPanel_spent": "Funds spent:",
     "@home_sPanel_spent": {
         "description": "Spent money in summary Panel in HomePage"
+    },
+
+    "home_bottom_need_buy": "Need to Buy",
+    "@home_bottom_need_buy": {
+        "description": "Caption of button Need to buy on bottom panel"
+    },
+    "home_bottom_full_list": "Full List",
+    "@home_bottom_full_list": {
+        "description": "Caption of button Full List on bottom panel"
+    },
+
+    "settings_title": "Settings",
+    "@settings_title": {
+        "description": "Caption of Settings page"
+    },
+    "settings_sPanel": "Enable Measurement Results Panel",
+    "@settings_sPanel": {
+        "description": "Title of Summarization Panel Settings"
     }
 
 }

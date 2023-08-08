@@ -16,7 +16,7 @@ dependencies:
   fluro: ^2.0.5
   flutter_bloc: ^8.1.2
   freezed: ^2.3.2
-  font_awesome_flutter: ^10.4.0
+  font_awesome_flutter: ^10.5.0
   fluttertoast: ^8.2.1
   flutter_slidable: ^3.0.0
   dropdown_textfield: ^1.0.8

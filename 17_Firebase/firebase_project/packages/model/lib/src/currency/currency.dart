@@ -13,7 +13,7 @@ const _pSymbol = 'symbol';     // String     Symbol of Currency like: $
 class Currency with _$Currency{
 
   const factory Currency(
-    @JsonKey(name: 'id') int id,
+    @JsonKey(name: 'id') String id,
     @JsonKey(name: _pName) String name,
     @JsonKey(name: _pSymbol) String symbol,
   ) = _Currency;

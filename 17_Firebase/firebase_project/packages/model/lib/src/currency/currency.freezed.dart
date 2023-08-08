@@ -21,7 +21,7 @@ Currency _$CurrencyFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Currency {
   @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: _pName)
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: _pSymbol)
@@ -39,7 +39,7 @@ abstract class $CurrencyCopyWith<$Res> {
       _$CurrencyCopyWithImpl<$Res, Currency>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
+      {@JsonKey(name: 'id') String id,
       @JsonKey(name: _pName) String name,
       @JsonKey(name: _pSymbol) String symbol});
 }
@@ -65,7 +65,7 @@ class _$CurrencyCopyWithImpl<$Res, $Val extends Currency>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$$_CurrencyCopyWith<$Res> implements $CurrencyCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
+      {@JsonKey(name: 'id') String id,
       @JsonKey(name: _pName) String name,
       @JsonKey(name: _pSymbol) String symbol});
 }
@@ -110,7 +110,7 @@ class __$$_CurrencyCopyWithImpl<$Res>
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ class _$_Currency implements _Currency {
 
   @override
   @JsonKey(name: 'id')
-  final int id;
+  final String id;
   @override
   @JsonKey(name: _pName)
   final String name;
@@ -177,7 +177,7 @@ class _$_Currency implements _Currency {
 
 abstract class _Currency implements Currency {
   const factory _Currency(
-      @JsonKey(name: 'id') final int id,
+      @JsonKey(name: 'id') final String id,
       @JsonKey(name: _pName) final String name,
       @JsonKey(name: _pSymbol) final String symbol) = _$_Currency;
 
@@ -185,7 +185,7 @@ abstract class _Currency implements Currency {
 
   @override
   @JsonKey(name: 'id')
-  int get id;
+  String get id;
   @override
   @JsonKey(name: _pName)
   String get name;
