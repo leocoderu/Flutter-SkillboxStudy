@@ -10,5 +10,6 @@ class SomeData with _$SomeData{
     required double first,
     required String text,
     required int count,
+    required List<String> posts
   }) = _SomeData;
 }

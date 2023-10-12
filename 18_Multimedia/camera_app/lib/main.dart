@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
-  late List<CameraDescription> camera;
+  //late List<CameraDescription> camera;
   CameraController? controller;
   XFile? lastImage;
 

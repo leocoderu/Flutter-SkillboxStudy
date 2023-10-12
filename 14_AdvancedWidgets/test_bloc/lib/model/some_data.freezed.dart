@@ -19,6 +19,7 @@ mixin _$SomeData {
   double get first => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
+  List<String> get posts => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SomeDataCopyWith<SomeData> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $SomeDataCopyWith<$Res> {
   factory $SomeDataCopyWith(SomeData value, $Res Function(SomeData) then) =
       _$SomeDataCopyWithImpl<$Res, SomeData>;
   @useResult
-  $Res call({double first, String text, int count});
+  $Res call({double first, String text, int count, List<String> posts});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$SomeDataCopyWithImpl<$Res, $Val extends SomeData>
     Object? first = null,
     Object? text = null,
     Object? count = null,
+    Object? posts = null,
   }) {
     return _then(_value.copyWith(
       first: null == first
@@ -63,26 +65,31 @@ class _$SomeDataCopyWithImpl<$Res, $Val extends SomeData>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      posts: null == posts
+          ? _value.posts
+          : posts // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_SomeDataCopyWith<$Res> implements $SomeDataCopyWith<$Res> {
-  factory _$$_SomeDataCopyWith(
-          _$_SomeData value, $Res Function(_$_SomeData) then) =
-      __$$_SomeDataCopyWithImpl<$Res>;
+abstract class _$$SomeDataImplCopyWith<$Res>
+    implements $SomeDataCopyWith<$Res> {
+  factory _$$SomeDataImplCopyWith(
+          _$SomeDataImpl value, $Res Function(_$SomeDataImpl) then) =
+      __$$SomeDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double first, String text, int count});
+  $Res call({double first, String text, int count, List<String> posts});
 }
 
 /// @nodoc
-class __$$_SomeDataCopyWithImpl<$Res>
-    extends _$SomeDataCopyWithImpl<$Res, _$_SomeData>
-    implements _$$_SomeDataCopyWith<$Res> {
-  __$$_SomeDataCopyWithImpl(
-      _$_SomeData _value, $Res Function(_$_SomeData) _then)
+class __$$SomeDataImplCopyWithImpl<$Res>
+    extends _$SomeDataCopyWithImpl<$Res, _$SomeDataImpl>
+    implements _$$SomeDataImplCopyWith<$Res> {
+  __$$SomeDataImplCopyWithImpl(
+      _$SomeDataImpl _value, $Res Function(_$SomeDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -91,8 +98,9 @@ class __$$_SomeDataCopyWithImpl<$Res>
     Object? first = null,
     Object? text = null,
     Object? count = null,
+    Object? posts = null,
   }) {
-    return _then(_$_SomeData(
+    return _then(_$SomeDataImpl(
       first: null == first
           ? _value.first
           : first // ignore: cast_nullable_to_non_nullable
@@ -105,15 +113,23 @@ class __$$_SomeDataCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      posts: null == posts
+          ? _value._posts
+          : posts // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_SomeData implements _SomeData {
-  const _$_SomeData(
-      {required this.first, required this.text, required this.count});
+class _$SomeDataImpl implements _SomeData {
+  const _$SomeDataImpl(
+      {required this.first,
+      required this.text,
+      required this.count,
+      required final List<String> posts})
+      : _posts = posts;
 
   @override
   final double first;
@@ -121,37 +137,47 @@ class _$_SomeData implements _SomeData {
   final String text;
   @override
   final int count;
+  final List<String> _posts;
+  @override
+  List<String> get posts {
+    if (_posts is EqualUnmodifiableListView) return _posts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_posts);
+  }
 
   @override
   String toString() {
-    return 'SomeData(first: $first, text: $text, count: $count)';
+    return 'SomeData(first: $first, text: $text, count: $count, posts: $posts)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SomeData &&
+            other is _$SomeDataImpl &&
             (identical(other.first, first) || other.first == first) &&
             (identical(other.text, text) || other.text == text) &&
-            (identical(other.count, count) || other.count == count));
+            (identical(other.count, count) || other.count == count) &&
+            const DeepCollectionEquality().equals(other._posts, _posts));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, first, text, count);
+  int get hashCode => Object.hash(runtimeType, first, text, count,
+      const DeepCollectionEquality().hash(_posts));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SomeDataCopyWith<_$_SomeData> get copyWith =>
-      __$$_SomeDataCopyWithImpl<_$_SomeData>(this, _$identity);
+  _$$SomeDataImplCopyWith<_$SomeDataImpl> get copyWith =>
+      __$$SomeDataImplCopyWithImpl<_$SomeDataImpl>(this, _$identity);
 }
 
 abstract class _SomeData implements SomeData {
   const factory _SomeData(
       {required final double first,
       required final String text,
-      required final int count}) = _$_SomeData;
+      required final int count,
+      required final List<String> posts}) = _$SomeDataImpl;
 
   @override
   double get first;
@@ -160,7 +186,9 @@ abstract class _SomeData implements SomeData {
   @override
   int get count;
   @override
+  List<String> get posts;
+  @override
   @JsonKey(ignore: true)
-  _$$_SomeDataCopyWith<_$_SomeData> get copyWith =>
+  _$$SomeDataImplCopyWith<_$SomeDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

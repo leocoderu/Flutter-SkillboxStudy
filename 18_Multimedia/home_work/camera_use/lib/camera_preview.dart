@@ -1,9 +1,16 @@
-import 'package:camera_use/gallery_show.dart';
-import 'package:flutter/foundation.dart';
+// Import Flutter
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'dart:async';
 
+// Import Packages
 import 'package:camera/camera.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Import Clear Architecture
+import 'package:camera_use/business/gallery_bloc.dart';
+import 'package:camera_use/business/gallery_bloc_actions.dart';
+import 'package:camera_use/model/gallery_model.dart';
 
 class CameraPreviewPage extends StatefulWidget {
   const CameraPreviewPage({super.key});
@@ -12,18 +19,16 @@ class CameraPreviewPage extends StatefulWidget {
   State<CameraPreviewPage> createState() => _CameraPreviewPageState();
 }
 
-class _CameraPreviewPageState extends State<CameraPreviewPage> {
-  late List<CameraDescription> camera;
+class _CameraPreviewPageState extends State<CameraPreviewPage> with WidgetsBindingObserver {
   CameraController? controller;
-  XFile? lastImage;
 
   @override
   initState() {
     super.initState();
-    initCamera();
+    unawaited(initCamera());
   }
 
-  //@override
+  @override
   void didChangeAppLifecycleState(AppLifecycleState state){
     final CameraController? cameraController = controller;
 
@@ -41,6 +46,7 @@ class _CameraPreviewPageState extends State<CameraPreviewPage> {
     List<CameraDescription> cameras = await availableCameras();
     controller = CameraController(cameras[0], ResolutionPreset.max);
     await controller!.initialize();
+    setState(() {});
   }
 
   @override
@@ -50,31 +56,47 @@ class _CameraPreviewPageState extends State<CameraPreviewPage> {
         title: const Text("Camera preview"),
         centerTitle: true,
       ),
-      body: Stack(
-        children: [
-          controller?.value.isInitialized == true
-             ? Center(child: CameraPreview(controller!),)
-             : const CircularProgressIndicator(),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: IconButton(
-              iconSize: 48.0,
-              onPressed: () async {
-                lastImage = await controller?.takePicture();
-                GalleryShow.addImage(img: lastImage!);
-                setState(() {});
-              },
-              icon: const Icon(Icons.camera),
-            ),
-          ),
-        ],
-      ),
+      body: BlocBuilder<GalleryBloc, GalleryModel>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              Center(
+                child: controller?.value.isInitialized == true
+                ? CameraPreview(controller!)
+                : const CircularProgressIndicator(),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 30.0, bottom: 20.0),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(const Size(60, 60)),
+                      maximumSize: MaterialStateProperty.all(const Size(60, 60)),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))
+                      ),
+                      alignment: Alignment.center,
+                    ),
+                    onPressed: () async {
+                      await controller!.takePicture().then((value) {
+                        context.read<GalleryBloc>().add(AddImage(img: value.path));
+                      });
+                    },
+                    child: const Icon(Icons.camera, size: 30,),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      )
     );
   }
 
   @override
   void dispose() {
-    controller?.dispose();
+    controller!.dispose();
     super.dispose();
   }
 

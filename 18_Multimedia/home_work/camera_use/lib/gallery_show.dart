@@ -1,43 +1,39 @@
+// Import Flutter
+import 'package:flutter/material.dart';
 import 'dart:io';
 
-import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
+// Import Packages
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class GalleryShow extends StatefulWidget {
+// Clear Architecture
+import 'package:camera_use/business/gallery_bloc.dart';
+import 'package:camera_use/model/gallery_model.dart';
+
+class GalleryShow extends StatelessWidget {
   const GalleryShow({super.key});
-
-  @override
-  State<GalleryShow> createState() => _GalleryShowState();
-
-  static void addImage({required XFile img}) {
-    _GalleryShowState().adddImage(img);
-  }
-
-}
-
-class _GalleryShowState extends State<GalleryShow> {
-  List<XFile> gallery = [];
-
-  void adddImage(XFile img) {
-    setState(() {
-      gallery.add(img);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gallery'),
+        title: const Text('Images gallery'),
         centerTitle: true,
       ),
-      body: Center(
-        child: ListView.builder(
-          itemCount: gallery.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Image.file(File(gallery[index].path), fit: BoxFit.cover,);
-          }
-        ),
+      body: BlocBuilder<GalleryBloc, GalleryModel>(
+        builder: (context, state) {
+          return state.images.isEmpty
+            ? const Center(child: Text('Gallery is Empty'))
+            : Center(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 2,
+                  crossAxisCount: 1,
+                ),
+                itemCount: state.images.length,
+                itemBuilder: (_, index) => Image.file(File(state.images[index]), fit: BoxFit.fitWidth,)
+              ),
+            );
+        },
       ),
     );
   }
