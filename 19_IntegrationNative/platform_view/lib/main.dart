@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:platform_view/service.dart';
+import 'package:platform_view/platform/mobile_service.dart';
 
 void main() => runApp(const MyApp());
 
@@ -26,12 +26,12 @@ class _MyHomePageState extends State<MyHomePage> {
   int _cnt = 0;
 
   void _getValue() async {
-    _cnt = await _service.callMethodChannel();
+    _cnt = await _service.getValue();
     setState(() => _cnt++);
   }
 
   void _getStream() async {
-    _service.callEventChannel().listen((event) {
+    _service.getStream().listen((event) {
       setState(() => _cnt = event);
     });
   }

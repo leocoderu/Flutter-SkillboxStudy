@@ -1,4 +1,4 @@
-package com.example.platform_app
+package com.example.platform_view
 
 import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
@@ -17,16 +17,23 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class MainActivity: FlutterActivity() {
+
+    private val androidViewId = "INTEGRATION_ANDROID"
     private val eventChannel = "CALL_EVENTS"
     private val methodChannelId = "CALL_METHOD"
     private val intentName = "EVENTS"
     private val intentMessageId = "CALL"
 
     private var receiver: BroadcastReceiver? = null
-    lateinit var job: Job
+    //lateinit var job: Job
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+
+        flatterEngine
+            .platformViewController
+            .registry
+            .registerViewFactory(androidViewId, AndroidButtonViewFactory(flutterEngine.dartExecutor.binaryMessenger))
 
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, methodChannelId).setMethodCallHandler {
                 call, result ->
@@ -39,22 +46,22 @@ class MainActivity: FlutterActivity() {
 
         EventChannel(flutterEngine.dartExecutor, eventChannel).setStreamHandler(
             object : EventChannel.StreamHandler {
-                @SuppressLint("UnspecifiedRegisterReceiverFlag")
+                //@SuppressLint("UnspecifiedRegisterReceiverFlag")
                 override fun onListen(args: Any?, events: EventChannel.EventSink) {
-                    val intent = Intent(intentName)
+                    //val intent = Intent(intentName)
                     receiver = createReceiver(events)
                     applicationContext?.registerReceiver(receiver, IntentFilter(intentName))
-                    job = CoroutineScope(Dispatchers.Default).launch {
-                        for (i in 1..20) {
-                            intent.putExtra(intentMessageId, Random.nextInt(0, 500))
-                            applicationContext?.sendBroadcast(intent)
-                            delay(1000)
-                        }
-                    }
+//                    job = CoroutineScope(Dispatchers.Default).launch {
+//                        for (i in 1..20) {
+//                            intent.putExtra(intentMessageId, Random.nextInt(0, 500))
+//                            applicationContext?.sendBroadcast(intent)
+//                            delay(1000)
+//                        }
+//                    }
                 }
 
                 override fun onCancel(args: Any?) {
-                    job.cancel()
+                    //job.cancel()
                     receiver = null
                 }
             }
