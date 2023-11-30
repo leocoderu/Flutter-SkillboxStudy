@@ -1,6 +1,6 @@
 {
-    "name": "platform_app",
-    "short_name": "platform_app",
+    "name": "platform_view",
+    "short_name": "platform_view",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

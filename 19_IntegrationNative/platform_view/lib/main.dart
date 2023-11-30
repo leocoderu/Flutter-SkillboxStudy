@@ -1,5 +1,8 @@
+//import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:platform_view/platform/mobile_service.dart';
+import 'package:platform_view/platform/platform_view_mobile.dart';
 
 void main() => runApp(const MyApp());
 
@@ -23,6 +26,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _service = PlatformServices();
+  //StreamSubscription? _subscription;
   int _cnt = 0;
 
   void _getValue() async {
@@ -30,23 +34,32 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() => _cnt++);
   }
 
-  void _getStream() async {
-    _service.getStream().listen((event) {
-      setState(() => _cnt = event);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final style = Theme.of(context).textTheme.headlineMedium;
     return Scaffold(
       appBar: AppBar(title: const Text('Platform Channels'), centerTitle: true),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Tap buttons and get Random values'),
-            Text('$_cnt', style: Theme.of(context).textTheme.headlineMedium,
+            Text('UI component from platform:', style: style),
+            const Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 20.0),
+                child: PlatformWidget(),
+              ),
             ),
+            Text('Stream from platform:', style: style),
+            StreamBuilder<int>(
+                stream: _service.getStream(),
+                builder: (context, snapshot) => Text(
+                  '${snapshot.hasData ? snapshot.data : 'No data'}',
+                  style: style,
+                ),
+            ),
+            Text('Value from Platform', style: style),
+            Text('$_cnt', style: style),
           ],
         ),
       ),
@@ -55,14 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           FloatingActionButton(
             onPressed: _getValue,
-            tooltip: 'Random',
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: _getStream,
-            tooltip: 'Stream',
-            child: const Icon(Icons.forward),
+            heroTag: null,
+            child: const Icon(Icons.get_app),
           ),
         ]
       )

@@ -1,6 +1,15 @@
 package com.example.platform_view
 
-internal class AndroidButtonView(context: Context, id: Int, creationParams: Map<String?, Any?>?, messenger: BinaryMessenger) : PlatformView {
+import android.content.Context
+import android.content.Intent
+import android.view.View
+import android.widget.Button
+import io.flutter.plugin.common.BinaryMessenger
+import io.flutter.plugin.platform.PlatformView
+import kotlin.random.Random
+
+internal class AndroidButtonView(context: Context, id: Int, creationParams: Map<String?, Any?>?, messenger: BinaryMessenger) :
+    PlatformView {
     private val button: Button = Button(context)
 
     private val intentName = "EVENTS"
