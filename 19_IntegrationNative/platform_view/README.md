@@ -1,4 +1,4 @@
-# platform_app
+# platform_view
 
 A new Flutter project.
 
