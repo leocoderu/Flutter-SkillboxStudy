@@ -1,4 +1,4 @@
-# platform_app
+# js_interop_app
 
 A new Flutter project.
 
