@@ -1,8 +1,5 @@
-//import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:js_interop_app/platform/platform_view_mobile.dart';
-import 'package:js_interop_app/platform/mobile_service.dart';
+import 'package:js_interop_app/platform/service.dart';
 
 void main() => runApp(const MyApp());
 
@@ -25,14 +22,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _service = PlatformServices();
+  final _service = PlatformService();
   //StreamSubscription? _subscription;
-  int _cnt = 0;
+  //int _cnt = 0;
 
-  void _getValue() async {
-    _cnt = await _service.getValue();
-    setState(() => _cnt++);
-  }
+  // void _getValue() async {
+  //   _cnt = await _service.getValue();
+  //   setState(() => _cnt++);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text('UI component from platform:', style: style),
-              const Center(
+              Center(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20.0),
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: PlatformWidget(),
                 ),
               ),

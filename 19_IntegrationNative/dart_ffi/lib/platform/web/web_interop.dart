@@ -1,6 +1,10 @@
 @JS('ClicksNamespace')
 library interop;
 
+import 'dart:async';
+import 'package:js/js.dart';
+
+
 @JS('JsInteropEvent')
 class _JsInteropEvent {
   external int value;
@@ -69,14 +73,14 @@ class InteropManager {
   late Stream<int> _buttonClicked;
 
   InteropManager() {
-    final _streamProvider = _EventStreamProvider.forTarget(_interop);
+    final streamProvider = _EventStreamProvider.forTarget(_interop);
 
     ui.platformViewRegistry.registerViewFactory(
       'web-button',
         (viewId) => _interop.buttonElement,
     );
 
-    _buttonClicked = _streamProvider.forEvent<_JsInteropEvent>(
+    _buttonClicked = streamProvider.forEvent<_JsInteropEvent>(
         'InteropEvent',
     ).map((event) => event.value);
   }

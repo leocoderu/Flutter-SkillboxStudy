@@ -1,4 +1,4 @@
-import 'package:js_interop_app/platform/service.dart';
+import 'package:dart_ffi/platform/service.dart';
 
 class PlatformServiceImpl implements PlatformService {
   @override
@@ -8,7 +8,7 @@ class PlatformServiceImpl implements PlatformService {
   }
 
   @override
-  Future<int> getValue() {
+  int getValue() {
     // TODO: implement getValue
     throw UnimplementedError();
   }

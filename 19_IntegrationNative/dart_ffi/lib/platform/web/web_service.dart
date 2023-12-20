@@ -1,10 +1,11 @@
-import 'package:js_interop_app/platform/service.dart';
+import 'package:dart_ffi/platform/service.dart';
+import 'package:dart_ffi/platform/web/web_interop.dart';
 
 class PlatformServiceImpl implements PlatformService {
   final _manager = InteropManager();
 
   @override
-  Future<int> getValue() async {
+  int getValue() {
     return _manager.getValueFromJs();
   }
 
