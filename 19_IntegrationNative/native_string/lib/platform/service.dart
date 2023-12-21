@@ -4,7 +4,7 @@ if (dart.library.io) 'mobile/mobile_service.dart';
 
 abstract class PlatformService {
   Future<int> getValue();
-  Stream<int> getStream();
+  Stream<int> getStream();         //!!!
 }
 
 PlatformService getService() {

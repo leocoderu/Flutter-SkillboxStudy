@@ -3,9 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:native_string/platform/platform_widget.dart';
 
-class PlatformWidget extends StatelessWidget {
-  const PlatformWidget({super.key});
+class PlatformWidgetImpl extends StatelessWidget implements PlatformWidget {
+  const PlatformWidgetImpl({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class PlatformWidget extends StatelessWidget {
       view = Text('$defaultTargetPlatform is not yet supported');
     }
 
-    return SizedBox(height: 50, width: 200, child: view);
+    return SizedBox(height: 50, width: 120, child: view);
   }
 
   void _onPlatformViewCreated(int id) {

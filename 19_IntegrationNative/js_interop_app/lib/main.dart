@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:js_interop_app/platform/platform_widget.dart';
 import 'package:js_interop_app/platform/service.dart';
 
 void main() => runApp(const MyApp());
@@ -22,14 +25,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _service = PlatformService();
-  //StreamSubscription? _subscription;
-  //int _cnt = 0;
+  final _service = getService();
+  StreamSubscription? _subscription;
+  int _cnt = 0;
 
-  // void _getValue() async {
-  //   _cnt = await _service.getValue();
-  //   setState(() => _cnt++);
-  // }
+  void _getValue() async {
+    final value = await _service.getValue();
+    setState(() => _cnt = value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: PlatformWidget(),
+                  child: getWidget() as Widget,
                 ),
               ),
               Text('Stream from platform:', style: style),
@@ -71,5 +74,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ]
         )
     );
+  }
+
+  @override
+  void dispose() {
+    _subscription?.cancel();
+    super.dispose();
   }
 }

@@ -37,6 +37,7 @@ class JsInteropManager extends EventEmitter {
 
         window.addEventListener('click', (e) => {
             if(e.target === this.buttonElement) {
+                //const interopEvent = new JsInteropEvent("String from Web Native Side"); //!!!
                 const interopEvent = new JsInteropEvent(Math.floor(Math.random() * 500));
                 this.dispatchEvent(interopEvent);
             }
@@ -59,5 +60,5 @@ class JsInteropEvent {
 
 window.ClicksNamespace = {
     JsInteropManager,
-    JsInteropEvent
+    JsInteropEvent,
 }

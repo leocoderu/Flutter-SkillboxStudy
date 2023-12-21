@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:native_string/platform/platform_widget.dart';
 
-class PlatformWidget extends StatelessWidget {
-  const PlatformWidget({super.key});
+class PlatformWidgetImpl extends StatelessWidget implements PlatformWidget {
+  const PlatformWidgetImpl({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,8 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-class PlatformWidget extends StatelessWidget {
-  const PlatformWidget({super.key});
+import 'package:js_interop_app/platform/platform_widget.dart';
+
+class PlatformWidgetImpl extends StatelessWidget implements PlatformWidget{
+  const PlatformWidgetImpl({super.key});
 
   @override
   Widget build(BuildContext context) {

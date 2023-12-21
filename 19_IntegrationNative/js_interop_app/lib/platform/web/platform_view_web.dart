@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:js_interop_app/platform/platform_widget.dart';
 
-class PlatformWidget extends StatelessWidget {
-  const PlatformWidget({super.key});
+class PlatformWidgetImpl extends StatelessWidget implements PlatformWidget{
+  const PlatformWidgetImpl({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class PlatformWidget extends StatelessWidget {
   }
 
   void _onPlatformViewCreated(int id) {
-
+    // ignore: avoid_print
     print('Platform with id:$id created');
   }
 }

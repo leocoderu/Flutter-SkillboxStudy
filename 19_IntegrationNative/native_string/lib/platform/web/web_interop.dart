@@ -7,19 +7,20 @@ import 'dart:ui' as ui;
 
 @JS('JsInteropEvent')
 class _JsInteropEvent {
-  external int value;
+  external int value;       //!!!
 }
 
-@JS('_JsInteropEventType')
+@JS('JsInteropEventType')
 class EventType {
-  external static String get interopEvent;
+  // ignore: non_constant_identifier_names
+  external static String get InteropEvent;
 }
 
 typedef _ClicksManagerEventListener = void Function(_JsInteropEvent event);
 
 @JS('JsInteropManager')
 class _JsInteropManager {
-  external dynamic get buttonElement;
+  external int get buttonElement;   //dynamic
 
   external int getValueFromJs();
 
@@ -64,30 +65,27 @@ class _EventStreamProvider {
   }
 
   void dispose() {
-    for (var controller in _controllers) {
-      controller.close();
-    }
+    _controllers.forEach((controller) => controller.close());
   }
 }
 
 class InteropManager {
   final _interop = _JsInteropManager();
-  late Stream<int> _buttonClicked;
+  late Stream<int> _buttonClicked;      //!!!
 
   InteropManager() {
     final streamProvider = _EventStreamProvider.forTarget(_interop);
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
-      'web-button',
-        (viewId) => _interop.buttonElement,
+      'web-button', (viewId) => _interop.buttonElement,
     );
 
     _buttonClicked = streamProvider.forEvent<_JsInteropEvent>(
-        'InteropEvent',
+      'InteropEvent',
     ).map((event) => event.value);
   }
 
   int getValueFromJs() => _interop.getValueFromJs();
 
-  Stream<int> get buttonClicked => _buttonClicked;
+  Stream<int> get buttonClicked => _buttonClicked;    //!!!
 }

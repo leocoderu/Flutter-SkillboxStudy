@@ -1,13 +1,19 @@
 @JS('ClicksNamespace')
 library interop;
 
+import 'dart:async';
+import 'package:js/js.dart';
+//import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
+
 @JS('JsInteropEvent')
 class _JsInteropEvent {
   external int value;
 }
 
-@JS('_JsInteropEventType')
+@JS('JsInteropEventType')
 class EventType {
+  // ignore: non_constant_identifier_names
   external static String get InteropEvent;
 }
 
@@ -15,9 +21,9 @@ typedef _ClicksManagerEventListener = void Function(_JsInteropEvent event);
 
 @JS('JsInteropManager')
 class _JsInteropManager {
-  external dynamic get buttonElement;
+  external int get buttonElement;
 
-  external int getValueFromJs();
+  external int getValueFromJs();         // int
 
   external void addEventListener(
       String event,
@@ -38,20 +44,20 @@ class _EventStreamProvider {
 
   Stream<T> forEvent<T extends _JsInteropEvent>(String eventType) {
     late StreamController<T> controller;
-    void _onEventReceived(event) {
+    void onEventReceived(event) {
       controller.add(event as T);
     }
 
-    final _interropted = allowInterop(_onEventReceived);
+    final interopted = allowInterop(onEventReceived);
 
     controller = StreamController.broadcast(
       onCancel: () => _eventTarget.removeEventListener(
         eventType,
-        _interropted,
+        interopted,
       ),
       onListen: () => _eventTarget.addEventListener(
         eventType,
-        _interropted,
+        interopted,
       ),
     );
     _controllers.add(controller);
@@ -60,7 +66,9 @@ class _EventStreamProvider {
   }
 
   void dispose() {
-    _controllers.forEach((controller) => controller.close());
+    for (var controller in _controllers) {
+      controller.close();
+    }
   }
 }
 
@@ -69,14 +77,15 @@ class InteropManager {
   late Stream<int> _buttonClicked;
 
   InteropManager() {
-    final _streamProvider = _EventStreamProvider.forTarget(_interop);
+    final streamProvider = _EventStreamProvider.forTarget(_interop);
 
+    // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
       'web-button',
         (viewId) => _interop.buttonElement,
     );
 
-    _buttonClicked = _streamProvider.forEvent<_JsInteropEvent>(
+    _buttonClicked = streamProvider.forEvent<_JsInteropEvent>(
         'InteropEvent',
     ).map((event) => event.value);
   }

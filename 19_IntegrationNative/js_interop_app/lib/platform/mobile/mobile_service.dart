@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:js_interop_app/platform/service.dart';
 
-class PlatformServicesImpl implements PlatformService {
+class PlatformServiceImpl implements PlatformService {
   static const platform = MethodChannel('CALL_METHOD');
   static const stream = EventChannel('CALL_EVENTS');
 
