@@ -8,5 +8,5 @@ class PlatformServiceImpl implements PlatformService {
   Future<int> getValue() async => _manager.getValueFromJs();
 
   @override
-  Stream<int> getStream() => _manager.buttonClicked; //!!!
+  Stream<String> getStream() => _manager.buttonClicked; //!!! int
 }

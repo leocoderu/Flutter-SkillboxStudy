@@ -7,7 +7,7 @@ import 'dart:ui' as ui;
 
 @JS('JsInteropEvent')
 class _JsInteropEvent {
-  external int value;       //!!!
+  external String value;       //!!! int
 }
 
 @JS('JsInteropEventType')
@@ -71,7 +71,7 @@ class _EventStreamProvider {
 
 class InteropManager {
   final _interop = _JsInteropManager();
-  late Stream<int> _buttonClicked;      //!!!
+  late Stream<String> _buttonClicked;      //!!! int
 
   InteropManager() {
     final streamProvider = _EventStreamProvider.forTarget(_interop);
@@ -87,5 +87,5 @@ class InteropManager {
 
   int getValueFromJs() => _interop.getValueFromJs();
 
-  Stream<int> get buttonClicked => _buttonClicked;    //!!!
+  Stream<String> get buttonClicked => _buttonClicked;    //!!! int
 }

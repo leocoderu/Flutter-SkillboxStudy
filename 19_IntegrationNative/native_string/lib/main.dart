@@ -33,12 +33,12 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _urlCtrl = TextEditingController();
   StreamSubscription? _subscription;
   final _service = getService();
-  int _cnt = 0;
-
-  void _getValue() async {
-    final value = await _service.getValue();
-    setState(() => _cnt = value);
-  }
+  // int _cnt = 0;
+  //
+  // void _getValue() async {
+  //   final value = await _service.getValue();
+  //   setState(() => _cnt = value);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 50.0,),
             Text('Text from platform:', style: style),
-            StreamBuilder<int>(                    //!!!
+            StreamBuilder<String>(                    //!!! int
               stream: _service.getStream(),
               builder: (context, snapshot) => Text(
                 '${snapshot.hasData ? snapshot.data : 'No data'}',

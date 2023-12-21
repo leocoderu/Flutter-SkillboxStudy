@@ -31,6 +31,7 @@ class MainActivity: FlutterActivity() {
                 call, result ->
             if (call.method == intentMessageId) {
                 result.success(Random.nextInt(0, 500))
+                //result.success("SomeString")
             } else {
                 result.notImplemented()
             }
@@ -53,7 +54,8 @@ class MainActivity: FlutterActivity() {
     fun createReceiver(events: EventChannel.EventSink): BroadcastReceiver {
         return object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
-                events.success(intent.getIntExtra(intentMessageId, 0))  //!!!
+                //events.success(intent.getIntExtra(intentMessageId, 0))  //!!!
+                events.success(intent.getStringExtra(intentMessageId))
             }
         }
     }

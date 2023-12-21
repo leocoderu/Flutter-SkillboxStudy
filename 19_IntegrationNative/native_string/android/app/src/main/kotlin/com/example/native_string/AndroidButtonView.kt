@@ -26,8 +26,8 @@ internal class AndroidButtonView(context: Context, id: Int, creationParams: Map<
         button.text = "Send to Native"
         button.setOnClickListener {
             val intent = Intent(intentName)
-            //intent.putExtra(intentMessageId, "String from Android Native Side")
-            intent.putExtra(intentMessageId, Random.nextInt(0, 500))
+            intent.putExtra(intentMessageId, "String from Android Native Side")
+            //intent.putExtra(intentMessageId, Random.nextInt(0, 500))
             context.sendBroadcast(intent)
         }
     }

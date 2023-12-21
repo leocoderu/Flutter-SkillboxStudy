@@ -17,5 +17,5 @@ class PlatformServiceImpl implements PlatformService {
   }
 
   @override
-  Stream<int> getStream() => stream.receiveBroadcastStream().map((event) => event as int);  //!!!
+  Stream<String> getStream() => stream.receiveBroadcastStream().map((event) => event as String);  //!!! int
 }

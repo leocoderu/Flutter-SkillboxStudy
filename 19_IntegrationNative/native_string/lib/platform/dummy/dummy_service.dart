@@ -2,7 +2,7 @@ import 'package:native_string/platform/service.dart';
 
 class PlatformServiceImpl implements PlatformService {
   @override
-  Stream<int> getStream() {        //!!!
+  Stream<String> getStream() {        //!!! int
     // TODO: implement getStream
     throw UnimplementedError();
   }
