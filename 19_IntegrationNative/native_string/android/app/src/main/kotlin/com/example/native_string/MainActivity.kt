@@ -16,6 +16,7 @@ class MainActivity: FlutterActivity() {
     private val methodChannelId = "CALL_METHOD"
     private val intentName = "EVENTS"
     private val intentMessageId = "CALL"
+    private val sendStringMethod = "SOME_METHOD"
 
     private var receiver: BroadcastReceiver? = null
 
@@ -29,11 +30,18 @@ class MainActivity: FlutterActivity() {
 
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, methodChannelId).setMethodCallHandler {
                 call, result ->
-            if (call.method == intentMessageId) {
-                result.success(Random.nextInt(0, 500))
-                //result.success("SomeString")
-            } else {
-                result.notImplemented()
+            when (call.method) {
+                intentMessageId -> {
+                    result.success(Random.nextInt(0, 500))
+                }
+                sendStringMethod -> {
+                    val data = call.argument<String>("key")
+                    // Разворот принимаемой строки обратно во Flutter
+                    result.success(data)
+                }
+                else -> {
+                    result.notImplemented()
+                }
             }
         }
 

@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+//import 'package:flutter/services.dart';
 import 'package:native_string/platform/service.dart';
-import 'package:native_string/platform/platform_widget.dart';
+//import 'package:native_string/platform/platform_widget.dart';
 
 void main() => runApp(const MyApp());
 
@@ -31,8 +32,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _urlCtrl = TextEditingController();
+  //final channel = const MethodChannel('CALL_METHOD');
   StreamSubscription? _subscription;
   final _service = getService();
+  String res = '';
   // int _cnt = 0;
   //
   // void _getValue() async {
@@ -57,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 50.0),
               child: TextField(
                 decoration: InputDecoration(
-                  suffixIcon: getWidget() as Widget,
+                  //suffixIcon: getWidget() as Widget,
+                  suffixIcon: _sendButton(),
                   hintText: 'You should enter something',
                   helperText: 'This is special field for enter some String to native layer',
                   labelText: 'Enter some text here',
@@ -67,31 +71,43 @@ class _MyHomePageState extends State<MyHomePage> {
                 onSubmitted: (text) {},
               ),
             ),
-            const SizedBox(height: 50.0,),
+            const SizedBox(height: 30.0,),
             Text('Text from platform:', style: style),
-            StreamBuilder<String>(                    //!!! int
-              stream: _service.getStream(),
-              builder: (context, snapshot) => Text(
-                '${snapshot.hasData ? snapshot.data : 'No data'}',
-                style: style,
-              ),
-            ),
+            Text(res, style: style),
+            // StreamBuilder<String>(                    //!!! int
+            //   stream: _service.getStream(),
+            //   builder: (context, snapshot) => Text(
+            //     '${snapshot.hasData ? snapshot.data : 'No data'}',
+            //     style: style,
+            //   ),
+            // ),
             // Text('Value from Platform', style: style),
             // Text('$_cnt', style: style),
           ],
         ),
       ),
-      // floatingActionButton: Column(
-      //     mainAxisAlignment: MainAxisAlignment.end,
-      //     children: [
-      //       FloatingActionButton(
-      //         onPressed: _getValue,
+      // floatingActionButton: FloatingActionButton(
+      //         onPressed: () {_sendStr(_urlCtrl.value.text);},
       //         heroTag: null,
       //         child: const Icon(Icons.get_app),
       //       ),
-      //     ]
-      // ),
     );
+  }
+
+  Widget _sendButton() {
+    return ElevatedButton(
+        onPressed: () {_sendStr(_urlCtrl.value.text);},
+        child: const Text('Send to Native'),
+    );
+  }
+
+  void _sendStr(String sndStr) async {
+    if(sndStr != '') {
+      final value = await _service.sendString(sndStr);
+      setState(() {
+        res = value;
+      });
+    }
   }
 
   @override

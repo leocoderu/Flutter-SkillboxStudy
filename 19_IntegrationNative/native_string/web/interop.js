@@ -49,6 +49,11 @@ class JsInteropManager extends EventEmitter {
     getValueFromJs() {
         return Math.floor(Math.random * 500);
     }
+
+    sendString(data) {
+        // Разворот принимаемой строки обратно во Flutter
+        return data;
+    }
 }
 
 class JsInteropEvent {

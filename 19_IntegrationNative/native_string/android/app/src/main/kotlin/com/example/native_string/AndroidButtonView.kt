@@ -23,7 +23,7 @@ internal class AndroidButtonView(context: Context, id: Int, creationParams: Map<
 
     init {
         button.textSize = 13f
-        button.text = "Send to Native"
+        button.text = "Get from Native"
         button.setOnClickListener {
             val intent = Intent(intentName)
             intent.putExtra(intentMessageId, "String from Android Native Side")

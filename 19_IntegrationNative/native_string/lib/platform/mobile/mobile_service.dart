@@ -17,5 +17,16 @@ class PlatformServiceImpl implements PlatformService {
   }
 
   @override
+  Future<String> sendString(String data) async {
+    try {
+      return await platform.invokeMethod('SOME_METHOD', {'key': data});
+    } catch (e) {
+      // ignore: avoid_print
+      print("An error occurred while sending data to Kotlin: $e");
+      return "Error of transfer data trow platform";
+    }
+  }
+
+  @override
   Stream<String> getStream() => stream.receiveBroadcastStream().map((event) => event as String);  //!!! int
 }
