@@ -65,7 +65,9 @@ class _EventStreamProvider {
   }
 
   void dispose() {
-    _controllers.forEach((controller) => controller.close());
+    for (var controller in _controllers) {
+      controller.close();
+    }
   }
 }
 
