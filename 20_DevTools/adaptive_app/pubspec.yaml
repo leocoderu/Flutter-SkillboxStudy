@@ -1,0 +1,51 @@
+name: adaptive_app
+description: Adaptive App
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.3 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  popover: ^0.2.8+2
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/data/
+
+  fonts:
+    - family: Prompt
+      fonts:
+        - asset: assets/fonts/Prompt-Black.ttf
+        - asset: assets/fonts/Prompt-BlackItalic.ttf
+        - asset: assets/fonts/Prompt-Regular.ttf
+        - asset: assets/fonts/Prompt-Italic.ttf
+        - asset: assets/fonts/Prompt-Bold.ttf
+        - asset: assets/fonts/Prompt-BoldItalic.ttf
+        - asset: assets/fonts/Prompt-ExtraBold.ttf
+        - asset: assets/fonts/Prompt-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Prompt-ExtraLight.ttf
+        - asset: assets/fonts/Prompt-ExtraLightItalic.ttf
+        - asset: assets/fonts/Prompt-Light.ttf
+        - asset: assets/fonts/Prompt-LightItalic.ttf
+        - asset: assets/fonts/Prompt-Medium.ttf
+        - asset: assets/fonts/Prompt-MediumItalic.ttf
+        - asset: assets/fonts/Prompt-SemiBold.ttf
+        - asset: assets/fonts/Prompt-SemiBoldItalic.ttf
+        - asset: assets/fonts/Prompt-Thin.ttf
+        - asset: assets/fonts/Prompt-ThinItalic.ttf
+          style: italic
