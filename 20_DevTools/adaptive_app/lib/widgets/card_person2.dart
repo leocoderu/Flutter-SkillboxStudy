@@ -45,7 +45,7 @@ class _CardPersonState extends State<CardPerson2> {
                 width: 65.0,
                 height: 65.0,
                 child: CircleAvatar(
-                  backgroundImage: NetworkImage(widget.photo),
+                  backgroundImage: AssetImage(widget.photo),
                   radius: 60.0,
                 ),
               ),

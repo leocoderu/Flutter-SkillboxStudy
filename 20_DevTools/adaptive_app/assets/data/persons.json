@@ -1,77 +1,77 @@
 [
   {
     "name": "Salma Hayek",
-    "photo": "https://yobte.ru/uploads/posts/2020-01/salma-hajek-45-foto-22.jpg",
+    "photo": "assets/photos/salma_hayek.jpg",
     "about": "Mexican-American actress, film director and producer. Born September 2, 1966, Coatzacoalcos, Mexico"
   },
   {
     "name": "Olivia Wilde",
-    "photo": "http://s2.r29static.com/bin/entry/f08/x,80/1758834/image.jpg",
+    "photo": "assets/photos/olivia_wilde.jpg",
     "about": "American actress, producer and director. Born March 10, 1984"
   },
   {
     "name": "Sarah-Michelle Gellar",
-    "photo": "http://tapety.tja.pl/obrazki/tja_normalne/7151.jpg",
+    "photo": "assets/photos/sarah_michelle_gellar.jpg",
     "about": "American actress and television producer, born April 14, 1977 in New York"
     },
   {
     "name": "Live Tyler",
-    "photo": "https://static.cinemagia.ro/img/db/actor/00/09/20/liv-tyler-491406l.jpg",
+    "photo": "assets/photos/live_tyler.jpg",
     "about": "American actress, producer and former model. Daughter of musician Steven Tyler and model Bebe Buell. Born July 1, 1977 in East Harlem, New York, USA"
   },
   {
     "name": "Alicia Silverstone",
-    "photo": "https://i.pinimg.com/736x/8d/fb/89/8dfb899eebcddfc7be379c6a3ebd376e.jpg",
+    "photo": "assets/photos/alicia_silverstone.jpg",
     "about": "American actress, former fashion model. At the beginning of her career, she starred in music videos for the songs of the American rock band Aerosmith. Born October 4, 1976 in San Francisco, California, USA"
   },
   {
     "name": "Charlotte Hope",
-    "photo": "https://i0.wp.com/image.tmdb.org/t/p/w342/ynRfl1EKA7aXmN6JJMfpAWIsslq.jpg",
+    "photo": "assets/photos/charlotte_hope.jpg",
     "about": "English actress. Born 15 October 1991 in Salisbury"
   },
   {
     "name": "Scarlett Johansson",
-    "photo": "https://www.celebstar.net/pictures/scarlett_johansson/more-free-pictures/scarlett-johansson_5386.jpg",
+    "photo": "assets/photos/scarlett_johansson.jpg",
     "about": "American actress. Born November 22, 1984 in Manhattan, New York, New York, USA"
   },
   {
     "name": "Christian Stewart",
-    "photo": "https://img-s3.onedio.com/id-58ca91f887f5ccfd1ba7f514/rev-0/raw/s-ba9b1cc5eaf8d57d99ba8c9a29f83ad0fd0d857c.jpg",
+    "photo": "assets/photos/christian_stewart.jpg",
     "about": "American actress. Born April 9, 1990 in Los Angeles, California, USA"
   },
   {
     "name": "Evangeline Lilly",
-    "photo": "https://i.pinimg.com/originals/5a/c4/e2/5ac4e25a891e86f4a3b46d932e6c9cd9.jpg",
+    "photo": "assets/photos/evangeline_lilly.jpg",
     "about": "Canadian actress. Born August 3, 1979, Fort Saskatchewan, Alberta, Canada"
   },
   {
     "name": "Eva Green",
-    "photo": "https://img.huffingtonpost.com/asset/63d3e28a2200006400286c33.jpeg?cache=faj9PvQz3K&amp;ops=1200_630",
+    "photo": "assets/photos/eva_green.jpeg",
     "about": "French theater, film and television actress, model. Born July 6, 1980, Paris, France"
   },
   {
     "name": "Maggy Grace",
-    "photo": "https://i.pinimg.com/736x/d6/45/9c/d6459c56d944079bf3ab17dfffc79620--maggie-grace-grace-omalley.jpg",
+    "photo": "assets/photos/maggy_grace.jpg",
     "about": "American actress. Born September 21, 1983 in Worthington, Ohio"
   },
   {
     "name": "Michelle Rodríguez",
-    "photo": "https://topovik.com/wp-content/uploads/2018/02/mishel_rodriges_aktrisa_litso_fotosessiya_109211_1920x1200.jpg",
+    "photo": "assets/photos/michelle_rodríguez.jpg",
     "about": "American film and television actress. Born July 12, 1978, San Antonio, Texas, USA"
   },
   {
     "name": "Kate Beckinsale",
-    "photo": "https://www.peoples.ru/art/cinema/actor/beckinsale/beckinsale_201208211407456.jpg",
+    "photo": "assets/photos/kate_beckinsale.jpg",
     "about": "British actress. Born 26 July 1973 in Chiswick, Greater London"
   },
   {
     "name": "Cate Blanchett",
-    "photo": "https://s2.glbimg.com/YBbbcIjvhXMvFHxqBnkA4JZ3D70=/600x400/smart/e.glbimg.com/og/ed/f/original/2018/03/14/gettyimages-887872476.jpg",
+    "photo": "assets/photos/cate_blanchett.jpg",
     "about": "Australian theater, film, television and voice actress. Born May 14, 1969, Melbourne, Australia"
   },
   {
     "name": "Reese Witherspoon",
-    "photo": "https://avatars.dzeninfra.ru/get-zen_doc/3484848/pub_5ef84eae5051695e27daf9b2_5ef851a8990f037cd2fbac26/scale_1200",
+    "photo": "assets/photos/reese_witherspoon.jpg",
     "about": "American actress and producer. Born March 22, 1976, New Orleans, Louisiana"
   }
 ]

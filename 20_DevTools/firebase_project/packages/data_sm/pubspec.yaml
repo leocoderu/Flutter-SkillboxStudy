@@ -1,0 +1,31 @@
+name: data_sm
+description: Data package for SM App.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.2
+  firebase_core: ^2.10.0
+  firebase_storage: ^11.1.1
+  cloud_firestore: ^4.5.2
+  firebase_auth: ^4.4.2
+  google_sign_in: ^6.1.0
+  model:
+    path: ../model
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  analyzer_sm:
+    path: ../analyzer_sm
+
+flutter:
+  uses-material-design: true

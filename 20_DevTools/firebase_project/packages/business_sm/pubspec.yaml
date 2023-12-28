@@ -1,0 +1,35 @@
+name: business_sm
+description: Package with Business Logic layer
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.2
+  get_it: ^7.3.0
+  #hive: ^2.2.3
+  #hive_flutter: ^1.1.0
+  firebase_core: ^2.10.0
+  firebase_auth: ^4.4.2
+  cloud_firestore: ^4.5.2
+  google_sign_in: ^6.1.0
+  model:
+    path: ../model
+  data_sm:
+    path: ../data_sm
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  analyzer_sm:
+    path: ../analyzer_sm
+
+flutter:
+  uses-material-design: true
