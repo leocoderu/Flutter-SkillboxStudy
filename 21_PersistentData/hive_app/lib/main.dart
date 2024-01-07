@@ -114,7 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
         : ValueListenableBuilder(
             valueListenable: _personBox!.listenable(),
             builder: (context, Box<Person> box, widget) {
-              return ListView.builder(
+              return (box.length == 0)
+              ? const Center(child: Text('No person added to list', style: TextStyle(fontSize: 20.0),))
+              : ListView.builder(
                 itemCount: box.length,
                 itemBuilder: (_, index) {
                   final item = box.values.elementAt(index);
