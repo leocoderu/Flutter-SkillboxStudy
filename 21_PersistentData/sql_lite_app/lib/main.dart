@@ -48,22 +48,20 @@ class _MyHomePageState extends State<MyHomePage> {
     db = await openDatabase(
       join(await getDatabasesPath(), 'dogs.db'),
       onCreate: (db, version) {
-        return db.execute(
-          'CREATE TABLE dogs(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
-        );
+        return db.execute('CREATE TABLE dogs(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)');
       },
       version: 1,
     );
 
     setState(() {});
   }
-  // Инсерт, кюри, ппц!
+  // Инсерт, кюри, вере.... ппц!
   
   Future<void> insertDog(Dog dog) async {
     await db!.insert(
       'dogs',
       dog.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace,
+      conflictAlgorithm: ConflictAlgorithm.replace,
     );
     setState(() {});
   }
@@ -118,10 +116,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _idController.text = dog.id.toString();
       _nameController.text = dog.name;
       _ageController.text = dog.age.toString();
-    } else {
-      _idController.text = '';
-      _nameController.text = '';
-      _ageController.text = '';
     }
 
     if(context.mounted) {
@@ -165,11 +159,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dog(id: int.parse(_idController.text.trim()),
                                 name: _nameController.text.trim(),
                                 age: int.parse(_ageController.text.trim())));
+                        _idController.text = '';
                         _nameController.text = '';
                         _ageController.text = '';
                         Navigator.of(context).pop();
                       },
-                      child: Text(idx == null ? 'Create New' : 'Update'),
+                      child: Text(idx == null ? 'Add New' : 'Update'),
                     ),
                   ],
                 ),
@@ -231,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showForm(context, null),
-        tooltip: 'Insert',
+        tooltip: 'Add New',
         child: const Icon(Icons.add),
       ),
     );
