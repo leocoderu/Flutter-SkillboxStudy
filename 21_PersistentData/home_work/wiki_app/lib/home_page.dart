@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'package:model/model.dart';
+import 'package:wiki_app/items_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _initHive() async {
     await Hive.initFlutter();
     Hive.registerAdapter(CategoryAdapter());
+    Hive.registerAdapter(ItemsAdapter());
 
     Hive.openBox<Category>('category')
         .then((value) => setState(() => _categoryBox = value));
@@ -48,7 +50,7 @@ class _HomePageState extends State<HomePage> {
       _nameController.text = existingItem.name;
     }
 
-    showModalBottomSheet(
+    showModalBottomSheet<Widget>(
         context: ctx,
         isScrollControlled: true,
         builder: (context) => Container(
@@ -104,8 +106,16 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (_, index) {
                         final item = box.values.elementAt(index);
                         return GestureDetector(
-                          onTap: () {},
-                          onLongPress: () {},
+                          onTap: () {
+                            Navigator.of(context).push(
+                                MaterialPageRoute<Widget>(
+                                  builder: (BuildContext context) {
+                                    return ItemsPage(category: item);
+                                  },
+                                ),
+                            );
+                          },
+                          //onLongPress: () {},
                           child: Slidable(
                             key: UniqueKey(),
                             endActionPane: ActionPane(
