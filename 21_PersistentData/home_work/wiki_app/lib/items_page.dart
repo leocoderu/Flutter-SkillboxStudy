@@ -22,14 +22,10 @@ class _ItemsPageState extends State<ItemsPage> {
   }
 
   Future<void> _initHive() async {
-    //await Hive.initFlutter();
-    //Hive.registerAdapter(ItemsAdapter());
-
     await Hive.openBox<Items>('items').then((value) => setState(() => _itemsBox = value));
-
     if (_itemsBox != null) {
       setState(() {
-        _list = _itemsBox!.values.where((e) => (e.category == widget.category)).toList();
+        _list = _itemsBox!.values.where((e) => (e.category == widget.category.id)).toList();
       });
     }
   }
@@ -95,6 +91,9 @@ class _ItemsPageState extends State<ItemsPage> {
 
   @override
   Widget build(BuildContext context) {
+    // if (_list != null) {
+    //   print('_list = ${_list!.length}');
+    // }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -103,13 +102,18 @@ class _ItemsPageState extends State<ItemsPage> {
       ),
       body: Center(
         child: (_list == null)
+        //child: (_itemsBox == null)
         ? const CircularProgressIndicator()
         : (_list!.length == 0)
+        //: (_itemsBox == 0) //(_list!.length == 0)
           ? const Center(child: Text('No items added to the category', style: TextStyle(fontSize: 20.0),))
           : ListView.builder(
               itemCount: _list!.length,
+              //itemCount: _itemsBox!.length,
               itemBuilder: (_, index) {
-                final item = _list![index];//.values.elementAt(index);
+                final item = _list!.elementAt(index);
+                //print(item.name);
+                //final item = _itemsBox!.values.elementAt(index);
                 return GestureDetector(
                   onTap: () {
                     // Navigator.of(context).push(
@@ -143,7 +147,7 @@ class _ItemsPageState extends State<ItemsPage> {
                         width: double.infinity,
                         height: 50.0,
                         child: Center(
-                          child: Text('${item.name}', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+                          child: Text('${item.id} - ${item.name} - ${item.category}', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
                         ),
                       ),
                     ),
