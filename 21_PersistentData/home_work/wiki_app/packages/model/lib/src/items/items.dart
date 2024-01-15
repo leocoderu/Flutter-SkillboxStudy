@@ -15,5 +15,8 @@ class Items {
   @HiveField(2)
   int category;
 
+  @HiveField(3)
+  String? article;
+
   Items(this.id, this.name, this.category);
 }

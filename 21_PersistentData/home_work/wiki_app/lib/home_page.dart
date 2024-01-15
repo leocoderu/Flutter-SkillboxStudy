@@ -109,9 +109,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.of(context).push(
                                 MaterialPageRoute<Widget>(
-                                  builder: (BuildContext context) {
-                                    return ItemsPage(category: item);
-                                  },
+                                  builder: (BuildContext context) => ItemsPage(category: item),
                                 ),
                             );
                           },

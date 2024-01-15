@@ -20,19 +20,21 @@ class ItemsAdapter extends TypeAdapter<Items> {
       fields[0] as int,
       fields[1] as String,
       fields[2] as int,
-    );
+    )..article = fields[3] as String?;
   }
 
   @override
   void write(BinaryWriter writer, Items obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.category);
+      ..write(obj.category)
+      ..writeByte(3)
+      ..write(obj.article);
   }
 
   @override
