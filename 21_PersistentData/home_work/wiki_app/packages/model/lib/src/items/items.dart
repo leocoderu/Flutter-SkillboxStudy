@@ -18,5 +18,5 @@ class Items {
   @HiveField(3)
   String? article;
 
-  Items(this.id, this.name, this.category);
+  Items(this.id, this.name, this.category, this.article);
 }

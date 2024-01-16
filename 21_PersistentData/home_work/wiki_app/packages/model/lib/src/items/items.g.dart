@@ -20,7 +20,8 @@ class ItemsAdapter extends TypeAdapter<Items> {
       fields[0] as int,
       fields[1] as String,
       fields[2] as int,
-    )..article = fields[3] as String?;
+      fields[3] as String?,
+    );
   }
 
   @override

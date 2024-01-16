@@ -59,7 +59,7 @@ class _ItemsPageState extends State<ItemsPage> {
             ElevatedButton(
               onPressed: () async {
                 int idEl = (idx != null) ? _itemsBox!.values.elementAt(idx).id : _getMaxID() + 1;
-                Items newItem = Items(idEl, _nameController.text.trim(), widget.category.id);
+                Items newItem = Items(idEl, _nameController.text.trim(), widget.category.id, '');
                 (idx == null) ? _addRec(newItem) : _renameRec(idx, newItem);
                 Navigator.of(context).pop();
               },
@@ -94,7 +94,7 @@ class _ItemsPageState extends State<ItemsPage> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute<Widget>(
-                        builder: (BuildContext context) => ArticlePage(items: item),
+                        builder: (BuildContext context) => ArticlePage(index: index, items: item),
                       ),
                     );
                   },
@@ -121,7 +121,7 @@ class _ItemsPageState extends State<ItemsPage> {
                         width: double.infinity,
                         height: 50.0,
                         child: Center(
-                          child: Text('${item.id} - ${item.name} - ${item.category}', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+                          child: Text('${item.name}', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
                         ),
                       ),
                     ),
