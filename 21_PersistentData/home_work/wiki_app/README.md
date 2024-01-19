@@ -18,5 +18,8 @@ This is a special Flutter project, links to which are added by users themselves.
 
 <img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893581.jpeg" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893656.jpeg" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893617.jpeg" width ="200" />
 
+## Snapshots from Wiki App
+
+
 ## Usability commands
 - Запуск кодогенерации: flutter pub run build_runner build
