@@ -1,5 +1,5 @@
 # wiki_app
-A new Flutter project.
+This is a special Flutter project, links to which are added by users themselves.
 
 ## Цели задания
 - Научиться пользоваться пакетами для хранения данных на устройстве.
@@ -16,8 +16,8 @@ A new Flutter project.
 - Хранение записей и категорий можно реализовать с помощью Hive Boxes. Дизайн приложения можно реализовать на свой вкус.
 
 ![Task App Screen #1](/21_PersistentData/home_work/wiki_app/snapshots/1644485893581.jpeg?raw=true)
-![Task App Screen #2](/21_PersistentData/home_work/wiki_app/snapshots/1644485893617.jpeg?raw=true)
 ![Task App Screen #3](/21_PersistentData/home_work/wiki_app/snapshots/1644485893656.jpeg?raw=true)
+![Task App Screen #2](/21_PersistentData/home_work/wiki_app/snapshots/1644485893617.jpeg?raw=true)
 
 ## Usability commands
 - Запуск кодогенерации: flutter pub run build_runner build
