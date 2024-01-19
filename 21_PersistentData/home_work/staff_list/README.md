@@ -2,15 +2,17 @@
 
 Stafflist project, with data of users.
 
-## Getting Started
+## Цели задания
+- Научиться пользоваться пакетами для хранения данных на устройстве.
+- Научиться хранить данные как в виде пары «ключ-значение», так и в виде файла или SQL-базы данных.
+- Научиться хранить сложные типы данных.
+- Закрепить навык реализации пользовательского интерфейса.
 
-This project is a starting point for a Flutter application.
+## Реализуйте Flutter-приложение, которое хранит данные о пользователях, используя пакет drift или floor (на выбор).
+- На главной странице должен быть список пользователей (имя, фамилия, возраст, изображение, телефон и данные банковской карты).
+- Реализуйте возможность добавления пользователя в БД, удаления из неё и редактирования.
+- Сохраняйте данные банковской карты, используя безопасное хранилище данных.
+- Дизайн приложения можно реализовать на свой вкус.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Usability commands
+- Запуск кодогенерации: flutter pub run build_runner build
