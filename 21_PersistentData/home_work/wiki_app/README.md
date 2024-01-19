@@ -16,6 +16,8 @@ This is a special Flutter project, links to which are added by users themselves.
 - навигация позволяет пользователю перейти назад к списку записей и категорий.
 - Хранение записей и категорий можно реализовать с помощью Hive Boxes. Дизайн приложения можно реализовать на свой вкус.
 
+<img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893581.jpeg" width ="150" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893656.jpeg" width ="150" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893617.jpeg" width ="150" />
+
 ![Task App Screen #1](/21_PersistentData/home_work/wiki_app/snapshots/1644485893581.jpeg?raw=true)
 ![Task App Screen #3](/21_PersistentData/home_work/wiki_app/snapshots/1644485893656.jpeg?raw=true)
 ![Task App Screen #2](/21_PersistentData/home_work/wiki_app/snapshots/1644485893617.jpeg?raw=true)
