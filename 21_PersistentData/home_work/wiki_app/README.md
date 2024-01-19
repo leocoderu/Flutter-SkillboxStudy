@@ -15,7 +15,7 @@ A new Flutter project.
 - навигация позволяет пользователю перейти назад к списку записей и категорий.
 - Хранение записей и категорий можно реализовать с помощью Hive Boxes. Дизайн приложения можно реализовать на свой вкус.
 
-![Task csreen](./snapshots/1644485893581.jpeg?raw=true)
+![Task csreen](/snapshots/1644485893581.jpeg?raw=true)
 
 ## Usability commands
 - Запуск кодогенерации: flutter pub run build_runner build
