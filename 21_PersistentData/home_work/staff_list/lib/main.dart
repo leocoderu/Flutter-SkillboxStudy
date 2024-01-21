@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:model/model.dart';
+import 'package:staff_list/widgets/staff_card.dart';
+
+import 'package:drift/drift.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
         useMaterial3: true,
       ),
       home: const MyHomePage(),
@@ -27,7 +30,65 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<User> _users = [];
+  late MyDatabase _usersbase;
+  List<User> _users = [
+    User(
+      id: 1,
+      name: 'Charlotte',
+      soname: 'Hope',
+      s_name: 'SecondName',
+      dateBirth: DateTime(1991, 10, 15),
+      phone: '+79094541234',
+      card: '2202 2002 1233 5462',
+      photo: 'https://i.pinimg.com/736x/f8/20/60/f820602379345b261428d64a1414c107--british-actresses-beautiful-people.jpg',
+    ),
+    User(
+      id: 2,
+      name: 'Olivia',
+      soname: 'Wilde',
+      s_name: 'SecondName',
+      dateBirth: DateTime(1984, 3, 10),
+      phone: '+79194548899',
+      card: '2202 2232 1444 5562',
+      photo: 'https://i.pinimg.com/736x/a9/be/c8/a9bec814740627f201d09826f633c61d.jpg',
+    ),
+    User(
+      id: 3,
+      name: 'Maggie',
+      soname: 'Grace',
+      //s_name: '',
+      dateBirth: DateTime(1983, 9, 21),
+      phone: '+19194448800',
+      card: '2002 2244 1477 5342',
+      photo: 'https://sun9-27.userapi.com/impg/MBi8RVnAzFqp2OYqXkfiK95lEBnuBx7gAKfwTg/oM9tjLxnfBo.jpg?size=484x604&quality=96&sign=f67b2b36bc0e62e29a7e1caac84eb13e&c_uniq_tag=k5Xktu1fAmFdnXRwt9a3sgWgXAuh1uZcfu7UR8I098A&type=album',
+    ),
+    User(
+      id: 4,
+      name: 'Sarah-Michelle',
+      soname: 'Gellar',
+      //s_name: '',
+      dateBirth: DateTime(1977, 4, 14),
+      phone: '+19194558899',
+      card: '2002 2244 1477 5342',
+      photo: 'https://avatars.dzeninfra.ru/get-zen_doc/5023541/pub_63a5b98fa88640098f65b73c_63a9976b6687fd369d61bb56/scale_1200',
+    ),
+    User(
+      id: 5,
+      name: 'Ольга',
+      soname: 'Куриленко',
+      s_name: 'Константиновна',
+      dateBirth: DateTime(1979, 11, 14),
+      phone: '+79894768195',
+      card: '2022 2278 1467 5843',
+      photo: 'http://ik-music.net/file/ольга%20куриленко5.jpg',
+    ),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _usersbase = MyDatabase();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +98,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Users List'), centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Some text'),
-          ],
+        child: ListView.builder(
+            itemCount: _users.length,
+            itemBuilder: (context, index) {
+              return StaffCard(user: _users[index]);
+            },
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Add User',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.person_add),
       ),
     );
   }
