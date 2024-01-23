@@ -60,7 +60,7 @@ class StaffCard extends StatelessWidget {
                       padding: EdgeInsets.only(top: 3.0),
                       child: Row(children: [
                         Text('Phone number: \t', style: lowDisplay ? lh3 : h3),
-                        Text('${user.phone}',style: lowDisplay ? lt1 : t1),
+                        Text('+${user.phone}',style: lowDisplay ? lt1 : t1),
                       ]),
                     ),
                   if (user.card != null)
@@ -68,7 +68,9 @@ class StaffCard extends StatelessWidget {
                       padding: EdgeInsets.only(top: 3.0),
                       child: Row(children: [
                         Text('Debit card: \t', style: lowDisplay ? lh3 : h3),
-                        Text('${user.card}',style: lowDisplay ? lt1 : t1),
+                        Text('${user.card!.substring(0,4)} ${user.card!.substring(4,8)} ${user.card!.substring(8,12)} ${user.card!.substring(12,16)}',
+                            style: lowDisplay ? lt1 : t1,
+                        ),
                       ]),
                     ),
                 ],

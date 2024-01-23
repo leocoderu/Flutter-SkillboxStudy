@@ -11,11 +11,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  drift: ^2.14.1
+  sqlite3_flutter_libs: ^0.5.18
+  path_provider: ^2.1.1
+  path: ^1.8.3
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  drift_dev: ^2.14.1
+  build_runner: ^2.4.7
   analyzer_sm:
     path: ../analyzer_sm
 

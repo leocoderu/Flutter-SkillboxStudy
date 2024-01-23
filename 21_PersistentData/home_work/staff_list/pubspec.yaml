@@ -10,10 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  drift: ^2.14.1
-  sqlite3_flutter_libs: ^0.5.18
-  path_provider: ^2.1.1
-  path: ^1.8.3
+  flutter_slidable: ^3.0.1
+  mask_text_input_formatter: ^2.8.0
   cupertino_icons: ^1.0.2
   model:
     path: ./packages/model
@@ -21,8 +19,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  drift_dev: ^2.14.1
-  build_runner: ^2.4.7
 
   analyzer_sm:
     path: ./packages/analyzer_sm
