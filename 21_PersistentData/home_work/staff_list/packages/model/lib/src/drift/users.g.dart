@@ -30,7 +30,7 @@ class $UsersTable extends Users with TableInfo<$UsersTable, User> {
   late final GeneratedColumn<String> soname = GeneratedColumn<String>(
       'soname', aliasedName, true,
       additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 3, maxTextLength: 32),
+          GeneratedColumn.checkTextLength(minTextLength: 0, maxTextLength: 32),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
   static const VerificationMeta _s_nameMeta = const VerificationMeta('s_name');
@@ -38,7 +38,7 @@ class $UsersTable extends Users with TableInfo<$UsersTable, User> {
   late final GeneratedColumn<String> s_name = GeneratedColumn<String>(
       's_name', aliasedName, true,
       additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 3, maxTextLength: 32),
+          GeneratedColumn.checkTextLength(minTextLength: 0, maxTextLength: 32),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
   static const VerificationMeta _dateBirthMeta =
@@ -57,7 +57,7 @@ class $UsersTable extends Users with TableInfo<$UsersTable, User> {
   late final GeneratedColumn<String> phone = GeneratedColumn<String>(
       'phone', aliasedName, true,
       additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 11, maxTextLength: 11),
+          GeneratedColumn.checkTextLength(minTextLength: 0, maxTextLength: 11),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
   static const VerificationMeta _cardMeta = const VerificationMeta('card');
@@ -65,7 +65,7 @@ class $UsersTable extends Users with TableInfo<$UsersTable, User> {
   late final GeneratedColumn<String> card = GeneratedColumn<String>(
       'card', aliasedName, true,
       additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 16, maxTextLength: 16),
+          GeneratedColumn.checkTextLength(minTextLength: 0, maxTextLength: 16),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
   @override

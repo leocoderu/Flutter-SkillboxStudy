@@ -18,6 +18,8 @@ class StaffCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //return Container(color: Colors.deepOrange, width: 100, height: 50,);
+
     TextStyle h1 = TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold,);
     TextStyle lh1 = TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,);
     TextStyle h2 = TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,);
@@ -42,7 +44,7 @@ class StaffCard extends StatelessWidget {
                   Container(
                     //color: Colors.purpleAccent,
                     width: double.infinity,
-                    child: Text('${user.name} ${user.soname ?? ''}', style: lowDisplay ? lh1 : h1, textAlign: TextAlign.center),
+                    child: Text('#${user.id} ${user.name} ${user.soname ?? ''}', style: lowDisplay ? lh1 : h1, textAlign: TextAlign.center),
                   ),
                   if (user.s_name != null)
                     Container(
@@ -51,10 +53,11 @@ class StaffCard extends StatelessWidget {
                       child: Text('${user.s_name}', style: lowDisplay ? lh2 : h2, textAlign: TextAlign.center),
                     ),
                   Container(height: 15.0), //, color: Colors.yellow),
-                  Row(children: [
-                      Text('Date of Birth: \t', style: lowDisplay ? lh3 : h3),
-                      Text('${dateToString(user.dateBirth)}',style: lowDisplay ? lt1 : t1),
-                  ]),
+                  if (user.dateBirth != null)
+                    Row(children: [
+                        Text('Date of Birth: \t', style: lowDisplay ? lh3 : h3),
+                        Text('${dateToString(user.dateBirth)}',style: lowDisplay ? lt1 : t1),
+                    ]),
                   if (user.phone != null)
                     Padding(
                       padding: EdgeInsets.only(top: 3.0),
@@ -68,6 +71,7 @@ class StaffCard extends StatelessWidget {
                       padding: EdgeInsets.only(top: 3.0),
                       child: Row(children: [
                         Text('Debit card: \t', style: lowDisplay ? lh3 : h3),
+                        //Text(user.card!,style: lowDisplay ? lt1 : t1),
                         Text('${user.card!.substring(0,4)} ${user.card!.substring(4,8)} ${user.card!.substring(8,12)} ${user.card!.substring(12,16)}',
                             style: lowDisplay ? lt1 : t1,
                         ),

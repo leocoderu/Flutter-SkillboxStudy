@@ -5,15 +5,20 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:model/model.dart';
 
 class AddUserPage extends StatefulWidget {
-  const AddUserPage({super.key, this.index});
-  final int? index;
+  const AddUserPage({super.key, required this.maxID, this.user, this.onGetValue}); //
+  final int maxID;
+  final User? user; //TODO: < --- Форме предавать объект User, а не индекс
+  final ValueChanged<User>? onGetValue;
+  //final ValueChanged<UsersCompanion>? onGetValue;
+
+  //TODO: callback function for return Object of User type
 
   @override
   State<AddUserPage> createState() => _AddUserPageState();
 }
 
 class _AddUserPageState extends State<AddUserPage> {
-  late MyDatabase _usersbase;
+  //late MyDatabase _usersbase;
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sonameController = TextEditingController();
@@ -22,28 +27,34 @@ class _AddUserPageState extends State<AddUserPage> {
   final TextEditingController _cardController = TextEditingController();
   final TextEditingController _photoController = TextEditingController();
 
+  late int? _id;
+  late DateTime? _dateBirth;
   String _textOnDateButton = 'Select Day of Birth';
 
   @override
   void initState() {
     super.initState();
 
-    if (widget.index != null) {
-      _usersbase.getUserById(widget.index!).then((e) {
-        _nameController.text = e.name;
-        _sonameController.text = e.soname ?? '';
-        _s_nameController.text = e.s_name ?? '';
-        _phoneController.text = e.phone ?? '';
-        _cardController.text = e.card ?? '';
-        _photoController.text = e.photo ?? '';
-        _textOnDateButton = dateToString(e.dateBirth);
-      });
+    if (widget.user != null) {
+        _id = widget.user!.id;
+      //_usersbase.getUserById(widget.index!).then((e) {
+        _nameController.text = widget.user!.name;
+        _sonameController.text = widget.user!.soname ?? '';
+        _s_nameController.text = widget.user!.s_name ?? '';
+        _phoneController.text = widget.user!.phone ?? '';
+        _cardController.text = widget.user!.card ?? '';
+        _photoController.text = widget.user!.photo ?? '';
+        _dateBirth = widget.user!.dateBirth;
+        _textOnDateButton = dateToString(widget.user!.dateBirth);
+      //});
     } else {
       _clearFields();
     }
   }
 
   void _clearFields() {
+    _id = null;
+    _dateBirth = null;
     _nameController.text = '';
     _sonameController.text = '';
     _s_nameController.text = '';
@@ -65,7 +76,7 @@ class _AddUserPageState extends State<AddUserPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Add User'),centerTitle: true,
+        title: Text('${_id} - ${widget.maxID} - Add User'),centerTitle: true,
         automaticallyImplyLeading: true,
       ),
       body: Padding(
@@ -94,6 +105,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                           TextField(
                                             style: t1,
                                             controller: _nameController,
+                                            maxLength: 32,
                                             decoration: const InputDecoration(
                                               labelText: 'First Name',
                                               hintText: 'Enter First Name',
@@ -102,6 +114,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                           TextField(
                                             style: t1,
                                             controller: _sonameController,
+                                            maxLength: 32,
                                             decoration: const InputDecoration(
                                               labelText: 'SoName',
                                               hintText: 'Enter Soname',
@@ -110,6 +123,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                           TextField(
                                             style: t1,
                                             controller: _s_nameController,
+                                            maxLength: 32,
                                             decoration: const InputDecoration(
                                               labelText: 'Second Name',
                                               hintText: 'Enter Second Name',
@@ -124,7 +138,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
                                       height: lowDisplay ? 150.0 : 225.0,
                                       width:  lowDisplay ? 100 : 150,
-                                      child: (widget.index != null)
+                                      child: (widget.user != null) || (_photoController.text != '')
                                           ? Image.network(_photoController.text, fit: BoxFit.cover,
                                         errorBuilder: (context, exception, stack) {
                                           return Image.asset('assets/image/not_available.png');
@@ -142,6 +156,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                     labelText: 'Photo URL',
                                     hintText: 'Enter URL to photo',
                                   ),
+                                  onEditingComplete: () => setState(() {}),
                                 ),
                                 const SizedBox(height: 5.0),
                                 Container(
@@ -164,6 +179,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                             );
                                             if(newDate == null) return;
                                             setState(() {
+                                              _dateBirth = newDate;
                                               _textOnDateButton = dateToString(newDate);
                                             });
                                           },
@@ -213,15 +229,24 @@ class _AddUserPageState extends State<AddUserPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () async {
-                      // final Person onePerson = Person(
-                      //     id: int.tryParse(_idController.text) ?? 0,
-                      //     name: _nameController.text.trim()
-                      // );
-                      // (idx == null) ? _insertPerson(onePerson) : _updatePerson(onePerson);
+                      User nUser = User(
+                        id: _id == null ? widget.maxID + 1 : _id!,
+                        name: _nameController.text.trim(),
+                        soname: _sonameController.text.trim() == '' ? null : _sonameController.text.trim(),
+                        s_name: _s_nameController.text.trim() == '' ? null : _s_nameController.text.trim(),
+                        photo: _photoController.text == '' ? null : _photoController.text,
+                        dateBirth: _dateBirth,
+                        phone: phoneFormatter.getUnmaskedText() == '' ? null : phoneFormatter.getUnmaskedText(),
+                        card: cardFormatter.getUnmaskedText() == '' ? null : cardFormatter.getUnmaskedText(),
+                      );
+                      // TODO: Форма не работает с базой  на прямую, только возвращает подготовленные данные!!!
+                      // TODO: Подготовить объект User и передать его в ф-ю обратного вызова
+                      //(widget.index == null) ? _addUser(nUser) : _updUser(nUser);
+                      widget.onGetValue!(nUser);
                       _clearFields();
                       Navigator.of(context).pop();
                     },
-                    child: Text(widget.index == null ? 'Add User' : 'Update User', style: t1,),
+                    child: Text(widget.user == null ? 'Add User' : 'Update User', style: t1,),
                   ),
                   const SizedBox(width: 10.0),
                   ElevatedButton(
