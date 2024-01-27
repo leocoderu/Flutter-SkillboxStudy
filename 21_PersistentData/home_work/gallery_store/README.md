@@ -12,5 +12,7 @@ A new Flutter project.
 - Приложение должно содержать список сохранённых картинок и поле для ввода адреса новой картинки с кнопкой «Скачать».
 - Для хранения изображений используйте файловое хранилище устройства
 
+<img src = "/21_PersistentData/home_work/gallery_store/snapshots/1644485846480.jpeg" width ="200" /> <img src = "/21_PersistentData/home_work/gallery_store/snapshots/1644485847241.jpeg" width ="200" /> <img src = "/21_PersistentData/home_work/gallery_store/snapshots/1644485849447.jpeg" width ="200" />
+
 ## Usability commands
 - Запуск кодогенерации: flutter pub run build_runner build
