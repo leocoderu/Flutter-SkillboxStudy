@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_slidable: ^3.0.1
   mask_text_input_formatter: ^2.8.0
+  flutter_secure_storage: ^9.0.0
   cupertino_icons: ^1.0.2
   model:
     path: ./packages/model

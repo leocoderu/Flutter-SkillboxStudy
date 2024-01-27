@@ -29,8 +29,11 @@ LazyDatabase _openConnection() {
 class MyDatabase extends _$MyDatabase {
   MyDatabase() : super(_openConnection());
 
-  //Future<User?>
-  User? get lastUser => select(users)..orderBy((u) => [OrderingTerm(expression: u.id, mode: OrderingMode.desc)]).get();
+  Future<User?> get lastUser => (select(users)
+      ..orderBy([(t) => OrderingTerm(expression: t.id, mode: OrderingMode.desc)])
+      ..limit(1)
+  ).getSingle();
+
   Future<List<User>> get allUserEntries => select(users).get();
   Future<int> insertUser(User user) => into(users).insert(user);
   Future<int> insert(UsersCompanion user) => into(users).insert(user);
@@ -38,9 +41,9 @@ class MyDatabase extends _$MyDatabase {
   Future<User> getUserById(int id) =>
       (select(users)..where((e) => e.id.equals(id))).getSingle();
   void deleteAll() => delete(users).go(); //..where((u) => u.id.equals(1))).go();
-  void deleteUserByID(User user) => (delete(users)..where((u) => u.id.equals(user.id))).go();
+  void deleteUser(User user) => (delete(users)..where((u) => u.id.equals(user.id))).go();
+  void updateUser(User user) => update(users).replace(user);
 
   @override
   int get schemaVersion => 1;
-
 }

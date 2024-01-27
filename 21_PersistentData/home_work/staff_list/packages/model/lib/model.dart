@@ -1,2 +1,2 @@
-//export 'src/user/user.dart';
+export 'src/full_user.dart';
 export 'src/drift/users.dart';

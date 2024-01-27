@@ -7,19 +7,14 @@ import 'package:model/model.dart';
 class AddUserPage extends StatefulWidget {
   const AddUserPage({super.key, required this.maxID, this.user, this.onGetValue}); //
   final int maxID;
-  final User? user; //TODO: < --- Форме предавать объект User, а не индекс
-  final ValueChanged<User>? onGetValue;
-  //final ValueChanged<UsersCompanion>? onGetValue;
-
-  //TODO: callback function for return Object of User type
+  final User? user;
+  final ValueChanged<FullUser>? onGetValue;
 
   @override
   State<AddUserPage> createState() => _AddUserPageState();
 }
 
 class _AddUserPageState extends State<AddUserPage> {
-  //late MyDatabase _usersbase;
-
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sonameController = TextEditingController();
   final TextEditingController _s_nameController = TextEditingController();
@@ -31,22 +26,22 @@ class _AddUserPageState extends State<AddUserPage> {
   late DateTime? _dateBirth;
   String _textOnDateButton = 'Select Day of Birth';
 
+  MaskTextInputFormatter phoneFormatter = new MaskTextInputFormatter(mask: '+# (###) ###-##-##', filter: { "#": RegExp(r'[0-9]') }, type: MaskAutoCompletionType.lazy);
+  MaskTextInputFormatter cardFormatter = new MaskTextInputFormatter(mask: '#### #### #### ####', filter: { "#": RegExp(r'[0-9]') }, type: MaskAutoCompletionType.lazy);
+
   @override
   void initState() {
     super.initState();
-
     if (widget.user != null) {
         _id = widget.user!.id;
-      //_usersbase.getUserById(widget.index!).then((e) {
         _nameController.text = widget.user!.name;
         _sonameController.text = widget.user!.soname ?? '';
         _s_nameController.text = widget.user!.s_name ?? '';
-        _phoneController.text = widget.user!.phone ?? '';
-        _cardController.text = widget.user!.card ?? '';
+        _phoneController.text = phoneFormatter.maskText(widget.user!.phone ?? '');
+        _cardController.text = cardFormatter.maskText(widget.user!.card ?? '');
         _photoController.text = widget.user!.photo ?? '';
         _dateBirth = widget.user!.dateBirth;
-        _textOnDateButton = dateToString(widget.user!.dateBirth);
-      //});
+        _textOnDateButton = widget.user!.dateBirth != null ? dateToString(widget.user!.dateBirth) : 'Select Date';
     } else {
       _clearFields();
     }
@@ -69,15 +64,12 @@ class _AddUserPageState extends State<AddUserPage> {
 
   @override
   Widget build(BuildContext context) {
-    var phoneFormatter = new MaskTextInputFormatter(mask: '+# (###) ###-##-##', filter: { "#": RegExp(r'[0-9]') }, type: MaskAutoCompletionType.lazy);
-    var cardFormatter = new MaskTextInputFormatter(mask: '#### #### #### ####', filter: { "#": RegExp(r'[0-9]') }, type: MaskAutoCompletionType.lazy);
-    final bool lowDisplay = (MediaQuery.of(context).size.width <= 390);
-    final TextStyle t1 = lowDisplay ? TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold) : TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold);
+    final TextStyle t1 = TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('${_id} - ${widget.maxID} - Add User'),centerTitle: true,
-        automaticallyImplyLeading: true,
+        title: Text(widget.user == null ? 'Add User' : 'Change User'), centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
           padding: const EdgeInsets.only(bottom: 10.0),
@@ -116,7 +108,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                             controller: _sonameController,
                                             maxLength: 32,
                                             decoration: const InputDecoration(
-                                              labelText: 'SoName',
+                                              labelText: 'Soname',
                                               hintText: 'Enter Soname',
                                             ),
                                           ),
@@ -136,19 +128,17 @@ class _AddUserPageState extends State<AddUserPage> {
                                       margin: EdgeInsets.only(left: 10.0),
                                       clipBehavior: Clip.antiAlias,
                                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
-                                      height: lowDisplay ? 150.0 : 225.0,
-                                      width:  lowDisplay ? 100 : 150,
-                                      child: (widget.user != null) || (_photoController.text != '')
-                                          ? Image.network(_photoController.text, fit: BoxFit.cover,
-                                        errorBuilder: (context, exception, stack) {
-                                          return Image.asset('assets/image/not_available.png');
-                                        },
-                                      )
-                                          : Image.asset('assets/image/no_image.png', fit: BoxFit.cover),
+                                      height: 250.0,
+                                      width:  167.0,
+                                      child: (_photoController.text == '')
+                                          ? Image.asset('assets/image/no_image.png', fit: BoxFit.cover)
+                                          : Image.network(_photoController.text, fit: BoxFit.cover, errorBuilder: (context, exception, stack) =>
+                                              Image.asset('assets/image/not_available.png'),
+                                            ),
                                     ),
                                   ],
                                 ),
-                                TextField(
+                                TextFormField(
                                   style: t1,
                                   keyboardType: TextInputType.url,
                                   controller: _photoController,
@@ -156,7 +146,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                     labelText: 'Photo URL',
                                     hintText: 'Enter URL to photo',
                                   ),
-                                  onEditingComplete: () => setState(() {}),
+                                  onChanged: (text) => setState(() {}),
                                 ),
                                 const SizedBox(height: 5.0),
                                 Container(
@@ -165,7 +155,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                     children: [
                                       Expanded(
                                         child: Text('Date of Birth: ',
-                                          style: t1, //TextStyle(color: Colors.black87, fontSize: t1.fontSize!.sign),
+                                          style: t1,
                                         ),
                                       ),
                                       SizedBox(
@@ -173,6 +163,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                         child: ElevatedButton(
                                           onPressed: () async {
                                             DateTime? newDate = await showDatePicker(
+                                              initialDate: _dateBirth,
                                               context: context,
                                               firstDate: DateTime(1900),
                                               lastDate: DateTime(2100),
@@ -192,18 +183,11 @@ class _AddUserPageState extends State<AddUserPage> {
                                 TextField(
                                   style: t1,
                                   controller: _phoneController,
-                                  //maxLength: 13, //11
-                                  //validator: ,
                                   keyboardType: TextInputType.phone,
                                   inputFormatters: [phoneFormatter],
                                   decoration: const InputDecoration(
                                     labelText: 'Phone Number',
                                     hintText: 'Enter phone number',
-                                    //helperText: 'Helper Text',
-                                    //errorText: "Error Text",
-                                    //prefixText: "Prefix Text",
-                                    //suffixText: 'suffix Text',
-                                    //semanticCounterText: 'semmantic Conter Text',
                                   ),
                                 ),
                                 TextField(
@@ -212,7 +196,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                   keyboardType: TextInputType.number,
                                   inputFormatters: [cardFormatter],
                                   decoration: const InputDecoration(
-                                    labelText: 'Dibit Card Number',
+                                    labelText: 'Debit Card Number',
                                     hintText: 'Enter Card Number',
                                   ),
                                 ),
@@ -229,19 +213,17 @@ class _AddUserPageState extends State<AddUserPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () async {
-                      User nUser = User(
+                      FullUser nUser = FullUser(
                         id: _id == null ? widget.maxID + 1 : _id!,
                         name: _nameController.text.trim(),
                         soname: _sonameController.text.trim() == '' ? null : _sonameController.text.trim(),
                         s_name: _s_nameController.text.trim() == '' ? null : _s_nameController.text.trim(),
                         photo: _photoController.text == '' ? null : _photoController.text,
                         dateBirth: _dateBirth,
-                        phone: phoneFormatter.getUnmaskedText() == '' ? null : phoneFormatter.getUnmaskedText(),
-                        card: cardFormatter.getUnmaskedText() == '' ? null : cardFormatter.getUnmaskedText(),
+                        phone: _phoneController.text == '' ? null : phoneFormatter.unmaskText(_phoneController.text),
+                        card: _cardController.text == '' ? null : cardFormatter.unmaskText(_cardController.text),
+                        card_num: _cardController.text == '' ? null : cardFormatter.unmaskText(_cardController.text),
                       );
-                      // TODO: Форма не работает с базой  на прямую, только возвращает подготовленные данные!!!
-                      // TODO: Подготовить объект User и передать его в ф-ю обратного вызова
-                      //(widget.index == null) ? _addUser(nUser) : _updUser(nUser);
                       widget.onGetValue!(nUser);
                       _clearFields();
                       Navigator.of(context).pop();
@@ -251,7 +233,7 @@ class _AddUserPageState extends State<AddUserPage> {
                   const SizedBox(width: 10.0),
                   ElevatedButton(
                     onPressed: () {Navigator.of(context).pop();},
-                    child: Text('Cancel', style: t1,),
+                    child: Text('Cancel', style: t1),
                   ),
                 ],
               ),

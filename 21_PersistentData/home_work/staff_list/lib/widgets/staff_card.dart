@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:model/model.dart';
 
 class StaffCard extends StatelessWidget {
-  const StaffCard({super.key, required this.user});
+  const StaffCard({super.key, required this.user, this.card_number});
   final User user;
+  final String? card_number;
 
   int _age(DateTime dt) {
     DateTime now = DateTime.now();
@@ -18,8 +19,6 @@ class StaffCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //return Container(color: Colors.deepOrange, width: 100, height: 50,);
-
     TextStyle h1 = TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold,);
     TextStyle lh1 = TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,);
     TextStyle h2 = TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,);
@@ -44,7 +43,7 @@ class StaffCard extends StatelessWidget {
                   Container(
                     //color: Colors.purpleAccent,
                     width: double.infinity,
-                    child: Text('#${user.id} ${user.name} ${user.soname ?? ''}', style: lowDisplay ? lh1 : h1, textAlign: TextAlign.center),
+                    child: Text('${user.name} ${user.soname ?? ''}', style: lowDisplay ? lh1 : h1, textAlign: TextAlign.center),
                   ),
                   if (user.s_name != null)
                     Container(
@@ -63,18 +62,21 @@ class StaffCard extends StatelessWidget {
                       padding: EdgeInsets.only(top: 3.0),
                       child: Row(children: [
                         Text('Phone number: \t', style: lowDisplay ? lh3 : h3),
-                        Text('+${user.phone}',style: lowDisplay ? lt1 : t1),
+                        Text('+${user.phone!.substring(0, 1)} (${user.phone!.substring(1, 4)}) ${user.phone!.substring(4, 7)}-${user.phone!.substring(7, 9)}-${user.phone!.substring(9, 11)}',style: lowDisplay ? lt1 : t1),
                       ]),
                     ),
-                  if (user.card != null)
+                  if (card_number != null)
+                  //if (user.card != null)
                     Padding(
                       padding: EdgeInsets.only(top: 3.0),
                       child: Row(children: [
                         Text('Debit card: \t', style: lowDisplay ? lh3 : h3),
-                        //Text(user.card!,style: lowDisplay ? lt1 : t1),
-                        Text('${user.card!.substring(0,4)} ${user.card!.substring(4,8)} ${user.card!.substring(8,12)} ${user.card!.substring(12,16)}',
+                        Text('${card_number!.substring(0,4)} ${card_number!.substring(4,8)} ${card_number!.substring(8,12)} ${card_number!.substring(12,16)}',
                             style: lowDisplay ? lt1 : t1,
                         ),
+                        // Text('${user.card!.substring(0,4)} ${user.card!.substring(4,8)} ${user.card!.substring(8,12)} ${user.card!.substring(12,16)}',
+                        //   style: lowDisplay ? lt1 : t1,
+                        // ),
                       ]),
                     ),
                 ],
