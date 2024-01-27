@@ -19,7 +19,9 @@ This is a special Flutter project, links to which are added by users themselves.
 <img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893581.jpeg" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893656.jpeg" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/1644485893617.jpeg" width ="200" />
 
 ## Snapshots from Wiki App
-
+<img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_191818.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_191843.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_191912.png" width ="200" />
+<img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_192024.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_192035.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_192057.png" width ="200" />
+<img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_192107.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_192221.png" width ="200" />
 
 ## Usability commands
 - Запуск кодогенерации: flutter pub run build_runner build
