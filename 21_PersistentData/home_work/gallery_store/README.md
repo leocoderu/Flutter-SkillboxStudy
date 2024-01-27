@@ -14,7 +14,7 @@ A new Flutter project.
 
 <img src = "/21_PersistentData/home_work/gallery_store/snapshots/1644485846480.jpeg" width ="200" /> <img src = "/21_PersistentData/home_work/gallery_store/snapshots/1644485847241.jpeg" width ="200" /> <img src = "/21_PersistentData/home_work/gallery_store/snapshots/1644485849447.jpeg" width ="200" />
 
-## Snapshots from Wiki App
+## Snapshots from Gallery Store
 <img src = "/21_PersistentData/home_work/gallery_store/snapshots/Screenshot_20240127_194333.png" width ="200" /> <img src = "/21_PersistentData/home_work/gallery_store/snapshots/Screenshot_20240127_194347.png" width ="200" /> <img src = "/21_PersistentData/home_work/gallery_store/snapshots/Screenshot_20240127_194358.png" width ="200" />
 <img src = "/21_PersistentData/home_work/gallery_store/snapshots/Screenshot_20240127_194416.png" width ="200" />
 
