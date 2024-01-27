@@ -15,8 +15,8 @@ Stafflist project, with data of users.
 - Дизайн приложения можно реализовать на свой вкус.
 
 ## Snapshots from Staff List
-<img src = "/21_PersistentData/home_work/staff_list/snapshots/Screenshot_20240127_190613.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_190641.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_190707.png" width ="200" />
-<img src = "/21_PersistentData/home_work/staff_list/snapshots/Screenshot_20240127_190717.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_190732.png" width ="200" /> <img src = "/21_PersistentData/home_work/wiki_app/snapshots/Screenshot_20240127_190959.png" width ="200" />
+<img src = "/21_PersistentData/home_work/staff_list/snapshots/Screenshot_20240127_190613.png" width ="200" /> <img src = "/21_PersistentData/home_work/staff_list/snapshots/Screenshot_20240127_190641.png" width ="200" /> <img src = "/21_PersistentData/home_work/staff_list/snapshots/Screenshot_20240127_190707.png" width ="200" />
+<img src = "/21_PersistentData/home_work/staff_list/snapshots/Screenshot_20240127_190717.png" width ="200" /> <img src = "/21_PersistentData/home_work/staff_list/snapshots/Screenshot_20240127_190732.png" width ="200" /> <img src = "/21_PersistentData/home_work/staff_list/snapshots/Screenshot_20240127_190959.png" width ="200" />
 
 
 ## Usability commands
