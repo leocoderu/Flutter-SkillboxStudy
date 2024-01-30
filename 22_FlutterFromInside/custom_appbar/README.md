@@ -37,4 +37,4 @@ Demo Flutter project with custom Widget
 Задания со звёздочками вы можете выполнить по желанию. Это приветствуется и оценивается дополнительно.
 
 ## Snapshots of Application
-<img src = "/22_FlutterFromInside/custom_appbar/snapshots/Screenshot_20240130_112719.png" width ="200" /> <img src = "/22_FlutterFromInside/custom_appbar/snapshots/Screenshot 2024-01-30 112910.png" width ="200" /> <img src = "/22_FlutterFromInside/custom_appbar/snapshots/Screenshot 2024-01-30 112851.png" width ="200" />
+<img src = "/22_FlutterFromInside/custom_appbar/snapshots/Screenshot_20240130_112719.png" width ="200" /> <img src = "/22_FlutterFromInside/custom_appbar/snapshots/Screenshot_20240130_112910.png" width ="200" /> <img src = "/22_FlutterFromInside/custom_appbar/snapshots/Screenshot_20240130_112851.png" width ="200" />
