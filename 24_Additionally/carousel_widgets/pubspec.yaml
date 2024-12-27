@@ -1,0 +1,168 @@
+name: carousel_widgets
+description: "Example Carousel"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/backgrounds/
+
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/raleway/Raleway-ExtraLight.ttf
+          weight: 100
+        - asset: assets/fonts/raleway/Raleway-ExtraLightItalic.ttf
+
+        - asset: assets/fonts/raleway/Raleway-Light.ttf
+          weight: 200
+        - asset: assets/fonts/raleway/Raleway-LightItalic.ttf
+
+        - asset: assets/fonts/raleway/Raleway-Thin.ttf
+          weight: 300
+        - asset: assets/fonts/raleway/Raleway-ThinItalic.ttf
+
+        - asset: assets/fonts/raleway/Raleway-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/raleway/Raleway-Italic.ttf
+
+        - asset: assets/fonts/raleway/Raleway-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/raleway/Raleway-MediumItalic.ttf
+
+        - asset: assets/fonts/raleway/Raleway-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/raleway/Raleway-SemiBoldItalic.ttf
+
+        - asset: assets/fonts/raleway/Raleway-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/raleway/Raleway-BoldItalic.ttf
+
+        - asset: assets/fonts/raleway/Raleway-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/raleway/Raleway-ExtraBoldItalic.ttf
+
+        - asset: assets/fonts/raleway/Raleway-Black.ttf
+          weight: 900
+        - asset: assets/fonts/raleway/Raleway-BlackItalic.ttf
+
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat/Montserrat-ExtraLight.ttf
+          weight: 100
+        - asset: assets/fonts/montserrat/Montserrat-ExtraLightItalic.ttf
+
+        - asset: assets/fonts/montserrat/Montserrat-Light.ttf
+          weight: 200
+        - asset: assets/fonts/montserrat/Montserrat-LightItalic.ttf
+
+        - asset: assets/fonts/montserrat/Montserrat-Thin.ttf
+          weight: 300
+        - asset: assets/fonts/montserrat/Montserrat-ThinItalic.ttf
+
+        - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/montserrat/Montserrat-Italic.ttf
+
+        - asset: assets/fonts/montserrat/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/montserrat/Montserrat-MediumItalic.ttf
+
+        - asset: assets/fonts/montserrat/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/montserrat/Montserrat-SemiBoldItalic.ttf
+
+        - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/montserrat/Montserrat-BoldItalic.ttf
+
+        - asset: assets/fonts/montserrat/Montserrat-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/montserrat/Montserrat-ExtraBoldItalic.ttf
+
+        - asset: assets/fonts/montserrat/Montserrat-Black.ttf
+          weight: 900
+        - asset: assets/fonts/montserrat/Montserrat-BlackItalic.ttf
+
+    - family: VelaSans
+      fonts:
+        - asset: assets/fonts/velasans/VelaSans-ExtraLight.ttf
+          weight: 100
+
+        - asset: assets/fonts/velasans/VelaSans-GX.ttf
+          weight: 200
+
+        - asset: assets/fonts/velasans/VelaSans-Light.ttf
+          weight: 300
+
+        - asset: assets/fonts/velasans/VelaSans-Regular.ttf
+          weight: 400
+
+        - asset: assets/fonts/velasans/VelaSans-Medium.ttf
+          weight: 500
+
+        - asset: assets/fonts/velasans/VelaSans-SemiBold.ttf
+          weight: 600
+
+        - asset: assets/fonts/velasans/VelaSans-Bold.ttf
+          weight: 700
+
+        - asset: assets/fonts/velasans/VelaSans-ExtraBold.ttf
+          weight: 800
+
+    - family: Inter18
+      fonts:
+        - asset: assets/fonts/inter/Inter_18pt-ExtraLight.ttf
+          weight: 100
+        - asset: assets/fonts/inter/Inter_18pt-ExtraLightItalic.ttf
+
+        - asset: assets/fonts/inter/Inter_18pt-Light.ttf
+          weight: 200
+        - asset: assets/fonts/inter/Inter_18pt-LightItalic.ttf
+
+        - asset: assets/fonts/inter/Inter_18pt-Thin.ttf
+          weight: 300
+        - asset: assets/fonts/inter/Inter_18pt-ThinItalic.ttf
+
+        - asset: assets/fonts/inter/Inter_18pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/inter/Inter_18pt-Italic.ttf
+
+        - asset: assets/fonts/inter/Inter_18pt-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/inter/Inter_18pt-MediumItalic.ttf
+
+        - asset: assets/fonts/inter/Inter_18pt-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/inter/Inter_18pt-SemiBoldItalic.ttf
+
+        - asset: assets/fonts/inter/Inter_18pt-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/inter/Inter_18pt-BoldItalic.ttf
+
+        - asset: assets/fonts/inter/Inter_18pt-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/inter/Inter_18pt-ExtraBoldItalic.ttf
+
+        - asset: assets/fonts/inter/Inter_18pt-Black.ttf
+          weight: 900
+        - asset: assets/fonts/inter/Inter_18pt-BlackItalic.ttf

@@ -25,3 +25,17 @@ This is a special Flutter project, links to which are added by users themselves.
 
 ## Usability commands
 - Запуск кодогенерации: flutter pub run build_runner build
+
+## dependencies UI:
+- flutter_slidable: ^3.0.1
+- hive: ^2.2.3
+- hive_flutter: ^1.1.0
+- flutter_inappwebview: ^5.8.0
+
+## dependencies Model:
+- hive: ^2.2.3
+- hive_flutter: ^1.1.0
+
+## dev_dependencies Model:
+- hive_generator: ^2.0.1
+- build_runner: ^2.4.7

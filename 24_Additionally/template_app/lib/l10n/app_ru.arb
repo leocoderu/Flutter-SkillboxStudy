@@ -1,0 +1,24 @@
+{
+    "language": "Русский",
+    "authMessage": "Для использования этого приложения вы должны войти в систему одним из следующих способов",
+    "helloWorld": "Привет Мир!",
+    "hello": "Привет {username}",
+    "butLogOut": "Выйти из профиля",
+    "butExit": "Выход из программы",
+    "msgButToast": "Двойное нажатие закроет приложение",
+    "tooltipFBut": "Добавить в Список",
+    "titleApp": "Список покупок",
+    "titleList": "Полный список",
+
+    "home_sPanel_totalPurchase": "Всего покупок:",
+    "home_sPanel_purchased": "Куплено:",
+    "home_sPanel_left": "Осталось:",
+    "home_sPanel_totalCost": "Общая стоимость:",
+    "home_sPanel_spent": "Потрачено средств:",
+
+    "home_bottom_need_buy": "Нужно купить",
+    "home_bottom_full_list": "Полный список",
+
+    "settings_title": "Настройки",
+    "settings_sPanel": "Включить панель итоговых значений"
+}

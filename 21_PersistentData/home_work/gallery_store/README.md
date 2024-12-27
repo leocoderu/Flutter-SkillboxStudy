@@ -20,3 +20,12 @@ A new Flutter project.
 
 ## Usability commands
 - Запуск кодогенерации: flutter pub run build_runner build
+
+## dependencies:
+- flutter:
+    sdk: flutter
+- path_provider: ^2.1.1
+- http: ^1.1.2
+- path: ^1.8.3
+- mime: ^1.0.4
+- cupertino_icons: ^1.0.2

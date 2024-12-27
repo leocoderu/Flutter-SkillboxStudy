@@ -21,3 +21,21 @@ Stafflist project, with data of users.
 
 ## Usability commands
 - Запуск кодогенерации: flutter pub run build_runner build
+ 
+
+## dependencies UI:
+- flutter:
+    sdk: flutter
+- flutter_slidable: ^3.0.1
+- mask_text_input_formatter: ^2.8.0
+- flutter_secure_storage: ^9.0.0
+- cupertino_icons: ^1.0.2
+
+## dependencies Model:
+- flutter:
+    sdk: flutter
+- drift: ^2.15.0
+- sqlite3_flutter_libs: ^0.5.18
+- path_provider: ^2.1.1
+- path: ^1.8.3
+- cupertino_icons: ^1.0.2
