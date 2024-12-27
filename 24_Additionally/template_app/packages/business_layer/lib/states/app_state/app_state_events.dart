@@ -1,5 +1,3 @@
-import 'package:model_layer/model_layer.dart';
-
 abstract class AppState {}
 
 class SetCounter extends AppState {
@@ -7,8 +5,6 @@ class SetCounter extends AppState {
   SetCounter({this.counter});
 }
 
-class IncreaseCounter extends AppState {
-  final int? counter;
-  IncreaseCounter({this.counter});
-}
+class IncreaseCounter extends AppState {}
 
+class DecreaseCounter extends AppState {}

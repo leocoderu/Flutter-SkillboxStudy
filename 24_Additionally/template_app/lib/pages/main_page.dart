@@ -20,6 +20,7 @@ class MainPage extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        visualDensity: VisualDensity.adaptivePlatformDensity, // What is it?
       ),
       supportedLocales: L10n.all,
       localizationsDelegates: [
