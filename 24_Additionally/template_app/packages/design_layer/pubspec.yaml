@@ -1,0 +1,24 @@
+name: design_layer
+description: "Design Layer package for project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 0.0.1
+
+environment:
+  sdk: ^3.5.3
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  analyzer_sm:
+    path: ../analyzer_sm
+
+flutter:
+  uses-material-design: true

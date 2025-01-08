@@ -1,25 +1,11 @@
 {
     "language": "हिंदी",
-    "authMessage": "इस एप्लिकेशन का उपयोग करने के लिए, आपको निम्नलिखित तरीकों से लॉग इन करना होगा",
-    "helloWorld": "हैलो वर्ल्ड!",
-    "hello": "नमस्ते {username}",
-    "butLogOut": "लॉग आउट",
-    "butExit": "बाहर निकलना",
-    "msgButToast": "ऐप से बाहर निकलने के लिए डबल क्लिक करें",
-    "tooltipFBut": "सूची में जोड़ें",
-    "titleApp": "खरीदारी की सूची",
-    "titleList": "पूरी सूची",
+    "home_title": "टेम्पलेट आवेदन",
+    "home_text": "काउंटर बदलने के लिए नीचे दिए गए बटन पर टैप करें",
+    "home_btInc_tooltip": "वृद्धि",
+    "home_btDec_tooltip": "कमी",
 
-    "home_sPanel_totalPurchase": "कुल खरीदारी:",
-    "home_sPanel_purchased": "खरीदा:",
-    "home_sPanel_left": "बाएं:",
-    "home_sPanel_totalCost": "कुल लागत:",
-    "home_sPanel_spent": "खर्च की गई धनराशि:",
-
-    "home_bottom_need_buy": "खरीदना होगा",
-    "home_bottom_full_list": "पूरी सूची",
-
-    "settings_title": "समायोजन",
-    "settings_sPanel": "मापन परिणाम पैनल सक्षम करें"
+    "settings_title": "सेटिंग पृष्ठ",
+    "settings_text": "इस जगह में आपकी सेटिंग्स हो सकती हैं । "
 }
 

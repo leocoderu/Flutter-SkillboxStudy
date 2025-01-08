@@ -3,85 +3,30 @@
     "@language":{
         "description": "The current Language"
     },
-    "helloWorld": "Hello World",
-    "@helloWorld": {
-        "description": "A programmer greeting"
+
+    "home_title": "Template Application",
+    "@home_title": {
+        "description": "Name of Application"
     },
-    "hello": "Hello {username}",
-    "@hello": {
-        "description": "An example welcome message with params",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            }
-        }
+    "home_text": "Tap the buttons below to change the counter",
+    "@home_text": {
+        "description": "Text in the center of screen"
     },
-    "authMessage": "To use this App, you must log in in the following ways",
-    "@authMessage": {
-        "description": "Message in Authentication Page"
+    "home_btInc_tooltip": "Increase",
+    "@home_btInc_tooltip": {
+        "description": "Text tooltip for Increase button"
     },
-    "butLogOut": "LogOut",
-    "@butLogOut": {
-        "description": "Message on Button LogOut in Drawer HomePage"
-    },
-    "butExit": "Exit",
-    "@butExit": {
-        "description": "Message on Button Exit in Drawer HomePage"
-    },
-    "msgButToast": "Double click to exit App",
-    "@msgButToast": {
-        "description": "Message on pressed button for Close App in HomePage"
-    },
-    "tooltipFBut": "Add to the List",
-    "@tooltipFloatButHome": {
-        "description": "Message on Tooltip Float Button in HomePage"
-    },
-    "titleApp": "Shopping List",
-    "@titleApp": {
-        "description": "Title of Application"
-    },
-    "titleList": "Full List",
-    "@titleList": {
-        "description": "Title of Full List Products"
+    "home_btDec_tooltip": "Decrease",
+    "@home_btDec_tooltip": {
+        "description": "Text tooltip for Decrease button"
     },
 
-    "home_sPanel_totalPurchase": "Total purchases:",
-    "@home_sPanel_totalPurchase": {
-        "description": "Total Purchases in summary Panel in HomePage"
-    },
-    "home_sPanel_purchased": "Purchased:",
-    "@home_sPanel_purchased": {
-        "description": "Purchased in summary Panel in HomePage"
-    },
-    "home_sPanel_left": "Left:",
-    "@home_sPanel_left": {
-        "description": "Left purchase in summary Panel in HomePage"
-    },
-    "home_sPanel_totalCost": "Total cost:",
-    "@home_sPanel_totalCost": {
-        "description": "Total Cost in summary Panel in HomePage"
-    },
-    "home_sPanel_spent": "Funds spent:",
-    "@home_sPanel_spent": {
-        "description": "Spent money in summary Panel in HomePage"
-    },
-
-    "home_bottom_need_buy": "Need to Buy",
-    "@home_bottom_need_buy": {
-        "description": "Caption of button Need to buy on bottom panel"
-    },
-    "home_bottom_full_list": "Full List",
-    "@home_bottom_full_list": {
-        "description": "Caption of button Full List on bottom panel"
-    },
-
-    "settings_title": "Settings",
+    "settings_title": "Settings Page",
     "@settings_title": {
         "description": "Caption of Settings page"
     },
-    "settings_sPanel": "Enable Measurement Results Panel",
-    "@settings_sPanel": {
-        "description": "Title of Summarization Panel Settings"
+    "settings_text": "This place could have your settings.",
+    "@settings_text": {
+        "description": "Text in the center of screen"
     }
-
 }

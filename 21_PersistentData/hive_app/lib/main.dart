@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_app/person.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() => runApp(const MyApp());
 

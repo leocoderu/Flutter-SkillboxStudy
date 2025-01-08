@@ -1,6 +1,8 @@
-// Layers
-import 'package:model_layer/model_layer.dart';
+// Import Packages
 import 'package:hive_flutter/hive_flutter.dart';
+
+// Import Layers
+import 'package:model_layer/model_layer.dart';
 
 class AppStateData {
   late Box<AppStateModel> appStateBox;

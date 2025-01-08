@@ -1,24 +1,10 @@
 {
     "language": "عرب",
-    "authMessage": "لاستخدام هذا التطبيق ، يجب عليك تسجيل الدخول بالطرق التالية",
-    "helloWorld": "مرحبا بالعالم!",
-    "hello": "مرحبًا {username}",
-    "butLogOut": "تسجيل خروج",
-    "butExit": "مخرج",
-    "msgButToast": "انقر نقرًا مزدوجًا للخروج من التطبيق",
-    "tooltipFBut": "أضف إلى القائمة",
-    "titleApp": "قائمة التسوق",
-    "titleList": "القائمة الكاملة",
+    "home_title": "تطبيق القالب",
+    "home_text": "اضغط على الأزرار أدناه لتغيير العداد",
+    "home_btInc_tooltip": "الزيادة",
+    "home_btDec_tooltip": "النقصان",
 
-    "home_sPanel_totalPurchase": "إجمالي المشتريات:",
-    "home_sPanel_purchased": "تم شراؤها:",
-    "home_sPanel_left": "غادر:",
-    "home_sPanel_totalCost": "التكلفة الإجمالية:",
-    "home_sPanel_spent": "الأموال المنفقة:",
-
-    "home_bottom_need_buy": "بحاجة للشراء",
-    "home_bottom_full_list": "القائمة الكاملة",
-
-    "settings_title": "إعدادات",
-    "settings_sPanel": "تفعيل لوحة نتائج القياس"
+    "settings_title": "صفحة الإعدادات",
+    "settings_text": "هذا المكان يمكن أن يكون الإعدادات الخاصة بك."
 }
