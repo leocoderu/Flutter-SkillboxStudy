@@ -1,0 +1,35 @@
+name: business_layer
+description: "Business layer package for project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 0.0.1
+
+environment:
+  sdk: ^3.5.3
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.6
+  get_it: ^8.0.2
+  #hive: ^2.2.3
+  #hive_flutter: ^1.1.0
+
+  model_layer:
+    path: ../model_layer
+  data_layer:
+    path: ../data_layer
+  design_layer:
+    path: ../design_layer
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  analyzer_sm:
+    path: ../analyzer_sm
+
+flutter:
+  uses-material-design: true
