@@ -2,16 +2,16 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 class CounterData {
-  static String boxName = 'template_app';
-  static String keyName = 'counter';
+  static const String boxName = 'template_counter';
+  static const String keyName = 'counter';
 
   const CounterData();
 
   Future<void> init() async {
-    if(!Hive.isBoxOpen(boxName)) {
+    //if(!Hive.isBoxOpen(boxName)) {
       await Hive.initFlutter();
       await Hive.openBox<int>(boxName);
-    }
+    //}
   }
 
   //ValueListenable<Box<int>> listenable() => Hive.box<int>(boxName).listenable();

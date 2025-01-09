@@ -1,0 +1,10 @@
+{
+    "language": "Español",
+    "home_title": "Aplicación de plantilla",
+    "home_text": "Toque los botones de abajo para cambiar el contador",
+    "home_btInc_tooltip": "Incremento",
+    "home_btDec_tooltip": "Disminución",
+
+    "settings_title": "Página de Configuración",
+    "settings_text": "Este lugar podría tener tu configuración."
+}

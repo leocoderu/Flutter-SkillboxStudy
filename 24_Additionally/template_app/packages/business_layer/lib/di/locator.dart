@@ -22,7 +22,8 @@ Future<void> setupServices() async {
       ..registerSingleton<CounterData>(CounterData())
 
       ..registerSingleton<ThemeController>(ThemeController())
-      ..registerSingleton<ThemeData>(ThemeData());
+      ..registerSingleton<ThemeDataCustom>(ThemeDataCustom());
 
   await locator.get<CounterController>().init(); // Hive initialization
+  await locator.get<ThemeController>().init(); // Hive initialization
 }
