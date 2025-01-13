@@ -37,8 +37,9 @@ void main() async {
   await setupServices();              // Initialize Dependency Injection Services (Locator)
 
   runApp(MultiBlocProvider(providers: [
-    BlocProvider(create: (_) => CounterBloc()),
     BlocProvider(create: (_) => ThemeBloc()),
+    BlocProvider(create: (_) => AppBloc()),
+    //BlocProvider(create: (_) => CounterBloc()),
     // << - Type here all BloC states
   ],
     child: const MainPage(),

@@ -1,37 +1,43 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_state_model.dart';
+part of 'app_state.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AppStateModelAdapter extends TypeAdapter<AppStateModel> {
+class AppStateAdapter extends TypeAdapter<AppState> {
   @override
   final int typeId = 0;
 
   @override
-  AppStateModel read(BinaryReader reader) {
+  AppState read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return AppStateModel(
-      counter: fields[0] as int?,
-      switcher: fields[1] as bool?,
-      text: fields[2] as String?,
+    return AppState(
+      auth_local: fields[0] as bool?,
+      auto_login: fields[1] as bool?,
+      counter: fields[2] as int?,
+      switcher: fields[3] as bool?,
+      text: fields[4] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, AppStateModel obj) {
+  void write(BinaryWriter writer, AppState obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.counter)
+      ..write(obj.auth_local)
       ..writeByte(1)
-      ..write(obj.switcher)
+      ..write(obj.auto_login)
       ..writeByte(2)
+      ..write(obj.counter)
+      ..writeByte(3)
+      ..write(obj.switcher)
+      ..writeByte(4)
       ..write(obj.text);
   }
 
@@ -41,7 +47,7 @@ class AppStateModelAdapter extends TypeAdapter<AppStateModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AppStateModelAdapter &&
+      other is AppStateAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

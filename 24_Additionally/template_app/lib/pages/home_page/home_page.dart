@@ -10,6 +10,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // Import Layers
 import 'package:business_layer/business_layer.dart';
 import 'package:design_layer/design_layer.dart';
+import 'package:model_layer/model_layer.dart';
 
 // Import Widgets
 import 'package:template_app/pages/home_page/widgets/gradient_colors.dart';
@@ -53,14 +54,16 @@ class _HomePageState extends State<HomePage> {
              child: Column(
                mainAxisSize: MainAxisSize.min,
                children: [
-                 BlocBuilder<CounterBloc, int>(
-                   builder: (_, int state) {
+                 //BlocBuilder<CounterBloc, int>(
+                 BlocBuilder<AppBloc, AppState>(
+                   //builder: (_, int state) {
+                   builder: (_, AppState state) {
                      return
                        Column(
                          mainAxisAlignment: MainAxisAlignment.center,
                          children: <Widget>[
                            Text('${AppLocalizations.of(context)!.home_text}:'),
-                           Text('$state', style: Theme.of(context).textTheme.headlineMedium),
+                           Text('${state.counter}', style: Theme.of(context).textTheme.headlineMedium),
                          ],
                        );
                    },
@@ -74,14 +77,16 @@ class _HomePageState extends State<HomePage> {
             children: [
               FloatingActionButton(
                 heroTag: 'Inc',
-                onPressed: () => context.read<CounterBloc>().add(Increase()),
+                //onPressed: () => context.read<CounterBloc>().add(Increase()),
+                onPressed: () => context.read<AppBloc>().add(IncCounter()),
                 tooltip: AppLocalizations.of(context)!.home_btInc_tooltip,
                 child: const Icon(Icons.add),
               ),
               SizedBox(height: 15.0),
               FloatingActionButton(
                 heroTag: 'Dec',
-                onPressed: () => context.read<CounterBloc>().add(Decrease()),
+                //onPressed: () => context.read<CounterBloc>().add(Decrease()),
+                onPressed: () => context.read<AppBloc>().add(DecCounter()),
                 tooltip: AppLocalizations.of(context)!.home_btDec_tooltip,
                 child: const Icon(Icons.remove),
               ),

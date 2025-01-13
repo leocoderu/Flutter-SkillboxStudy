@@ -20,35 +20,13 @@ import '../fluro_router.dart';
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
-  // ThemeData _getTheme(int id) {
-  //   final brightness = SchedulerBinding.instance.platformDispatcher.platformBrightness;
-  //   switch (id) {
-  //     case 1:
-  //       return ThemeData.light();
-  //     case 2:
-  //       return ThemeData.dark();
-  //     default:
-  //       return brightness == Brightness.light ? ThemeData.light() : ThemeData.dark();
-  //   }
-  // }
-
-  // ThemeMode _getThemeMode(int id) {
-  //   final brightness = SchedulerBinding.instance.platformDispatcher.platformBrightness;
-  //   switch (id) {
-  //     case 1:
-  //       return ThemeMode.light;
-  //     case 2:
-  //       return ThemeMode.dark;
-  //     default:
-  //       return brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark;
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, DefaultTheme>(
+    //return BlocBuilder<AppBloc, AppState>(
       builder: (BuildContext ctx, DefaultTheme state) {
-        print('MainPage: theme mode is: ${locator.get<ThemeController>().get()}');
+      //builder: (BuildContext ctx, AppState state) {
+        //print('MainPage: theme mode is: ${locator.get<ThemeController>().get()}');
         return MaterialApp(
           title: 'Template Application',
           debugShowCheckedModeBanner: false,

@@ -1,8 +1,9 @@
+// Import Flutter
 import 'package:flutter/material.dart';
 
-abstract class ThemeState {}
+abstract class ThemeEvent {}
 
-class ChangeEvent extends ThemeState {
+class ChangeEvent extends ThemeEvent {
     final ThemeMode? themeMode;
     ChangeEvent({this.themeMode});
 }

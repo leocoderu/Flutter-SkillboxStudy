@@ -24,16 +24,16 @@ class AppStateModel {
   String toString() =>
       'AppState(counter: $counter, switcher: $switcher , text: $text)';
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is AppStateModel
-        && other.counter == counter
-        && other.switcher == switcher
-        && other.text == text;
-  }
-
-  @override
-  int get hashCode => counter.hashCode ^ switcher.hashCode ^ text.hashCode;
+  // @override
+  // bool operator ==(Object other) {
+  //   if (identical(this, other)) return true;
+  //
+  //   return other is AppStateModel
+  //       && other.counter == counter
+  //       && other.switcher == switcher
+  //       && other.text == text;
+  // }
+  //
+  // @override
+  // int get hashCode => counter.hashCode ^ switcher.hashCode ^ text.hashCode;
 }

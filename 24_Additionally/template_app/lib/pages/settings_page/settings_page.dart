@@ -1,6 +1,5 @@
 // Import Flutter
 import 'package:flutter/material.dart';
-//import 'package:flutter/cupertino.dart';
 
 // Import Packages
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +22,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   bool systemTheme = locator.get<ThemeController>().get() == ThemeMode.system;
-  bool darkTheme = locator.get<ThemeController>().get() == ThemeMode.light ? false : true;
+  bool darkTheme = locator.get<ThemeController>().get() == ThemeMode.dark; //light ? false : true;
 
   @override
   Widget build(BuildContext context) {

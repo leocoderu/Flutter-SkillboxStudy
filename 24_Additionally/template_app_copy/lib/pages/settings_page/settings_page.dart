@@ -1,9 +1,13 @@
 // Import Flutter
+import 'package:flutter/material.dart';
+//import 'package:flutter/cupertino.dart';
+
+// Import Packages
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Import Layers
 import 'package:business_layer/business_layer.dart';
 import 'package:design_layer/design_layer.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Import Localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,8 +22,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool systemTheme = locator.get<ThemeController>().get() == 0;
-  bool darkTheme = locator.get<ThemeController>().get() == 1 ? false : true;
+  bool systemTheme = locator.get<ThemeController>().get() == ThemeMode.system;
+  bool darkTheme = locator.get<ThemeController>().get() == ThemeMode.light ? false : true;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +53,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           value: systemTheme,
                           onChanged: (value) {
                             (value)
-                                ? ctx.read<ThemeBloc>().add(ChangeEvent(id: 0))
-                                : ctx.read<ThemeBloc>().add(ChangeEvent(id: 1));
+                                ? ctx.read<ThemeBloc>().add(ChangeEvent(themeMode: ThemeMode.system))
+                                : ctx.read<ThemeBloc>().add(ChangeEvent(themeMode: ThemeMode.light));
                             setState(() {
                               systemTheme = value;
                               darkTheme = false;
@@ -80,8 +84,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           onChanged: systemTheme ? null
                             : (value) {
                                 (value)
-                                    ? ctx.read<ThemeBloc>().add(ChangeEvent(id: 2))
-                                    : ctx.read<ThemeBloc>().add(ChangeEvent(id: 1));
+                                    ? ctx.read<ThemeBloc>().add(ChangeEvent(themeMode: ThemeMode.dark))
+                                    : ctx.read<ThemeBloc>().add(ChangeEvent(themeMode: ThemeMode.light));
                                 setState(() {
                                   darkTheme = value;
                                 });

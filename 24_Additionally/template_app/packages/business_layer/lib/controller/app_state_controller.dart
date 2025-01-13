@@ -4,21 +4,22 @@ import 'package:data_layer/data_layer.dart';
 import 'package:model_layer/model_layer.dart';
 
 class AppStateController {
-  Future<AppStateModel?> getState() async =>
-      await locator.get<AppStateData>().getAppState();
+  Future<void> init() async => await locator.get<AppStateData>().init();
 
-  Future<void> setState(AppStateModel value) async =>
-      await locator.get<AppStateData>().setAppState(value);
+  AppState getAppState() => locator.get<AppStateData>().getAppState();
 
-  Future<bool> getLocalAuthState() async =>
-      await locator.get<AppStateData>().getLocalAuth();
+  Future<bool> getAuthLocal() async => await locator.get<AppStateData>().getAuthLocal();
+  Future<void> setAuthLocal(bool value) async => await locator.get<AppStateData>().setAuthLocal(value);
 
-  Future<void> setLocalAuthState(bool value) async =>
-      await locator.get<AppStateData>().setLocalAuth(value);
+  Future<bool> getAutoLogin() async => await locator.get<AppStateData>().getAutoLogin();
+  Future<void> setAutoLogin(bool value) async => await locator.get<AppStateData>().setAutoLogin(value);
 
-  Future<bool> getAutoLoginState() async =>
-      await locator.get<AppStateData>().getAutoLogin();
+  Future<int>  getCounter() async => await locator.get<AppStateData>().getCounter();
+  Future<void> setCounter(int value) async => await locator.get<AppStateData>().setCounter(value);
 
-  Future<void> setAutoLoginState(bool value) async =>
-      await locator.get<AppStateData>().setAutoLogin(value);
+  Future<bool> getSwitcher() async => await locator.get<AppStateData>().getSwitcher();
+  Future<void> setSwitcher(bool value) async => await locator.get<AppStateData>().setSwitcher(value);
+
+  Future<String> getText() async => await locator.get<AppStateData>().getText();
+  Future<void> setText(String value) async => await locator.get<AppStateData>().setText(value);
 }
