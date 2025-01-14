@@ -6,6 +6,13 @@
     "home_btDec_tooltip": "कमी",
 
     "settings_title": "सेटिंग पृष्ठ",
-    "settings_text": "इस जगह में आपकी सेटिंग्स हो सकती हैं । "
+    "settings_swSystemTheme_title": "सिस्टम थीम",
+    "settings_swSystemTheme_subtitle": "ऑन / ऑफ सिस्टम थीम",
+    "settings_swDarkTheme_title": "डार्क थीम",
+    "settings_swDarkTheme_subtitle": "पर / बंद डार्क थीम",
+    "settings_swAuthLocal_title": "स्थानीय प्राधिकरण",
+    "settings_swAuthLocal_subtitle": "स्थानीय प्राधिकरण का उपयोग करें",
+    "settings_swAutoLogin_title": "ऑटो लॉगिन",
+    "settings_swAutoLogin_subtitle": "ऑटो लॉगिन का उपयोग करें"
 }
 

@@ -4,9 +4,9 @@ import 'package:data_layer/data_layer.dart';
 import 'package:model_layer/model_layer.dart';
 
 class AppStateController {
-  Future<void> init() async => await locator.get<AppStateData>().init();
+  Future<void> init() async => await locator.get<AppStateData>().initHive();
 
-  AppState getAppState() => locator.get<AppStateData>().getAppState();
+  AppState getAppState() => locator.get<AppStateData>().getAppStateSync();
 
   Future<bool> getAuthLocal() async => await locator.get<AppStateData>().getAuthLocal();
   Future<void> setAuthLocal(bool value) async => await locator.get<AppStateData>().setAuthLocal(value);

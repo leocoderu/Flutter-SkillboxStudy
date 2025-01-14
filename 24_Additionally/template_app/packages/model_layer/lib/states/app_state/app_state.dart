@@ -23,22 +23,15 @@ class AppState extends HiveObject {
   AppState({this.auth_local, this.auto_login, this.counter, this.switcher, this.text});
 
   AppState copyWith({bool? auth_local, bool? auto_login, int? counter, bool? switcher, String? text}) =>
-    AppState(auth_local: auth_local, auto_login: auto_login, counter: counter, switcher: switcher, text: text);
+    AppState(
+        auth_local: auth_local ?? this.auth_local,
+        auto_login: auto_login ?? this.auto_login,
+        counter: counter ?? this.counter,
+        switcher: switcher ?? this.switcher,
+        text: text ?? this.text,
+    );
 
   @override
   String toString() =>
     'AppState(auth_local: $auth_local, auto_login:$auto_login, counter: $counter, switcher: $switcher , text: $text)';
-
-  // @override
-  // bool operator ==(Object other) {
-  //   if (identical(this, other)) return true;
-  //
-  //   return other is AppState
-  //       && other.counter == counter
-  //       && other.switcher == switcher
-  //       && other.text == text;
-  // }
-  //
-  // @override
-  // int get hashCode => counter.hashCode ^ switcher.hashCode ^ text.hashCode;
 }

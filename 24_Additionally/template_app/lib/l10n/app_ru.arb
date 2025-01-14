@@ -6,5 +6,12 @@
     "home_btDec_tooltip": "Уменьшить",
 
     "settings_title": "Страница настроек",
-    "settings_text": "В этом месте могут быть Ваши настройки."
+    "settings_swSystemTheme_title": "Системная тема",
+    "settings_swSystemTheme_subtitle": "Вкл / Выкл Системной темы",
+    "settings_swDarkTheme_title": "Тёмная тема",
+    "settings_swDarkTheme_subtitle": "Вкл / Выкл Тёмной темы",
+    "settings_swAuthLocal_title": "Локальная Авторизация",
+    "settings_swAuthLocal_subtitle": "Использовать локальную авторизацию",
+    "settings_swAutoLogin_title": "Автоматический вход",
+    "settings_swAutoLogin_subtitle": "Использовать автоматический вход"
 }

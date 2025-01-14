@@ -6,5 +6,12 @@
     "home_btDec_tooltip": "Disminución",
 
     "settings_title": "Página de Configuración",
-    "settings_text": "Este lugar podría tener tu configuración."
+    "settings_swSystemTheme_title": "Tema del sistema",
+    "settings_swSystemTheme_subtitle": "Tema del sistema Activado / desactivado",
+    "settings_swDarkTheme_title": "Tema oscuro",
+    "settings_swDarkTheme_subtitle": "Tema oscuro Activado / desactivado",
+    "settings_swAuthLocal_title": "Autorización Local",
+    "settings_swAuthLocal_subtitle": "Usar Autorización Local",
+    "settings_swAutoLogin_title": "Inicio de Sesión Automático",
+    "settings_swAutoLogin_subtitle": "Usar Inicio de Sesión Automático"
 }

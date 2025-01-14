@@ -6,5 +6,12 @@
     "home_btDec_tooltip": "Verringern",
 
     "settings_title": "Einstellungsseite",
-    "settings_text": "Dieser Ort könnte Ihre Einstellungen haben."
+    "settings_swSystemTheme_title": "Systemdesign",
+    "settings_swSystemTheme_subtitle": "Ein / Aus-System-Thema",
+    "settings_swDarkTheme_title": "Dunkles Thema",
+    "settings_swDarkTheme_subtitle": "Dunkles Thema ein / aus",
+    "settings_swAuthLocal_title": "Lokale Autorisierung",
+    "settings_swAuthLocal_subtitle": "Lokale Autorisierung verwenden",
+    "settings_swAutoLogin_title": "Automatische Anmeldung",
+    "settings_swAutoLogin_subtitle": "Automatische Anmeldung verwenden"
 }

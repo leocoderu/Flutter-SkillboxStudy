@@ -6,129 +6,94 @@ import 'package:model_layer/model_layer.dart';
 
 class AppStateData {
   static const String boxName = 'template_box';
-  static const String keyThemeMode = 'theme_mode';
-  static const String keyCounter = 'counter';
-  static const String keyAuthLocal = 'auth_local';
-  static const String keyAutoLogin = 'auto_login';
-  static const String keySwitcher = 'switcher';
-  static const String keyText = 'text';
+  static const String keyAppState = 'app_state';
 
-  AppStateData();
+  const AppStateData();
 
-  late Box<AppState> boxApp;
+  // !!! ATTENTION !!! Read the first.
+  // Hive Dependency:   Box<Type> -> Record<Type> -> Data<Class with different types>
 
-  Future<void> init() async {
+  // The postulate (subjectively):
+  // The Box can contain only Records of a certain Type.
+  // In this Box can contains many Records and they differ by "keyName".
+  // Each Record can be a Class containing Data with different Types.
+
+  Future<void> initHive() async {
     await Hive.initFlutter();
     Hive.registerAdapter(AppStateAdapter());
-    //boxApp =
-    //await Hive.openBox<AppState>(boxName);
     await Hive.openBox<AppState>(boxName);
   }
 
-  // Synchro initialize BloC
-  AppState getAppState() {
-    boxApp = Hive.box<AppState>(boxName);
-    final AppState? appState  = boxApp.get('keyCounter');
-    print('appState: $appState');
-    //final boxInt = Hive.box<int>(boxName);
-    // final boxBool = Hive.box<bool>(boxName);
-    // final boxString = Hive.box<String>(boxName);
-
-    //final bool authLocal = boxApp.get(keyAuthLocal) as bool? ?? false;
-    //final bool autoLogin = boxApp.get(keyAutoLogin) as bool? ?? false;
-    //final int  counter   = boxInt.get(keyCounter) ?? 0;
-   // final bool switcher  = boxApp.get(keySwitcher) as bool? ?? false;
-    //final String text    = boxApp.get(keyText) as String? ?? '';
-
-    //final bool authLocal = boxBool.get(keyAuthLocal) ?? false;
-    //final bool autoLogin = boxBool.get(keyAutoLogin) ?? false;
-    //final int counter    = boxInt.get(keyCounter) ?? 0;
-    //final bool switcher  = boxBool.get(keySwitcher) ?? false;
-    //final String text    = boxString.get(keyText) ?? '';
-
-    return AppState(
-      auth_local: false, //authLocal,
-      auto_login: false, //autoLogin,
-      counter: (appState != null) ? appState.counter : 0, //counter,
-      switcher: false, //switcher,
-      text: '', //text,
-    );
+  // Synchronous getting Record from the Box for initialize BloC Statement
+  AppState getAppStateSync() {
+    final Box<AppState> box = Hive.box<AppState>(boxName);          // Get Box with AppState Data type
+    return box.get(keyAppState)                                     // Get Record from the Box
+      ?? AppState(auto_login: false, auth_local: false, counter: 0, switcher: false, text: '');
   }
-
-  // //Get Theme Mode state value from Hive
-  // Future<ThemeMode> getThemeMode() async {
-  //   final box = Hive.box<ThemeMode>(boxName);
-  //   return await box.get(keyThemeMode) ?? ThemeMode.system;
-  // }
-  //Get Theme Mode ID state value from Hive
-  // Future<int> getThemeModeID() async {
-  //   final box = Hive.box<int>(boxName);
-  //   return await box.get(keyThemeMode) ?? 0;
-  // }
-  //Set Theme Mode state value to Hive
-  // Future<void> setThemeMode(ThemeMode value) async {
-  //   final box = Hive.box<ThemeMode>(boxName);
-  //   return await box.put(keyThemeMode, value);
-  // }
+  // Asynchronous getting Record from the Box
+  Future<AppState> getAppState() async {
+    final Box<AppState> box = await Hive.box<AppState>(boxName);    // Get Box with AppState Data type
+    return await box.get(keyAppState)                               // Get Record from the Box
+        ?? AppState(auto_login: false, auth_local: false, counter: 0, switcher: false, text: '');
+  }
+  // Asynchronous setting Record
+  Future<void> setAppState(AppState appState) async {
+    final Box<AppState> box = Hive.box<AppState>(boxName);          // Get Box with AppState Data type
+    await box.put(keyAppState, appState);                           // Put Record to Box
+  }
 
   //Get Auth Local state value from Hive
   Future<bool> getAuthLocal() async {
-    final box = Hive.box<bool>(boxName);
-    return await box.get(keyAuthLocal) ?? false;
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return appState.auth_local ?? false;                            // Return Data of Record
   }
   //Set Auth Local state value to Hive
   Future<void> setAuthLocal(bool value) async {
-    final box = Hive.box<bool>(boxName);
-    return await box.put(keyAuthLocal, value);
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return await setAppState(appState.copyWith(auth_local: value)); // Put Record with changes to the Box
   }
 
   //Get Auto Login state value from Hive
   Future<bool> getAutoLogin() async {
-    final box = Hive.box<bool>(boxName);
-    return await box.get(keyAutoLogin) ?? false;
+    final  AppState appState = await getAppState();                 // Get Record with current data from Box
+    return appState.auto_login ?? false;                            // Return Data of Record
   }
   //Set Auto Login state value to Hive
   Future<void> setAutoLogin(bool value) async {
-    final box = Hive.box<bool>(boxName);
-    return await box.put(keyAutoLogin, value);
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return await setAppState(appState.copyWith(auto_login: value)); // Put Record with changes to the Box
   }
 
   //Get Counter state value from Hive
   Future<int> getCounter() async {
-    //AppState? app = boxApp.get(keyCounter);
-    //return (app != null) ? (await boxApp.get(keyCounter)!.counter ?? 0) : 0;
-    final box = Hive.box<int?>(boxName);
-    return await box.get(keySwitcher) ?? 0;
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return appState.counter ?? 0;                                   // Return Data of Record
   }
   //Set Counter state value to Hive
   Future<void> setCounter(int value) async {
-    //AppState? app = boxApp.get(keyCounter);
-    //app = (app != null) ? app.copyWith(counter: value) : AppState(counter: value);
-    //return await boxApp.put(keyCounter, app);
-    final box = Hive.box<int>(boxName);
-    return await box.put(keyCounter, value);
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return await setAppState(appState.copyWith(counter: value));    // Put Record with changes to the Box
   }
 
   //Get Switcher state value from Hive
   Future<bool> getSwitcher() async {
-    final box = Hive.box<bool>(boxName);
-    return await box.get(keySwitcher) ?? false;
-    //return await boxApp.get(keySwitcher) as bool? ?? false;
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return appState.switcher ?? false;                              // Return Data of Record
   }
   //Set Switcher state value to Hive
   Future<void> setSwitcher(bool value) async {
-    final box = Hive.box<bool>(boxName);
-    return await box.put(keySwitcher, value);
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return await setAppState(appState.copyWith(switcher: value));   // Put Record with changes to the Box
   }
 
   //Get Text state value from Hive
   Future<String> getText() async {
-    final box = Hive.box<String>(boxName);
-    return await box.get(keyText) ?? '';
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return appState.text ?? '';                                     // Return Data of Record
   }
   //Set Text state value to Hive
   Future<void> setText(String value) async {
-    final box = Hive.box<String>(boxName);
-    return await box.put(keyText, value);
+    final AppState appState = await getAppState();                  // Get Record with current data from Box
+    return await setAppState(appState.copyWith(text: value));       // Put Record with changes to the Box
   }
 }

@@ -1,4 +1,5 @@
-// Import Flutter
+// Import Dart and Flatter
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 // Import Packages
@@ -13,7 +14,7 @@ import 'package:design_layer/design_layer.dart';
 import 'package:model_layer/model_layer.dart';
 
 // Import Widgets
-import 'package:template_app/pages/home_page/widgets/gradient_colors.dart';
+import 'widgets/gradient_colors.dart';
 
 // Import Navigation
 import '../../fluro_router.dart';
@@ -40,12 +41,13 @@ class _HomePageState extends State<HomePage> {
       builder: (BuildContext ctx, DefaultTheme state) {
         return Scaffold(
           appBar: AppBar(
+            leading: IconButton(onPressed: () => exit(0), icon: Icon(Icons.exit_to_app_rounded)),
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             title: Text(AppLocalizations.of(context)!.home_title),
             centerTitle: true,
             actions: [
               IconButton(
-                icon: const Icon(Icons.settings),
+                icon: const Icon(Icons.settings_rounded),
                 onPressed: () =>  MyFluroRouter.router.navigateTo(context, '/settings'),
               ),
             ],
@@ -54,9 +56,7 @@ class _HomePageState extends State<HomePage> {
              child: Column(
                mainAxisSize: MainAxisSize.min,
                children: [
-                 //BlocBuilder<CounterBloc, int>(
                  BlocBuilder<AppBloc, AppState>(
-                   //builder: (_, int state) {
                    builder: (_, AppState state) {
                      return
                        Column(
@@ -77,7 +77,6 @@ class _HomePageState extends State<HomePage> {
             children: [
               FloatingActionButton(
                 heroTag: 'Inc',
-                //onPressed: () => context.read<CounterBloc>().add(Increase()),
                 onPressed: () => context.read<AppBloc>().add(IncCounter()),
                 tooltip: AppLocalizations.of(context)!.home_btInc_tooltip,
                 child: const Icon(Icons.add),
@@ -85,7 +84,6 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 15.0),
               FloatingActionButton(
                 heroTag: 'Dec',
-                //onPressed: () => context.read<CounterBloc>().add(Decrease()),
                 onPressed: () => context.read<AppBloc>().add(DecCounter()),
                 tooltip: AppLocalizations.of(context)!.home_btDec_tooltip,
                 child: const Icon(Icons.remove),

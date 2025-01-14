@@ -23,10 +23,38 @@
 
     "settings_title": "Settings Page",
     "@settings_title": {
-        "description": "Caption of Settings page"
+        "description": "Title of Settings page"
     },
-    "settings_text": "This place could have your settings.",
-    "@settings_text": {
-        "description": "Text in the center of screen"
+    "settings_swSystemTheme_title": "System theme",
+    "@settings_swSystemTheme_title": {
+        "description": "Title of switcher"
+    },
+    "settings_swSystemTheme_subtitle": "On / Off System theme",
+    "@settings_swSystemTheme_subtitle": {
+        "description": "Subtitle of switcher"
+    },
+    "settings_swDarkTheme_title": "Dark theme",
+    "@settings_swDarkTheme_title": {
+        "description": "Title of switcher"
+    },
+    "settings_swDarkTheme_subtitle": "On / Off Dark theme",
+    "@settings_swDarkTheme_subtitle": {
+        "description": "Subtitle of switcher"
+    },
+    "settings_swAuthLocal_title": "Local Authorization",
+    "@settings_swAuthLocal_title": {
+        "description": "Title of switcher"
+    },
+    "settings_swAuthLocal_subtitle": "Use Local Authorization",
+    "@settings_swAuthLocal_subtitle": {
+        "description": "Subtitle of switcher"
+    },
+    "settings_swAutoLogin_title": "Auto Login",
+    "@settings_swAutoLogin_title": {
+        "description": "Title of switcher"
+    },
+    "settings_swAutoLogin_subtitle": "Use Auto Login",
+    "@settings_swAutoLogin_subtitle": {
+        "description": "Subtitle of switcher"
     }
 }

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Import Packages
-//import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Import Layers
@@ -23,10 +22,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, DefaultTheme>(
-    //return BlocBuilder<AppBloc, AppState>(
       builder: (BuildContext ctx, DefaultTheme state) {
-      //builder: (BuildContext ctx, AppState state) {
-        //print('MainPage: theme mode is: ${locator.get<ThemeController>().get()}');
         return MaterialApp(
           title: 'Template Application',
           debugShowCheckedModeBanner: false,

@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 // Import Packages
 import 'package:hive_flutter/hive_flutter.dart';
 
-// Import Layers
-//import 'package:model_layer/model_layer.dart';
-
 class ThemeDataCustom {
   static const String boxName = 'template_theme';
   static const String keyName = 'theme_mode';
@@ -36,11 +33,8 @@ class ThemeDataCustom {
   }
 
   Future<void> init() async {
-    //if(!Hive.isBoxOpen(boxName)) {
-      await Hive.initFlutter();
-      //Hive.registerAdapter(ThemeCustomAdapter());
-      await Hive.openBox<int>(boxName);
-    //}
+    await Hive.initFlutter();
+    await Hive.openBox<int>(boxName);
   }
 
   ThemeMode get() {

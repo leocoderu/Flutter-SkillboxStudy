@@ -12,6 +12,4 @@ class ThemeController {
 
   Future<void> set(ThemeMode value) async => await locator.get<ThemeDataCustom>().set(value);
 
-//Future<void> inc() async => locator.get<CounterData>().inc();
-//Future<void> dec() async => locator.get<CounterData>().dec();
 }

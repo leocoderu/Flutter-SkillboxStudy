@@ -14,7 +14,7 @@ class MyFluroRouter {
 
   static void setupRouter(){
     router.define(HomePage.routeName, handler: homeHandler); //, transitionType: TransitionType.fadeIn);
-    router.define(SettingsPage.routeName, handler: settingsHandler); //, transitionType: TransitionType.inFromRight);
+    router.define(SettingsPage.routeName, handler: settingsHandler, transitionType: TransitionType.inFromRight);
     router.notFoundHandler = Handler(handlerFunc: (context, Map<String, dynamic> params) => const NotFoundPage());
   }
 }
