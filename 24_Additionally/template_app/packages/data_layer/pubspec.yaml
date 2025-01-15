@@ -13,10 +13,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
-  local_auth: ^2.3.0
-  local_auth_android: ^1.0.46
-  local_auth_darwin: ^1.4.1
-  hive: ^2.2.3
+  #local_auth: ^2.3.0
+  #local_auth_android: ^1.0.46
+  #local_auth_darwin: ^1.4.1
+  #hive: ^2.2.3
   hive_flutter: ^1.1.0
 
   model_layer:

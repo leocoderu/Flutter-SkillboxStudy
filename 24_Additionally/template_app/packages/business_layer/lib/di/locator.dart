@@ -9,11 +9,11 @@ final locator = GetIt.instance;
 
 Future<void> setupServices() async {
   await locator
-      ..registerSingleton<LocalPin>(LocalPin())
-      ..registerSingleton<LocalPinController>(LocalPinController())
-
-      ..registerSingleton<LocalAuthController>(LocalAuthController())
-      ..registerSingleton<LocalAuth>(LocalAuth())
+      // ..registerSingleton<LocalPin>(LocalPin())
+      // ..registerSingleton<LocalPinController>(LocalPinController())
+      //
+      // ..registerSingleton<LocalAuthController>(LocalAuthController())
+      // ..registerSingleton<LocalAuth>(LocalAuth())
 
       ..registerSingleton<AppStateController>(AppStateController())
       ..registerSingleton<AppStateData>(AppStateData())

@@ -10,7 +10,6 @@ Template for new Flutter project with DI, BloC, Hive etc.
 - BloC Statement Management
 - Hive storage persistent data
 - Fluro Navigation
-- Local Authorization
 - Internationalization and localization
 - Basic structure of project
 
