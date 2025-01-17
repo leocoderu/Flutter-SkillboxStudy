@@ -11,14 +11,27 @@ import 'package:model_layer/model_layer.dart';
 
 // Import Localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:template_app/pages/settings_page/widgets/setting_switch2.dart';
+import 'package:template_app/pages/settings_page/widgets/triple_switch.dart';
 
 // Import Widgets
 import 'widgets/setting_switch.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   static const routeName = '/settings';
 
   const SettingsPage({super.key});
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+
+  switchPosition swPos = switchPosition.on;
+
+  void _ChangePos() =>
+    setState(() => swPos = swPos == switchPosition.on ? switchPosition.off : switchPosition.on);
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +84,13 @@ class SettingsPage extends StatelessWidget {
                         subtitle: AppLocalizations.of(context)!.settings_swAutoLogin_subtitle,
                         switcher: appState.auto_login ?? false,
                         onChanged: (value) => ctx.read<AppBloc>().add(ChangeAutoLogin(value: value)),
+                      ),
+                      SettingSwitchTwo(
+                        icon: Icons.lock_open,
+                        title: AppLocalizations.of(context)!.settings_swAutoLogin_title,
+                        subtitle: AppLocalizations.of(context)!.settings_swAutoLogin_subtitle,
+                        position: swPos,
+                        onTap: () => _ChangePos(),
                       ),
                     ],
                   ),

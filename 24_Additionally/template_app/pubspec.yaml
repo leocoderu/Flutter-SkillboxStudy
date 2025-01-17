@@ -44,41 +44,41 @@ flutter:
     - assets/data/svg/
     - assets/fonts/
 
-#  fonts:
-#    - family: Exo2
-#      fonts:
-#        - asset: assets/fonts/exo2/Exo2-ExtraLight.ttf
-#          weight: 100
-#        - asset: assets/fonts/exo2/Exo2-ExtraLightItalic.ttf
-#
-#        - asset: assets/fonts/exo2/Exo2-Light.ttf
-#          weight: 200
-#        - asset: assets/fonts/exo2/Exo2-LightItalic.ttf
-#
-#        - asset: assets/fonts/exo2/Exo2-Thin.ttf
-#          weight: 300
-#        - asset: assets/fonts/exo2/Exo2-ThinItalic.ttf
-#
-#        - asset: assets/fonts/exo2/Exo2-Regular.ttf
-#          weight: 400
-#        - asset: assets/fonts/exo2/Exo2-Italic.ttf
-#
-#        - asset: assets/fonts/exo2/Exo2-Medium.ttf
-#          weight: 500
-#        - asset: assets/fonts/exo2/Exo2-MediumItalic.ttf
-#
-#        - asset: assets/fonts/exo2/Exo2-SemiBold.ttf
-#          weight: 600
-#        - asset: assets/fonts/exo2/Exo2-SemiBoldItalic.ttf
-#
-#        - asset: assets/fonts/exo2/Exo2-Bold.ttf
-#          weight: 700
-#        - asset: assets/fonts/exo2/Exo2-BoldItalic.ttf
-#
-#        - asset: assets/fonts/exo2/Exo2-ExtraBold.ttf
-#          weight: 800
-#        - asset: assets/fonts/exo2/Exo2-ExtraBoldItalic.ttf
-#
-#        - asset: assets/fonts/exo2/Exo2-Black.ttf
-#          weight: 900
-#        - asset: assets/fonts/exo2/Exo2-BlackItalic.ttf
+  fonts:
+    - family: Exo2
+      fonts:
+        - asset: assets/fonts/exo2/Exo2-ExtraLight.ttf
+          weight: 100
+        - asset: assets/fonts/exo2/Exo2-ExtraLightItalic.ttf
+
+        - asset: assets/fonts/exo2/Exo2-Light.ttf
+          weight: 200
+        - asset: assets/fonts/exo2/Exo2-LightItalic.ttf
+
+        - asset: assets/fonts/exo2/Exo2-Thin.ttf
+          weight: 300
+        - asset: assets/fonts/exo2/Exo2-ThinItalic.ttf
+
+        - asset: assets/fonts/exo2/Exo2-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/exo2/Exo2-Italic.ttf
+
+        - asset: assets/fonts/exo2/Exo2-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/exo2/Exo2-MediumItalic.ttf
+
+        - asset: assets/fonts/exo2/Exo2-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/exo2/Exo2-SemiBoldItalic.ttf
+
+        - asset: assets/fonts/exo2/Exo2-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/exo2/Exo2-BoldItalic.ttf
+
+        - asset: assets/fonts/exo2/Exo2-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/exo2/Exo2-ExtraBoldItalic.ttf
+
+        - asset: assets/fonts/exo2/Exo2-Black.ttf
+          weight: 900
+        - asset: assets/fonts/exo2/Exo2-BlackItalic.ttf
