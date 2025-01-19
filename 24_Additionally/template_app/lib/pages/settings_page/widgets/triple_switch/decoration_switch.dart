@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-BoxDecoration decorationTrackOn = BoxDecoration(
+BoxDecoration defaultDecorationTrackOn = BoxDecoration(
   borderRadius: BorderRadius.circular(12.0),
   border: Border.all(color: Color(0xFF201D26)),
   gradient: LinearGradient(
@@ -11,7 +11,7 @@ BoxDecoration decorationTrackOn = BoxDecoration(
   ),
 );
 
-BoxDecoration decorationTrackOff = BoxDecoration(
+BoxDecoration defaultDecorationTrackOff = BoxDecoration(
   borderRadius: BorderRadius.circular(12.0),
   border: Border.all(color: Color(0xFF201D26)),
   gradient: LinearGradient(
@@ -22,7 +22,7 @@ BoxDecoration decorationTrackOff = BoxDecoration(
   ),
 );
 
-BoxDecoration decorationTrackWait = BoxDecoration(
+BoxDecoration defaultDecorationTrackWait = BoxDecoration(
   borderRadius: BorderRadius.circular(12.0),
   border: Border.all(color: Color(0xFF201D26)),
   gradient: LinearGradient(
@@ -33,7 +33,7 @@ BoxDecoration decorationTrackWait = BoxDecoration(
   ),
 );
 
-BoxDecoration decorationTrackDisabled = BoxDecoration(
+BoxDecoration defaultDecorationTrackDisabled = BoxDecoration(
   borderRadius: BorderRadius.circular(12.0),
   border: Border.all(color: Color(0xFF908393)),
   gradient: LinearGradient(
@@ -44,7 +44,7 @@ BoxDecoration decorationTrackDisabled = BoxDecoration(
   ),
 );
 
-BoxDecoration decorationSliderOn = BoxDecoration(
+BoxDecoration defaultDecorationSliderOn = BoxDecoration(
   borderRadius: BorderRadius.circular(10.0),
   border: Border.all(color: Color(0xFF201D26), strokeAlign: BorderSide.strokeAlignOutside),
   gradient: LinearGradient(
@@ -55,7 +55,7 @@ BoxDecoration decorationSliderOn = BoxDecoration(
   ),
 );
 
-BoxDecoration decorationSliderOff = BoxDecoration(
+BoxDecoration defaultDecorationSliderOff = BoxDecoration(
   borderRadius: BorderRadius.circular(10.0),
   border: Border.all(color: Color(0xFF201D26), strokeAlign: BorderSide.strokeAlignInside),
   gradient: LinearGradient(
@@ -66,7 +66,7 @@ BoxDecoration decorationSliderOff = BoxDecoration(
   ),
 );
 
-BoxDecoration decorationSliderWait = BoxDecoration(
+BoxDecoration defaultDecorationSliderWait = BoxDecoration(
   borderRadius: BorderRadius.circular(10.0),
   border: Border.all(color: Color(0xFF201D26), strokeAlign: BorderSide.strokeAlignOutside),
   gradient: LinearGradient(
@@ -77,7 +77,7 @@ BoxDecoration decorationSliderWait = BoxDecoration(
   ),
 );
 
-BoxDecoration decorationSliderDisabled = BoxDecoration(
+BoxDecoration defaultDecorationSliderDisabled = BoxDecoration(
   borderRadius: BorderRadius.circular(10.0),
   border: Border.all(color: Color(0xFF908393), strokeAlign: BorderSide.strokeAlignOutside),
   gradient: LinearGradient(
@@ -88,14 +88,14 @@ BoxDecoration decorationSliderDisabled = BoxDecoration(
   ),
 );
 
-const TextStyle textStyleEnabled = TextStyle(
+const TextStyle defaultTextStyleEnabled = TextStyle(
   color: Color(0xFF58565C),
   fontFamily: 'Exo2',
   fontSize: 13,
   fontWeight: FontWeight.w700,
 );
 
-const TextStyle textStyleDisabled = TextStyle(
+const TextStyle defaultTextStyleDisabled = TextStyle(
   color: Color(0xFF908E93),
   fontFamily: 'Exo2',
   fontSize: 13,

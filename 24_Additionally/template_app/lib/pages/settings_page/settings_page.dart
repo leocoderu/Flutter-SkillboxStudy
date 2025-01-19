@@ -12,7 +12,7 @@ import 'package:model_layer/model_layer.dart';
 // Import Localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:template_app/pages/settings_page/widgets/setting_switch2.dart';
-import 'package:template_app/pages/settings_page/widgets/triple_switch.dart';
+import 'package:template_app/pages/settings_page/widgets/triple_switch/triple_switch.dart';
 
 // Import Widgets
 import 'widgets/setting_switch.dart';
