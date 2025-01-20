@@ -5,6 +5,7 @@ import 'decoration_switch.dart';
 enum switchPosition {on, wait, off}
 
 class TripleSwitch extends StatelessWidget {
+  final bool enabled;
   final switchPosition value;
 
   final BoxDecoration? decorationTrackOn;
@@ -20,7 +21,6 @@ class TripleSwitch extends StatelessWidget {
   final Size sizeTrack;
   final Size sizeSlider;
 
-  final bool enabled;
   final int?  timeout;
   final String textOn;
   final String textOff;
@@ -32,6 +32,7 @@ class TripleSwitch extends StatelessWidget {
   final VoidCallback? onTap;
 
   const TripleSwitch({super.key,
+    this.enabled = true,
     this.value = switchPosition.on,
     this.decorationTrackOn,
     this.decorationTrackOff,
@@ -43,7 +44,6 @@ class TripleSwitch extends StatelessWidget {
     this.decorationSliderDisabled,
     this.sizeTrack = const Size(60.0, 30.0),
     this.sizeSlider = const Size(30.0, 30.0),
-    this.enabled = true,
     this.timeout,
     this.textOn = '',
     this.textOff = '',
@@ -69,24 +69,25 @@ class TripleSwitch extends StatelessWidget {
           text = textOn;
           break;
 
-        case switchPosition.off:
-          trackDecor = decorationTrackOff ?? defaultDecorationTrackOff;
-          sliderDecor = decorationSliderOff ?? defaultDecorationSliderOff;
-          pos = Alignment.centerLeft;
-          text = textOff;
-          break;
-
         case switchPosition.wait:
           trackDecor = decorationTrackWait ?? defaultDecorationTrackWait;
           sliderDecor = decorationSliderWait ?? defaultDecorationSliderWait;
           pos = Alignment.center;
           text = textWait;
           break;
+
+        case switchPosition.off:
+          trackDecor = decorationTrackOff ?? defaultDecorationTrackOff;
+          sliderDecor = decorationSliderOff ?? defaultDecorationSliderOff;
+          pos = Alignment.centerLeft;
+          text = textOff;
+          break;
     }
 
     return GestureDetector(
       onTap: enabled ? onTap : null,
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200),
         decoration: enabled ? trackDecor : defaultDecorationTrackDisabled,
         alignment: enabled ? pos : Alignment.center,
         width: sizeTrack.width,
