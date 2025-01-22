@@ -1,4 +1,6 @@
 // Import Flutter
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 
 // Import Packages
@@ -27,11 +29,28 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  final _receivePort1 = ReceivePort();
 
   switchPosition swPos = switchPosition.on;
 
-  void _ChangePos() =>
-    setState(() => swPos = swPos == switchPosition.on ? switchPosition.off : switchPosition.on);
+  void _ChangePos(switchPosition value) => setState(() => swPos = value);
+
+  void _initLister() async {
+    _receivePort1.listen((res) {
+      setState(() {
+        if (res as bool) {
+          swPos = (swPos == switchPosition.on)
+              ? switchPosition.off : switchPosition.on;
+        }
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    _initLister();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +69,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         icon: Icons.sunny,
                         title: AppLocalizations.of(context)!.settings_swSystemTheme_title,
                         subtitle: AppLocalizations.of(context)!.settings_swSystemTheme_subtitle,
-                        switcher: locator.get<ThemeController>().get() == ThemeMode.system,
+                        value: locator.get<ThemeController>().get() == ThemeMode.system,
                         onChanged: (value) {
                           (value)
                               ? ctx.read<ThemeBloc>().add(ChangeEvent(themeMode: ThemeMode.system))
@@ -62,7 +81,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         icon: Icons.dark_mode,
                         title: AppLocalizations.of(context)!.settings_swDarkTheme_title,
                         subtitle: AppLocalizations.of(context)!.settings_swDarkTheme_subtitle,
-                        switcher: locator.get<ThemeController>().get() == ThemeMode.dark,
+                        value: locator.get<ThemeController>().get() == ThemeMode.dark,
                         onChanged: locator.get<ThemeController>().get() == ThemeMode.system ? null
                             : (value) {
                           (value)
@@ -75,22 +94,24 @@ class _SettingsPageState extends State<SettingsPage> {
                         icon: Icons.security,
                         title: AppLocalizations.of(context)!.settings_swAuthLocal_title,
                         subtitle: AppLocalizations.of(context)!.settings_swAuthLocal_subtitle,
-                        switcher: appState.auth_local ?? false,
+                        value: appState.auth_local ?? false,
                         onChanged: (value) => ctx.read<AppBloc>().add(ChangeAuthLocal(value: value)),
                       ),
                       SettingSwitch(
                         icon: Icons.lock_open,
                         title: AppLocalizations.of(context)!.settings_swAutoLogin_title,
                         subtitle: AppLocalizations.of(context)!.settings_swAutoLogin_subtitle,
-                        switcher: appState.auto_login ?? false,
+                        value: appState.auto_login ?? false,
                         onChanged: (value) => ctx.read<AppBloc>().add(ChangeAutoLogin(value: value)),
                       ),
+
                       SettingSwitchTwo(
-                        icon: Icons.lock_open,
+                        icon: Icons.keyboard_command_key,
                         title: AppLocalizations.of(context)!.settings_swAutoLogin_title,
                         subtitle: AppLocalizations.of(context)!.settings_swAutoLogin_subtitle,
-                        position: swPos,
-                        onTap: () => _ChangePos(),
+                        value: swPos,
+                        timeout: 10,
+                        onChanged: (value) => _ChangePos(value),
                       ),
                     ],
                   ),

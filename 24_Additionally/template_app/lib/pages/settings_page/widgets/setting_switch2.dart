@@ -7,11 +7,12 @@ class SettingSwitchTwo extends StatelessWidget {
   final IconData? icon;
   final String? title;
   final String? subtitle;
-  final switchPosition position;
-  final VoidCallback? onTap;
+  final switchPosition value;
+  final int? timeout;
+  final ValueChanged<switchPosition> onChanged;
 
   const SettingSwitchTwo({super.key, this.enabled, this.icon, this.title,
-    this.subtitle, required this.position, required this.onTap,});
+    this.subtitle, required this.value, this.timeout, required this.onChanged,});
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +30,13 @@ class SettingSwitchTwo extends StatelessWidget {
             VerticalDivider(),
             SizedBox(width: 20),
             TripleSwitch(
-              enabled: true,
-              value: position,
-              textOn: 'ON',
-              textOff: 'OFF',
-              textWait: '60',
-              textDisabled: 'DIS',
-              onTap: onTap,
+              value: value,
+              //textOn: 'ON',
+              //textOff: 'OFF',
+              //textWait: '60',
+              //textDisabled: 'DIS',
+              timeout: timeout,
+              onChanged: (value) => onChanged(value),
             ),
           ],
         ),

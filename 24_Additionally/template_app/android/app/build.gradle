@@ -24,7 +24,7 @@ android {
         applicationId = "ru.leocode.template_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 23 //flutter.minSdkVersion
+        minSdk = 21 //23 //flutter.minSdkVersion    21 -> 5.0.2, 22 -> 5.1, 23 -> 6.0
         targetSdk = 34 //flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
