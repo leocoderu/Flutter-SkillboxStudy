@@ -1,75 +1,34 @@
 import 'dart:async';
+import 'dart:isolate';
 
 import 'package:flutter/material.dart';
-
-import 'decoration_switch.dart';
-
-enum switchPosition {on, wait, off}
+import 'package:template_app/pages/settings_page/widgets/triple_switch/triple_switch_ui.dart';
 
 class TripleSwitch extends StatefulWidget {
-  final switchPosition value;
+  const TripleSwitch({super.key, required this.swPos, this.timeOut});
 
-  final BoxDecoration? decorationTrackOn;
-  final BoxDecoration? decorationTrackOff;
-  final BoxDecoration? decorationTrackWait;
-  final BoxDecoration? decorationTrackDisabled;
-
-  final BoxDecoration? decorationSliderOn;
-  final BoxDecoration? decorationSliderOff;
-  final BoxDecoration? decorationSliderWait;
-  final BoxDecoration? decorationSliderDisabled;
-
-  final Size sizeTrack;
-  final Size sizeSlider;
-
-  final int?  timeout;
-  final String? textOn;
-  final String? textOff;
-  final String? textWait;
-  final String? textDisabled;
-  final TextStyle textStyleEnabled;
-  final TextStyle textStyleDisabled;
-
-  final ValueChanged<switchPosition>? onChanged;
-
-  const TripleSwitch({super.key,
-    this.value = switchPosition.on,
-    this.decorationTrackOn,
-    this.decorationTrackOff,
-    this.decorationTrackWait,
-    this.decorationTrackDisabled,
-    this.decorationSliderOn,
-    this.decorationSliderOff,
-    this.decorationSliderWait,
-    this.decorationSliderDisabled,
-    this.sizeTrack = const Size(60.0, 30.0),
-    this.sizeSlider = const Size(30.0, 30.0),
-    this.timeout,
-    this.textOn = '',
-    this.textOff = '',
-    this.textWait = '',
-    this.textDisabled = '',
-    this.textStyleEnabled = defaultTextStyleEnabled,
-    this.textStyleDisabled = defaultTextStyleDisabled,
-    this.onChanged,
-  });
+  final switchPosition swPos;
+  final int? timeOut;
 
   @override
   State<TripleSwitch> createState() => _TripleSwitchState();
 }
 
 class _TripleSwitchState extends State<TripleSwitch> {
+  final receivePort = ReceivePort();
+  Timer? timer;
 
-  late int? timeOut;
-  late Timer _timer;
+  // states
+  int? timeOut;               // Timer of timeout
+  late switchPosition swPos;  // Current switch position
+  late switchPosition prePos; // For save switch position before change to wait
 
-  @override
-  void initState() {
-    timeOut = widget.timeout;
-
-    _timer = Timer.periodic(Duration(seconds: 1), (Timer t) => tick());
-
-    super.initState();
+  void _initListener() {
+    receivePort.listen((data) {
+      //setState(() {
+        //_weather = data;
+      //});
+    });
   }
 
   void tick() {
@@ -82,63 +41,45 @@ class _TripleSwitchState extends State<TripleSwitch> {
   }
 
   @override
+  void initState() {
+    timeOut = widget.timeOut;
+    prePos = swPos = widget.swPos;
+
+    _initListener();
+
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => tick());
+    super.initState();
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
-    BoxDecoration trackDecor;
-    BoxDecoration sliderDecor;
-    Alignment pos;
-    String text;
 
-    switch (widget.value) {
-        case switchPosition.on:
-          trackDecor = widget.decorationTrackOn ?? defaultDecorationTrackOn;
-          sliderDecor = widget.decorationSliderOn ?? defaultDecorationSliderOn;
-          pos = Alignment.centerRight;
-          text = widget.textOn ?? '';
-          break;
 
-        case switchPosition.wait:
-          trackDecor = widget.decorationTrackWait ?? defaultDecorationTrackWait;
-          sliderDecor = widget.decorationSliderWait ?? defaultDecorationSliderWait;
-          pos = Alignment.center;
-          text = widget.textWait ?? (timeOut != null ? 'TT'/*timeOut.toString()*/ : 'ZZ');
-          break;
+    // Инверсия позиции тумблера
+    // switchPosition iPos(switchPosition swPos) =>
+    //     (swPos == switchPosition.on) ? switchPosition.off : switchPosition.on;
+    //
+    // Если Таймер еще идет и получен результат с Изолята, если результат положительный
+    // Переключаем тумблер дальше, иначе возвращаем в исходную позицию
+    // if ((timeOut != null) && (resData.exist)) {
+    //   swPos = resData ? iPos(prePos) : prePos;
+    // }
 
-        case switchPosition.off:
-          trackDecor = widget.decorationTrackOff ?? defaultDecorationTrackOff;
-          sliderDecor = widget.decorationSliderOff ?? defaultDecorationSliderOff;
-          pos = Alignment.centerLeft;
-          text = widget.textOff ?? '';
-          break;
-    }
 
-    switchPosition _getSwitchPos() {
-      if (timeOut == null) {
-        if (widget.value == switchPosition.wait) print('It was wait!!!');
-        return widget.value == switchPosition.on
-            ? switchPosition.off
-            : switchPosition.on;
-      }
-      return switchPosition.wait;
-    }
-
-    return GestureDetector(
-      onTap: () => widget.onChanged != null ? widget.onChanged!(_getSwitchPos()) : null,
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
-        decoration: widget.onChanged != null ? trackDecor : defaultDecorationTrackDisabled,
-        alignment: widget.onChanged != null ? pos : Alignment.center,
-        width: widget.sizeTrack.width,
-        height: widget.sizeTrack.height,
-        child: Container(
-          decoration: widget.onChanged != null ? sliderDecor : defaultDecorationSliderDisabled,
-          alignment: Alignment.center,
-          width:  widget.sizeSlider.width,
-          height: widget.sizeSlider.height,
-          child: Text('${widget.onChanged != null ? text : widget.textDisabled}',
-            style: widget.onChanged != null ? widget.textStyleEnabled : widget.textStyleDisabled,
-          ),
-        ),
-      ),
+    return TripleSwitchUI(
+      value: swPos,
+      timeout: timeOut,
+      onChanged: (value) {
+        //onChanged(value);
+        if (value == switchPosition.wait) {
+          setState(() => prePos = swPos);
+          // Запуск обратного отчета таймера
+        }
+        setState(() => swPos = value);
+        // Запуск Изолята
+      },
     );
   }
 }

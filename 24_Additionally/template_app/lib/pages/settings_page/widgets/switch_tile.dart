@@ -1,8 +1,9 @@
 // Import Flutter
 import 'package:flutter/material.dart';
 import 'package:template_app/pages/settings_page/widgets/triple_switch/triple_switch.dart';
+import 'package:template_app/pages/settings_page/widgets/triple_switch/triple_switch_ui.dart';
 
-class SettingSwitchTwo extends StatelessWidget {
+class SwitchTile extends StatelessWidget {
   final bool? enabled;
   final IconData? icon;
   final String? title;
@@ -11,7 +12,7 @@ class SettingSwitchTwo extends StatelessWidget {
   final int? timeout;
   final ValueChanged<switchPosition> onChanged;
 
-  const SettingSwitchTwo({super.key, this.enabled, this.icon, this.title,
+  const SwitchTile({super.key, this.enabled, this.icon, this.title,
     this.subtitle, required this.value, this.timeout, required this.onChanged,});
 
   @override
@@ -30,13 +31,8 @@ class SettingSwitchTwo extends StatelessWidget {
             VerticalDivider(),
             SizedBox(width: 20),
             TripleSwitch(
-              value: value,
-              //textOn: 'ON',
-              //textOff: 'OFF',
-              //textWait: '60',
-              //textDisabled: 'DIS',
-              timeout: timeout,
-              onChanged: (value) => onChanged(value),
+              swPos: value,
+              timeOut: 30,
             ),
           ],
         ),
