@@ -1,6 +1,4 @@
 // Import Flutter
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 
 // Import Packages
@@ -29,26 +27,13 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  final _receivePort1 = ReceivePort();
 
   switchPosition swPos = switchPosition.on;
 
-  void _ChangePos(switchPosition value) => setState(() => swPos = value);
-
-  void _initLister() async {
-    _receivePort1.listen((res) {
-      setState(() {
-        if (res as bool) {
-          swPos = (swPos == switchPosition.on)
-              ? switchPosition.off : switchPosition.on;
-        }
-      });
-    });
-  }
-
   @override
   void initState() {
-    _initLister();
+    swPos = switchPosition.on;    //TODO: Delete this!!!
+
     super.initState();
   }
 
@@ -109,9 +94,10 @@ class _SettingsPageState extends State<SettingsPage> {
                         icon: Icons.keyboard_command_key,
                         title: AppLocalizations.of(context)!.settings_swAutoLogin_title,
                         subtitle: AppLocalizations.of(context)!.settings_swAutoLogin_subtitle,
-                        value: swPos,
-                        timeout: 10,
-                        onChanged: (value) => _ChangePos(value),
+                        value: swPos,       // TODO: Get it from Hive
+                        timeoutOffOn: 20,   // Timeout when switching Off -> On
+                        timeoutOnOff: 20,   // Timeout when switching On -> Off
+                        onChanged: (value) => setState(() => swPos = value), // TODO: Save value to Hive
                       ),
                     ],
                   ),

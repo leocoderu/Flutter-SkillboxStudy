@@ -9,11 +9,12 @@ class SwitchTile extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final switchPosition value;
-  final int? timeout;
+  final int? timeoutOffOn;
+  final int? timeoutOnOff;
   final ValueChanged<switchPosition> onChanged;
 
   const SwitchTile({super.key, this.enabled, this.icon, this.title,
-    this.subtitle, required this.value, this.timeout, required this.onChanged,});
+    this.subtitle, required this.value, this.timeoutOffOn, this.timeoutOnOff, required this.onChanged,});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,8 @@ class SwitchTile extends StatelessWidget {
             SizedBox(width: 20),
             TripleSwitch(
               swPos: value,
-              timeOut: 30,
+              timeoutOffOn: timeoutOffOn,
+              timeoutOnOff: timeoutOnOff,
             ),
           ],
         ),
