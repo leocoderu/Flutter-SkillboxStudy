@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Import Packages
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:triple_switch/triple_switch.dart';
 
 // Import Layers
 import 'package:business_layer/business_layer.dart';
@@ -12,7 +13,8 @@ import 'package:model_layer/model_layer.dart';
 // Import Localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:template_app/pages/settings_page/widgets/switch_tile.dart';
-import 'package:template_app/pages/settings_page/widgets/triple_switch/triple_switch_ui.dart';
+
+//import 'package:template_app/pages/settings_page/widgets/triple_switch/triple_switch_ui.dart';
 
 // Import Widgets
 import 'widgets/setting_switch.dart';
@@ -28,23 +30,14 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
 
-  switchPosition swPos = switchPosition.on;
-
-  @override
-  void initState() {
-    swPos = switchPosition.on;    //TODO: Delete this!!!
-
-    super.initState();
-  }
+  SwitchPosition swPos = SwitchPosition.off;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, DefaultTheme>(
       builder: (BuildContext ctx, DefaultTheme state) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(AppLocalizations.of(context)!.settings_title),
-          ),
+          appBar: AppBar(title: Text(AppLocalizations.of(context)!.settings_title)),
           body: BlocBuilder<AppBloc, AppState>(
               builder: (BuildContext appCtx, AppState appState) {
                 return Center(
@@ -91,9 +84,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
 
                       SwitchTile(
-                        icon: Icons.keyboard_command_key,
-                        title: AppLocalizations.of(context)!.settings_swAutoLogin_title,
-                        subtitle: AppLocalizations.of(context)!.settings_swAutoLogin_subtitle,
+                        icon: Icons.recycling,
+                        title: 'Тест Triple switch',
+                        subtitle: 'Тестирование виджета',
                         value: swPos,       // TODO: Get it from Hive
                         timeoutOffOn: 20,   // Timeout when switching Off -> On
                         timeoutOnOff: 20,   // Timeout when switching On -> Off

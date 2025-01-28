@@ -26,7 +26,7 @@ void requestData(({String parameter, SendPort sendPort}) data) async {
 }
 
 class SomeDataRepo {
-  Future<void> getWeather(String parameter, ReceivePort receiverPort) async {
+  Future<void> getSomeData(String parameter, ReceivePort receiverPort) async {
     await Isolate.spawn(requestData, (parameter: parameter, sendPort:receiverPort.sendPort));
   }
 }
