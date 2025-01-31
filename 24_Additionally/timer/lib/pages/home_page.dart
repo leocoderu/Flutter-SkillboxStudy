@@ -1,25 +1,17 @@
-//import 'dart:async';
-
 import 'package:flutter/material.dart';
+
+
 import 'package:timer/pages/settings_page.dart';
+//import 'package:timer/repository_notifiers.dart';
 
-import '../email_conform_service.dart';
+import '../switcher_notifier2.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-
-  final ValueNotifier<int> valueListenable = ValueNotifier<int>(TimerService().seconds);
-
-
-  @override
   Widget build(BuildContext context) {
-
+    final SwitchNotifier switchNotifier = SwitchNotifier();
 
     return Scaffold(
       appBar: AppBar(
@@ -37,34 +29,30 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('Timer is now:', style: TextStyle(fontSize: 30)),
-            // StreamBuilder(
-            //   stream: _stopwatch(),
-            //   builder: (context, snapshot) {
-            //     return (snapshot.connectionState == ConnectionState.active)
-            //       ? Text(snapshot.data.toString(), style: const TextStyle(fontSize: 60))
-            //       : const Text('--', style: TextStyle(fontSize: 60));
-            //   }
-            // ),
-            ValueListenableBuilder(
-                valueListenable: valueListenable,
-                builder: (BuildContext ctx, value, child) {
+            const Text('Timer1 is now:', style: TextStyle(fontSize: 30)),
+            ListenableBuilder(
+                listenable: switchNotifier,
+                builder: (BuildContext ctx, child) {
                   return
-                    (TimerService().timer?.isActive ?? false)
-                        ? Text(value.toString(), style: const TextStyle(fontSize: 60))
+                    (switchNotifier.data['switch1']!.active)
+                        ? Text(switchNotifier.data['switch1']!.timeout.toString(), style: const TextStyle(fontSize: 60))
                         : const Text('--', style: TextStyle(fontSize: 60));
                 }
             ),
 
-            // (TimerService().timer?.isActive ?? false)
-            //   ? Text(timerService.seconds.toString(), style: const TextStyle(fontSize: 60))
-            //   : const Text('--', style: TextStyle(fontSize: 60)),
+            const Text('Timer2 is now:', style: TextStyle(fontSize: 30)),
+            ListenableBuilder(
+                listenable: switchNotifier,
+                builder: (BuildContext ctx, child) {
+                  return
+                    (switchNotifier.data['switch2']!.active)
+                        ? Text(switchNotifier.data['switch2']!.timeout.toString(), style: const TextStyle(fontSize: 60))
+                        : const Text('--', style: TextStyle(fontSize: 60));
+                }
+            ),
           ],
         ),
       ),
     );
   }
-
-
-
 }
