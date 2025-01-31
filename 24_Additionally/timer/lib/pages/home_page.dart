@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:timer/pages/settings_page.dart';
 
+import '../email_conform_service.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -12,8 +14,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  final ValueNotifier<int> valueListenable = ValueNotifier<int>(TimerService().seconds);
+
+
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Timer'),
@@ -26,11 +33,11 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('Timer is now:', style: TextStyle(fontSize: 30)),
+            const Text('Timer is now:', style: TextStyle(fontSize: 30)),
             // StreamBuilder(
             //   stream: _stopwatch(),
             //   builder: (context, snapshot) {
@@ -39,10 +46,25 @@ class _HomePageState extends State<HomePage> {
             //       : const Text('--', style: TextStyle(fontSize: 60));
             //   }
             // ),
-            Text('--', style: TextStyle(fontSize: 60)),
+            ValueListenableBuilder(
+                valueListenable: valueListenable,
+                builder: (BuildContext ctx, value, child) {
+                  return
+                    (TimerService().timer?.isActive ?? false)
+                        ? Text(value.toString(), style: const TextStyle(fontSize: 60))
+                        : const Text('--', style: TextStyle(fontSize: 60));
+                }
+            ),
+
+            // (TimerService().timer?.isActive ?? false)
+            //   ? Text(timerService.seconds.toString(), style: const TextStyle(fontSize: 60))
+            //   : const Text('--', style: TextStyle(fontSize: 60)),
           ],
         ),
       ),
     );
   }
+
+
+
 }

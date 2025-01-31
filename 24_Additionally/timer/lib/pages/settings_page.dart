@@ -1,6 +1,10 @@
 //import 'dart:isolate';
 
+import 'package:triple_switch/triple_switch.dart';
+
 import 'package:flutter/material.dart';
+
+import '../email_conform_service.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -10,14 +14,14 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int time = -1;
-
-  Stream<int> _stopwatch() async* {
-    while (time >= 0) {
-      await Future.delayed(const Duration(seconds: 1));
-      yield time--;
-    }
-  }
+  // int time = -1;
+  //
+  // Stream<int> _stopwatch() async* {
+  //   while (time >= 0) {
+  //     await Future.delayed(const Duration(seconds: 1));
+  //     yield time--;
+  //   }
+  // }
 
 
   //final timerPort = ReceivePort();
@@ -39,29 +43,81 @@ class _SettingsPageState extends State<SettingsPage> {
   //   super.initState();
   // }
 
+  final ValueNotifier<int> valueListenable = ValueNotifier<int>(TimerService().seconds);
+
+  SwitchPosition swPosState1 = SwitchPosition.off;
+  SwitchPosition swPosState2 = SwitchPosition.off;
+  SwitchPosition swPosState3 = SwitchPosition.off;
+  SwitchPosition swPosState4 = SwitchPosition.off;
+
   @override
   Widget build(BuildContext context) {
+    //TimerService timerService = TimerService();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            StreamBuilder(
-              stream: _stopwatch(),
-              builder: (context, snapshot) {
-                return (snapshot.connectionState == ConnectionState.active)
-                    ? Text(time.toString(), style: const TextStyle(fontSize: 40))
-                    : const Text('--', style: TextStyle(fontSize: 40));
-              }
+            ValueListenableBuilder(
+                valueListenable: valueListenable,
+                builder: (BuildContext ctx, value, child) {
+                  return
+                    (TimerService().timer?.isActive ?? false)
+                        ? Text(value.toString(), style: const TextStyle(fontSize: 40))
+                        : const Text('--', style: TextStyle(fontSize: 40));
+                }
             ),
+            // (TimerService().timer?.isActive ?? false)
+            //   ? Text(timerService.seconds.toString(), style: const TextStyle(fontSize: 40))
+            //   : const Text('--', style: TextStyle(fontSize: 40)),
+
+            // StreamBuilder(
+            //   stream: _stopwatch(),
+            //   builder: (context, snapshot) {
+            //     return (snapshot.connectionState == ConnectionState.active)
+            //         ? Text(time.toString(), style: const TextStyle(fontSize: 40))
+            //         : const Text('--', style: TextStyle(fontSize: 40));
+            //   }
+            // ),
             const SizedBox(height: 50),
             ElevatedButton(
               onPressed: () { // TODO: Start Isolate
-                setState(() => time = 30);
+                setState(() => TimerService().start());
                 //Isolate.spawn(startTimer, (timeout: 20, sendPort: timerPort.sendPort));
               },
               child: const Text('Start', style: TextStyle(fontSize: 20)),
+            ),
+
+
+            const SizedBox(height: 10),
+            TripleSwitch(
+              position: swPosState1,
+              timeoutOffOn: 20,
+              //timeoutOnOff: 0,
+              onChanged: (value) => setState(() => swPosState1 = value),
+            ),
+            const SizedBox(height: 10),
+            TripleSwitch(
+              position: swPosState2,
+              //timeoutOffOn: 20,
+              //timeoutOnOff: 0,
+              onChanged: (value) => setState(() => swPosState2 = value),
+            ),
+            const SizedBox(height: 10),
+            TripleSwitch(
+              position: swPosState3,
+              //timeoutOffOn: 20,
+              //timeoutOnOff: 0,
+              onChanged: (value) => setState(() => swPosState3 = value),
+            ),
+            const SizedBox(height: 10),
+            TripleSwitch(
+              position: swPosState4,
+              //timeoutOffOn: 20,
+              //timeoutOnOff: 0,
+              onChanged: (value) => setState(() => swPosState4 = value),
             ),
           ],
         ),
