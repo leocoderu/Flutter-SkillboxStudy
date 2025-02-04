@@ -7,7 +7,7 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SwitcherState switchers = SwitcherState();
+    final SwitchState switchers = SwitchState();
 
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),

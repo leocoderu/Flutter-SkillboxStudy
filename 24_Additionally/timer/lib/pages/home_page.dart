@@ -11,10 +11,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // Initialize Switcher identifiers
-    final SwitcherState switchers = SwitcherState()..data = {
-      'switch1': SwitcherModel(),
-      'switch2': SwitcherModel(),
-      'switch3': SwitcherModel(),
+    final SwitchState switchers = SwitchState()..data = {
+      'switch1': SwitchModel(),
+      'switch2': SwitchModel(),
+      'switch3': SwitchModel(),
     };
 
     return Scaffold(

@@ -2,25 +2,25 @@ import 'dart:async';
 import 'dart:isolate';
 import 'package:flutter/material.dart';
 
-class SwitcherModel {
+class SwitchModel {
   int  timeout = 0;     // Timer value (0 - N)
   bool active = false;  // State timer, false - off / true - on
   Isolate? isolate;     // Isolate for switchers work
 
-  SwitcherModel();      // Constructor
+  SwitchModel();      // Constructor
 }
 
-class SwitcherState extends ChangeNotifier {
+class SwitchState extends ChangeNotifier {
 
-  Map<String, SwitcherModel> data = {
+  Map<String, SwitchModel> data = {
     //'switch1': NotifierModel(),
     //'switch2': NotifierModel()
   };
 
   // Initialize Singleton
-  SwitcherState._();
-  static final SwitcherState _switchState = SwitcherState._();
-  factory SwitcherState() => _switchState;
+  SwitchState._();
+  static final SwitchState _switchState = SwitchState._();
+  factory SwitchState() => _switchState;
 
   Future<void> start(String name, int time) async {
     final timerPort = ReceivePort();
