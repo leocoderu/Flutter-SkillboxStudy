@@ -8,7 +8,7 @@ class TripleSwitch extends StatelessWidget {
   final bool value;
   final int? timeoutOffOn;
   final int? timeoutOnOff;
-  final dynamic actionOffOn;
+  final Function actionOffOn;
   final dynamic actionOnOff;
   final ValueChanged<bool>? onChanged;
   final ValueChanged<dynamic> onResult;
@@ -24,28 +24,34 @@ class TripleSwitch extends StatelessWidget {
     required this.onResult,
   });
 
+  _runTask() {
+    final port = ReceivePort();
+    Isolate.spawn(isoFunc, (sendPort: port.sendPort, func: actionOffOn));
+
+    port.listen((value) {
+      onResult(value);
+      port.close();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        ReceivePort port = ReceivePort();
-        Isolate.spawn(isoFunc, (func: actionOffOn, sendPort: port.sendPort));
-        port.listen((value) {
-          onResult(value);
-          port.close();
-        });
-      },
-      child: Container(
-        color: Colors.indigo,
-        width: 200,
-        height: 100,
-        child: const Text('Tap me!'),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          onPressed: _runTask,
+          child: const Text('Запустить задачу'),
+        ),
+        //SizedBox(height: 20),
+        //Text(_result),
+      ],
     );
   }
 }
 
-void isoFunc(({dynamic func, SendPort sendPort}) data) {
-  dynamic res = data.func;
-  data.sendPort.send(res);
+void isoFunc(({SendPort sendPort, Function func}) args) {
+  final res = args.func();
+  args.sendPort.send(res);
 }
+

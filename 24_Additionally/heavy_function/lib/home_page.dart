@@ -33,12 +33,14 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('Start Heavy Function'),
+            const SizedBox(height: 30.0),
             TripleSwitch(
               id: 'switchSecurity',
               value: swValue,
               timeoutOffOn: 20,
               timeoutOnOff: null,
-              actionOffOn: function1(1230000000),
+              actionOffOn: exampleTask,
+              //arguments: 1230000000,
               actionOnOff: null,
               onChanged: (value) => setState(() => swValue = value),
               onResult: (value) {
