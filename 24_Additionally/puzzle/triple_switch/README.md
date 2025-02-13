@@ -1,6 +1,6 @@
 # triple_switch
 
-Bind knowladge
+Bind knowledge in one project
 
 ## Getting Started
 

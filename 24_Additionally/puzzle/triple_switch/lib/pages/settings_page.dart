@@ -1,72 +1,65 @@
 import 'package:flutter/material.dart';
 
 import '../heavy_functions.dart';
-import '../triple_switch/switcher_state.dart';
+import '../triple_switch/switch_state.dart';
 import '../triple_switch/triple_switch.dart';
 
-class SettingsPage extends StatefulWidget {
+class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
-}
-
-class _SettingsPageState extends State<SettingsPage> {
-
-  bool swSecurity  = false;
-  bool swFireAlarm = false;
-  bool swSprinkler = false;
-
-  @override
   Widget build(BuildContext context) {
-    final SwitchState switchers = SwitchState();
+    final SwitchState switches = SwitchState();
 
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
       body: Center(
         child: ListenableBuilder(
-          listenable: switchers,
+          listenable: switches,
           builder: (BuildContext ctx, child) {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TripleSwitch(
+                Text((switches.data['switchSecurity']!.result != null)
+                    ? '${switches.data['switchSecurity']!.result.toString()} ( ${switches.data['switchSecurity']!.success.toString()} )'
+                    : 'No result'
+                ),
+                const TripleSwitch(
                   id: 'switchSecurity',
-                  value: swSecurity,
-                  timeoutOffOn: 20,
-                  timeoutOnOff: 20,
-                  actionOffOn: heavyFunction1,
-                  actionOnOff: heavyFunction1,
-                  argumentsOffOn: const [1230000000],
-                  argumentsOnOff: const [1230000000],
-                  onChanged: (value) => setState(() => swSecurity = value),
-                  onResult: (value) => debugPrint('Settings Result: $value'),
+                  timeoutOffOn: 50,
+                  timeoutOnOff: 15,
+                  functionOffOn: heavyFunction1,
+                  functionOnOff: heavyFunction3,
+                  argumentsOffOn: [923000000],
+                  argumentsOnOff: [12, 12],
                 ),
                 const SizedBox(height: 10),
-                TripleSwitch(
+                Text((switches.data['switchFireAlarm']!.result != null)
+                    ? '${switches.data['switchFireAlarm']!.result.toString()} ( ${switches.data['switchFireAlarm']!.success.toString()} )'
+                    : 'No result'
+                ),
+                const TripleSwitch(
                   id: 'switchFireAlarm',
-                  value: swFireAlarm,
                   timeoutOffOn: 35,
                   timeoutOnOff: null,
-                  actionOffOn: heavyFunction2,
-                  actionOnOff: null,
-                  argumentsOffOn: const [100000000, 'Second Func'],
+                  functionOffOn: heavyFunction2,
+                  functionOnOff: null,
+                  argumentsOffOn: [723000000, 'Second Func'],
                   argumentsOnOff: null,
-                  onChanged: (value) => setState(() => swFireAlarm = value),
-                  onResult: (value) => debugPrint('Settings Result: $value'),
                 ),
                 const SizedBox(height: 10),
-                TripleSwitch(
+                Text((switches.data['switchSprinkler']!.result != null)
+                    ? '${switches.data['switchSprinkler']!.result.toString()} ( ${switches.data['switchSprinkler']!.success.toString()} )'
+                    : 'No result'
+                ),
+                const TripleSwitch(
                   id: 'switchSprinkler',
-                  value: swSprinkler,
                   timeoutOffOn: 15,
                   timeoutOnOff: null,
-                  actionOffOn: heavyFunction3,
-                  actionOnOff: null,
-                  argumentsOffOn: const [16, 2],
+                  functionOffOn: heavyFunction3,
+                  functionOnOff: null,
+                  argumentsOffOn: [16, 2],
                   argumentsOnOff: null,
-                  onChanged: (value) => setState(() => swSprinkler = value),
-                  onResult: (value) => debugPrint('Settings Result: $value'),
                 ),
               ],
             );

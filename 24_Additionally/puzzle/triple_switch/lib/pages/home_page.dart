@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'settings_page.dart';
 
-import '../triple_switch/switcher_state.dart';
+import '../triple_switch/switch_state.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,11 +10,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // Initialize Switcher identifiers
-    final SwitchState switchers = SwitchState()..data = {
-      'switchSecurity': SwitchModel(),
-      'switchFireAlarm': SwitchModel(),
-      'switchSprinkler': SwitchModel(),
+    // Initialize switches identifiers
+    final SwitchState switches = SwitchState()..data = {
+      'switchSecurity':  SwitchModel(false), /// TODO: Возможно false нужно брать из хранилища
+      'switchFireAlarm': SwitchModel(false), /// TODO: но как туда сохранять?
+      'switchSprinkler': SwitchModel(false),
     };
 
     return Scaffold(
@@ -31,14 +31,14 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ListenableBuilder(
-            listenable: switchers,
+            listenable: switches,
             builder: (BuildContext ctx, child) {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Timer1 is now: ${(switchers.data['switchSecurity']!.timeout != null) ? switchers.data['switchSecurity']!.timeout.toString() : '--'}', style: const TextStyle(fontSize: 30)),
-                  Text('Timer2 is now: ${(switchers.data['switchFireAlarm']!.timeout != null) ? switchers.data['switchFireAlarm']!.timeout.toString() : '--'}', style: const TextStyle(fontSize: 30)),
-                  Text('Timer3 is now: ${(switchers.data['switchSprinkler']!.timeout != null) ? switchers.data['switchSprinkler']!.timeout.toString() : '--'}', style: const TextStyle(fontSize: 30)),
+                  Text('Timer1 is now: ${(switches.data['switchSecurity']!.timeout != null) ? switches.data['switchSecurity']!.timeout.toString() : '--'}', style: const TextStyle(fontSize: 30)),
+                  Text('Timer2 is now: ${(switches.data['switchFireAlarm']!.timeout != null) ? switches.data['switchFireAlarm']!.timeout.toString() : '--'}', style: const TextStyle(fontSize: 30)),
+                  Text('Timer3 is now: ${(switches.data['switchSprinkler']!.timeout != null) ? switches.data['switchSprinkler']!.timeout.toString() : '--'}', style: const TextStyle(fontSize: 30)),
                 ],
               );
             }
