@@ -11,11 +11,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // Initialize switches identifiers
-    final SwitchState switches = SwitchState()..data = {
-      'switchSecurity':  SwitchModel(false), /// TODO: Возможно false нужно брать из хранилища
-      'switchFireAlarm': SwitchModel(false), /// TODO: но как туда сохранять?
-      'switchSprinkler': SwitchModel(false),
-    };
+    // final SwitchState switches = SwitchState()..data = {
+    //   'switchSecurity':  SwitchModel(false), /// TODO: Возможно false нужно брать из хранилища
+    //   'switchFireAlarm': SwitchModel(false), /// TODO: но как туда сохранять?
+    //   'switchSprinkler': SwitchModel(false),
+    // };
+    final SwitchState switches = SwitchState();
 
     return Scaffold(
       appBar: AppBar(

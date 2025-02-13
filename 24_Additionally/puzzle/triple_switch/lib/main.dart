@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
+import 'services.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await setupServices();
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
