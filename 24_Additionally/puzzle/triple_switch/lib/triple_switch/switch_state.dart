@@ -9,8 +9,9 @@ class SwitchModel {
   Isolate? _isoFunc;  // Isolate for Function
   dynamic result;     // Result value of heavy function, null is doesn't have a result
   bool?  success;     // Result state, null is doesn't have a result, true - success / false - error
+  Function? saveFunc; // Function for save result
 
-  SwitchModel(this.position);      // Default Constructor
+  SwitchModel(this.position, this.saveFunc);      // Default Constructor
 }
 
 class SwitchState extends ChangeNotifier {
@@ -28,6 +29,7 @@ class SwitchState extends ChangeNotifier {
       data[name]!.result  = null;
       data[name]!.success = null;
       data[name]!.position = !data[name]!.position;
+      data[name]!.saveFunc!(data[name]!.position);
       notifyListeners();
       return;
     }
@@ -35,7 +37,6 @@ class SwitchState extends ChangeNotifier {
     final timerPort = ReceivePort();
     final funcPort  = ReceivePort();
 
-    //if (data[name]!.timeout != null) return;   // preventing a restart
     //stop(name);                       // stop isolate
 
     data[name]!.timeout = time;
@@ -72,7 +73,7 @@ class SwitchState extends ChangeNotifier {
       data[name]!.result = res[0];
       data[name]!.success = res[1];
       data[name]!.position = res[1] ? !data[name]!.position : data[name]!.position;
-
+      data[name]!.saveFunc!(data[name]!.position);
       notifyListeners();
 
       portFunc.close();
@@ -90,11 +91,13 @@ class SwitchState extends ChangeNotifier {
       data[name]!._isoFunc = null;
       //data[name]!.result = null;
       //data[name]!.success = null;
+      //funcPort.close();
     }
 
     data[name]!._isoTime!.kill();
     data[name]!._isoTime = null;
     data[name]!.timeout = null;
+    //timerPort.close();
     notifyListeners();
   }
 

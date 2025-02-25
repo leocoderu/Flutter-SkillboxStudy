@@ -34,23 +34,16 @@ class TripleSwitch extends StatelessWidget {
     return ListenableBuilder(
       listenable: switches,
       builder: (BuildContext ctx, child) {
-        // if (onChanged != null) {
-        //        //   onChanged!((switches.data[id]!.success ?? false) ? !value : value);
-        //   print(switches.data[id]!.success);
-        // }
         return GestureDetector(
           onTap: () {
-            (switches.data[id]!.timeout == null)
-              ? switches.start(id,
+            if(switches.data[id]!.timeout == null) { // preventing a restart
+              switches.start(id,
                 switches.data[id]!.position ? timeoutOnOff : timeoutOffOn,
                 switches.data[id]!.position ? functionOnOff : functionOffOn,
                 switches.data[id]!.position ? argumentsOnOff : argumentsOffOn
-
-                // value ? timeoutOnOff : timeoutOffOn,
-                // value ? functionOnOff : functionOffOn,
-                // value ? argumentsOnOff : argumentsOffOn
-              )
-              : switches.stop(id);
+              );
+            }
+            //: null; //switches.stop(id);        // Нет смысла останавливать запрос, т.к. он д/б отработан
           },
           child: Container(
             color: (switches.data[id]!.timeout != null)
