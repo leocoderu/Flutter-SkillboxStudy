@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../heavy_functions.dart';
 import '../triple_switch/switch_state.dart';
 import '../triple_switch/triple_switch.dart';
+
+import '../heavy_functions.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -21,8 +22,8 @@ class SettingsPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text((switches.data['switchSecurity']!.result != null)
-                    ? '${switches.data['switchSecurity']!.result.toString()} ( ${switches.data['switchSecurity']!.success.toString()} )'
-                    : 'No result'
+                  ? '${switches.data['switchSecurity']!.result.toString()} ( ${switches.data['switchSecurity']!.success.toString()} )'
+                  : 'No result'
                 ),
                 const TripleSwitch(
                   id: 'switchSecurity',
@@ -35,8 +36,8 @@ class SettingsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text((switches.data['switchFireAlarm']!.result != null)
-                    ? '${switches.data['switchFireAlarm']!.result.toString()} ( ${switches.data['switchFireAlarm']!.success.toString()} )'
-                    : 'No result'
+                  ? '${switches.data['switchFireAlarm']!.result.toString()} ( ${switches.data['switchFireAlarm']!.success.toString()} )'
+                  : 'No result'
                 ),
                 const TripleSwitch(
                   id: 'switchFireAlarm',
@@ -49,17 +50,17 @@ class SettingsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text((switches.data['switchSprinkler']!.result != null)
-                    ? '${switches.data['switchSprinkler']!.result.toString()} ( ${switches.data['switchSprinkler']!.success.toString()} )'
-                    : 'No result'
+                  ? '${switches.data['switchSprinkler']!.result.toString()} ( ${switches.data['switchSprinkler']!.success.toString()} )'
+                  : 'No result'
                 ),
                 const TripleSwitch(
                   id: 'switchSprinkler',
                   timeoutOffOn: 15,
-                  timeoutOnOff: null,
+                  //timeoutOnOff: null,
                   functionOffOn: heavyFunction3,
-                  functionOnOff: null,
+                  //functionOnOff: null,
                   argumentsOffOn: [16, 2],
-                  argumentsOnOff: null,
+                  //argumentsOnOff: null,
                 ),
               ],
             );

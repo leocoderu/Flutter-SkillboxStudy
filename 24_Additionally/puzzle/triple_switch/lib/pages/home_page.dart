@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'settings_page.dart';
-
 import '../triple_switch/switch_state.dart';
+
+import 'settings_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    // Initialize switches identifiers
-    // final SwitchState switches = SwitchState()..data = {
-    //   'switchSecurity':  SwitchModel(false), /// TODO: Возможно false нужно брать из хранилища
-    //   'switchFireAlarm': SwitchModel(false), /// TODO: но как туда сохранять?
-    //   'switchSprinkler': SwitchModel(false),
-    // };
     final SwitchState switches = SwitchState();
 
     return Scaffold(

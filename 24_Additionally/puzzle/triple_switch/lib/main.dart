@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'pages/home_page.dart';
 import 'services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await setupServices();
+  await setupServices();        /// Initialize switches
 
   runApp(const MyApp());
 }
