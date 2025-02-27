@@ -3,13 +3,13 @@ import 'dart:isolate';
 import 'package:flutter/material.dart';
 
 class SwitchModel {
-  bool position;        /// Position of switch, true - On / false - Off
-  int?  timeout;        /// Timer value (0 - N), null is timer off
-  Isolate? _isoTime;    /// Isolate for Timer
-  Isolate? _isoFunc;    /// Isolate for Function
-  dynamic result;       /// Result value of heavy function, null is doesn't have a result
-  bool?  success;       /// Result state, null is doesn't have a result, true - success / false - error
-  Function? saveFunc;   /// Function for save result
+  bool position;              /// Position of switch, true - On / false - Off
+  int?  timeout;              /// Timer value (0 - N), null is timer off
+  Isolate? _isoTime;          /// Isolate for Timer
+  Isolate? _isoFunc;          /// Isolate for Function
+  dynamic result;             /// Result value of heavy function, null is doesn't have a result
+  bool?  success;             /// Result state, null is doesn't have a result, true - success / false - error
+  Function(bool)? saveFunc;   /// Function for save result
 
   SwitchModel({this.position = false, this.saveFunc});  /// Default Constructor
 }
