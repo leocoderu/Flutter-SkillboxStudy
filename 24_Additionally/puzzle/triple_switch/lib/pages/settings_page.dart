@@ -41,11 +41,11 @@ class SettingsPage extends StatelessWidget {
                 ),
                 const TripleSwitch(
                   id: 'switchFireAlarm',
-                  timeoutOffOn: 35,
+                  timeoutOffOn: 50,
                   timeoutOnOff: null,
                   functionOffOn: heavyFunction2,
                   functionOnOff: null,
-                  argumentsOffOn: [723000000, 'Second Func'],
+                  argumentsOffOn: [223000000, 'Second Func'],
                   argumentsOnOff: null,
                 ),
                 const SizedBox(height: 10),
