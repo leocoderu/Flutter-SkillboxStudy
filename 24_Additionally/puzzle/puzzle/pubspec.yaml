@@ -1,4 +1,4 @@
-name: triple_switch
+name: puzzle
 description: "Bind knowledge in one project"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
