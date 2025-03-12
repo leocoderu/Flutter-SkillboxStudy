@@ -1,0 +1,2 @@
+C:/TEMP/repo/skillbox/24_Additionally/puzzle/android/app/.cxx/Debug/67wl6w1n/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/TEMP/repo/skillbox/24_Additionally/puzzle/android/app/.cxx/Debug/67wl6w1n/armeabi-v7a/CMakeFiles/rebuild_cache.dir
