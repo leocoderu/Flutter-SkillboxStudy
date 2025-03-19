@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <layer-list xmlns:android="http://schemas.android.com/apk/res/android"> -->
+    <!-- <item android:drawable="@android:color/white" /> -->
+<!--    <item android:drawable="@drawable/gradient_background" />
+
+
+</layer-list> -->
+
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/gradient_one"
+        android:duration="5000"/>
+
+    <item
+        android:drawable="@drawable/gradient_two"
+        android:duration="5000"/>
+
+    <item
+        android:drawable="@drawable/gradient_three"
+        android:duration="5000"/>
+
+    <item
+        android:drawable="@drawable/gradient_four"
+        android:duration="5000"/>
+
+    <item
+        android:drawable="@drawable/gradient_five"
+        android:duration="5000"/>
+
+</animation-list>
