@@ -16,7 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
 flutter_native_splash:
-  background_image: "assets/background.png"
+  background_image: assets/background.png
   image: assets/splash.png
 
 dev_dependencies:
