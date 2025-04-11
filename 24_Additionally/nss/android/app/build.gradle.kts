@@ -42,3 +42,10 @@ android {
 flutter {
     source = "../.."
 }
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Lottie
+    implementation "com.airbnb.android:lottie:3.5.0"
+    implementation "com.android.support.constraint:constraint-layout:2.0.4"
+}

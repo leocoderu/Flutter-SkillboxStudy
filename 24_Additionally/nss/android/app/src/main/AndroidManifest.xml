@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    package="com.abedelazizshe.flutter_lottie_splash_app">
     <application
         android:label="nss"
         android:name="${applicationName}"
