@@ -25,7 +25,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        targetSdk = 34 //flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
@@ -44,8 +44,9 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version")
     // Lottie
-    implementation "com.airbnb.android:lottie:3.5.0"
-    implementation "com.android.support.constraint:constraint-layout:2.0.4"
+    //implementation("com.airbnb.android:lottie:3.5.0")
+    //implementation("com.android.support.constraint:constraint-layout:2.0.4")
+    implementation("com.airbnb.android:lottie:6.6.6")
 }

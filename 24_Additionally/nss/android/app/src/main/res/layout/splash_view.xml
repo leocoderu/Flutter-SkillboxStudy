@@ -5,14 +5,11 @@
     android:layout_height="match_parent">
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
+        android:layout_height="wrap_content"
         app:lottie_rawRes="@raw/splash_screen"
-        app:lottie_loop="false"
-        app:lottie_speed="1.00" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,2 @@
+C:/TEMP/repo/skillbox/24_SplashScreen/flutter_lottie_splash_app/android/app/.cxx/Debug/5u175u3w/x86/CMakeFiles/edit_cache.dir
+C:/TEMP/repo/skillbox/24_SplashScreen/flutter_lottie_splash_app/android/app/.cxx/Debug/5u175u3w/x86/CMakeFiles/rebuild_cache.dir
