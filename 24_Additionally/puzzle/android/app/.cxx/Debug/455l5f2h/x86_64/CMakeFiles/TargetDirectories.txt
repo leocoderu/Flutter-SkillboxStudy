@@ -1,2 +1,0 @@
-E:/Projects/Flutter/triple_switch/example/puzzle/android/app/.cxx/Debug/455l5f2h/x86_64/CMakeFiles/edit_cache.dir
-E:/Projects/Flutter/triple_switch/example/puzzle/android/app/.cxx/Debug/455l5f2h/x86_64/CMakeFiles/rebuild_cache.dir
