@@ -1,0 +1,45 @@
+name: nss
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  #flutter_native_splash: ^2.4.5
+  #lottie: ^3.3.1
+
+  cupertino_icons: ^1.0.8
+
+#flutter_native_splash:
+#  background_image: assets/background.png
+#  image: assets/splash.png
+
+#flutter_native_splash:
+#  android: true
+#  ios: true
+#  web: false
+# background_image: assets/images/background.png
+ #color: "#FFFFFF"  # Замените на нужный цвет фона
+#  image: assets/images/splash.png # Fallback, если Lottie не работает
+#  android_12:
+#    image: assets/images/splash.png
+#  lottie: assets/animations/lottie_data.json # Путь к вашему Lottie JSON файлу
+#  fullscreen: true
+#  android_gravity: center
+#  ios_content_mode: scaleAspectFill
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
