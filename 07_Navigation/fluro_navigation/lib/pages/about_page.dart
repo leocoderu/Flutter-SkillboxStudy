@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class AboutPage extends StatefulWidget {
   static const routeName = '/about';
-  const AboutPage({Key? key, this.id}) : super(key: key);
+
   final String? id;
+  const AboutPage({super.key, this.id});
 
   @override
   State<AboutPage> createState() => _AboutPageState();
