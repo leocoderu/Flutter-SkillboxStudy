@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:sms_receiver/sms_receiver.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -16,21 +18,75 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  String? _textContent = 'Waiting for messages...';
+
+  SmsReceiver? _smsReceiver;
+
+  @override
+  void initState() {
+    super.initState();
+    _smsReceiver = SmsReceiver(onSmsReceived, onTimeout: onTimeout);
+    _startListening();
+  }
+
+  void onSmsReceived(String? message) {
+    setState(() {
+      _textContent = message;
+    });
+  }
+
+  void onTimeout() {
+    setState(() {
+      _textContent = 'Timeout!!!';
+    });
+  }
+
+  void _startListening() async {
+    if (_smsReceiver == null) return;
+    await _smsReceiver?.startListening();
+    setState(() {
+      _textContent = 'Waiting for messages...';
+    });
+  }
+
+  void _stopListening() async {
+    if (_smsReceiver == null) return;
+    await _smsReceiver?.stopListening();
+    setState(() {
+      _textContent = 'Listener Stopped';
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Work\'s with SMS'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('SMS Listener App'),
+        ),
+        body: Column(
           children: <Widget>[
-            const Text('_counter'),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              alignment: Alignment.center,
+              child: Text(_textContent ?? 'empty'),
+            ),
+            ElevatedButton(
+              onPressed: _startListening,
+              child: const Text('Listen Again'),
+            ),
+            ElevatedButton(
+              onPressed: _stopListening,
+              child: const Text('Stop Listener'),
+            ),
           ],
         ),
       ),
