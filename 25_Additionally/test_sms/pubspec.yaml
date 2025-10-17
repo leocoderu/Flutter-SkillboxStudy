@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sms_sender: ^1.0.5
 
   cupertino_icons: ^1.0.8
 
